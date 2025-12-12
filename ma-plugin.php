@@ -22,10 +22,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 // Plugin constants.
-define( '{{namespace|upper}}_VERSION', '{{version}}' );
-define( '{{namespace|upper}}_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( '{{namespace|upper}}_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
-define( '{{namespace|upper}}_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+define( 'MA_PLUGIN_VERSION', '{{version}}' );
+define( 'MA_PLUGIN_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'MA_PLUGIN_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'MA_PLUGIN_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
 /**
  * Defensive coding: Check for SCF/ACF functions before using them.
@@ -43,7 +43,7 @@ if ( ! function_exists( 'acf_add_local_field_group' ) ) {
 		'admin_notices',
 		function () {
 			echo '<div class="error"><p>' .
-				esc_html__( '{{name}} requires Secure Custom Fields to be active.', '{{textdomain}}' ) .
+				esc_html__( 'MA Plugin requires Secure Custom Fields to be active.', 'ma-plugin' ) .
 				'</p></div>';
 		}
 	);
@@ -51,20 +51,13 @@ if ( ! function_exists( 'acf_add_local_field_group' ) ) {
 }
 
 // Include the Core class.
-require_once {{namespace|upper}}_PLUGIN_DIR . 'inc/class-core.php';
+require_once MA_PLUGIN_PLUGIN_DIR . 'inc/class-core.php';
 
-/**
- * Initialise the plugin and return the main instance.
- *
- * @return \{{namespace|lowerCase}}\classes\Core Main plugin instance.
- */
-function {{namespace|lowerCase}}_plugin() {
-	global ${{namespace|lowerCase}}_plugin;
-	if ( null === ${{namespace|lowerCase}}_plugin ) {
-		${{namespace|lowerCase}}_plugin = new \{{namespace|lowerCase}}\classes\Core();
-	}
-	return ${{namespace|lowerCase}}_plugin;
+function ma_plugin() {
+    global $ma_plugin;
+    if ( null === $ma_plugin ) {
+        $ma_plugin = new \MaPlugin\classes\Core();
+    }
+    return $ma_plugin;
 }
-
-// Initialize the plugin.
-{{namespace|lowerCase}}_plugin();
+ma_plugin();
