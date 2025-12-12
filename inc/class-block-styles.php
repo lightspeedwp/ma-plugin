@@ -38,7 +38,7 @@ class Block_Styles {
 			array( 'core/group', 'core/columns' ),
 			array(
 				'name'       => 'example-plugin-section-highlight',
-				'label'      => __( 'Example Plugin Section Highlight', 'ma-plugin' ),
+				'label'      => __( 'MA Plugin Section Highlight', 'ma-plugin' ),
 				'style_data' => array(
 					'color' => array(
 						'background' => 'var:preset|color|contrast',

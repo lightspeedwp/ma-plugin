@@ -44,7 +44,7 @@ class Block_Bindings {
 		register_block_bindings_source(
 			'example-plugin/post-meta',
 			array(
-				'label'              => __( 'Example Plugin Post Meta', 'ma-plugin' ),
+				'label'              => __( 'MA Plugin Post Meta', 'ma-plugin' ),
 				'get_value_callback' => array( $this, 'get_post_meta_value' ),
 				'uses_context'       => array( 'postId' ),
 			)

@@ -55,7 +55,7 @@ class Fields {
 					printf(
 						/* translators: %s: Plugin name */
 						esc_html__( '%s requires Secure Custom Fields plugin to be installed and activated for custom fields functionality.', 'ma-plugin' ),
-						'<strong>Example Plugin</strong>'
+						'<strong>MA Plugin</strong>'
 					);
 					?>
 				</p>

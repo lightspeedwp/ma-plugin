@@ -70,8 +70,8 @@ class Options {
 		// Main options page.
 		acf_add_options_page(
 			array(
-				'page_title'      => __( 'Example Plugin Settings', 'ma-plugin' ),
-				'menu_title'      => __( 'Example Plugin', 'ma-plugin' ),
+				'page_title'      => __( 'MA Plugin Settings', 'ma-plugin' ),
+				'menu_title'      => __( 'MA Plugin', 'ma-plugin' ),
 				'menu_slug'       => self::OPTIONS_PAGE,
 				'capability'      => 'manage_options',
 				'icon_url'        => 'dashicons-admin-generic',

@@ -41,7 +41,7 @@ class Block_Templates {
 			register_block_template(
 				'example-plugin//example-archive',
 				array(
-					'title'       => __( 'Example Plugin Example Archive', 'ma-plugin' ),
+					'title'       => __( 'MA Plugin Example Archive', 'ma-plugin' ),
 					'description' => __( 'Example archive template registered by the plugin.', 'ma-plugin' ),
 					'post_types'  => array( 'post' ),
 					'content'     => file_get_contents( $template_file ),

@@ -2,18 +2,30 @@
 	"$schema": "https://schemas.wp.org/wp/6.9/block.json",
 	"apiVersion": 3,
 	"name": "example_plugin/example-plugin-card",
-	"title": "Example Plugin Card",
+	"title": "MA Plugin Card",
 	"category": "example-plugin",
 	"icon": "id-alt",
 	"description": "Display a single item in a card layout.",
 	"version": "1.0.0",
 	"textdomain": "example-plugin",
-	"keywords": [ "card", "example-plugin", "post" ],
-	"usesContext": [ "postId", "postType" ],
+	"keywords": [
+		"card",
+		"example-plugin",
+		"post"
+	],
+	"usesContext": [
+		"postId",
+		"postType"
+	],
 	"supports": {
 		"html": false,
 		"anchor": true,
-		"align": [ "left", "center", "right", "wide" ],
+		"align": [
+			"left",
+			"center",
+			"right",
+			"wide"
+		],
 		"className": true,
 		"color": {
 			"background": true,

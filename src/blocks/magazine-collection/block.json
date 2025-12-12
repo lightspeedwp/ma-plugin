@@ -2,21 +2,33 @@
 	"$schema": "https://schemas.wp.org/wp/6.9/block.json",
 	"apiVersion": 3,
 	"name": "example_plugin/example-plugin-collection",
-	"title": "Example Plugin Collection",
+	"title": "MA Plugin Collection",
 	"category": "example-plugin",
 	"icon": "grid-view",
 	"description": "Display a collection of items with filtering and layout options.",
 	"version": "1.0.0",
 	"textdomain": "example-plugin",
-	"keywords": [ "collection", "example-plugin", "grid", "list", "query" ],
-	"usesContext": [ "postId", "postType" ],
+	"keywords": [
+		"collection",
+		"example-plugin",
+		"grid",
+		"list",
+		"query"
+	],
+	"usesContext": [
+		"postId",
+		"postType"
+	],
 	"providesContext": {
 		"example_plugin/queryId": "queryId",
 		"postId": "queryId"
 	},
 	"supports": {
 		"html": false,
-		"align": [ "wide", "full" ],
+		"align": [
+			"wide",
+			"full"
+		],
 		"anchor": true,
 		"className": true,
 		"color": {
@@ -57,7 +69,11 @@
 			"type": "string",
 			"role": "local",
 			"default": "grid",
-			"enum": [ "grid", "list", "slider" ]
+			"enum": [
+				"grid",
+				"list",
+				"slider"
+			]
 		},
 		"columns": {
 			"type": "number",

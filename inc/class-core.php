@@ -99,7 +99,7 @@ class Core {
 			array(
 				array(
 					'slug'  => '{{slug}}',
-					'title' => __( 'Example Plugin', 'ma-plugin' ),
+					'title' => __( 'MA Plugin', 'ma-plugin' ),
 					'icon'  => 'admin-generic',
 				),
 			),

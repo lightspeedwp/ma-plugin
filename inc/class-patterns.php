@@ -33,7 +33,7 @@ class Patterns {
 		register_block_pattern_category(
 			'ma-plugin',
 			array(
-				'label' => __( 'Example Plugin', 'ma-plugin' ),
+				'label' => __( 'MA Plugin', 'ma-plugin' ),
 			)
 		);
 	}

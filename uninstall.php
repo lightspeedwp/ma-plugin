@@ -1,6 +1,6 @@
 <?php
 /**
- * Example Plugin Uninstall
+ * MA Plugin Uninstall
  *
  * Fired when the plugin is uninstalled to clean up all plugin data.
  *

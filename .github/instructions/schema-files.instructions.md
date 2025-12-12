@@ -1,7 +1,7 @@
 ---
 name: Schema Files Instructions
 description: Rules and standards for JSON Schema files and validation in the multi-block plugin scaffold
-applyTo: '**/*.schema.json,**/schemas/**'
+applyTo: "**/*.schema.json,**/schemas/**"
 ---
 
 # Schema Files Instructions
@@ -58,27 +58,29 @@ These instructions define standards for creating, storing, and validating JSON S
 **Naming**: `{purpose}-config.schema.json`
 
 **Examples**:
+
 - `.github/schemas/plugin-config.schema.json` - Plugin configuration schema
 - `.github/schemas/block-config.schema.json` - Block configuration schema
 - `.github/schemas/field-config.schema.json` - Field configuration schema
 
 **Structure**:
+
 ```json
 {
-    "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "$id": "https://lightspeedwp.com/schemas/plugin-config.json",
-    "title": "Human-readable title",
-    "description": "Detailed description of purpose",
-    "type": "object",
-    "required": ["field1", "field2"],
-    "properties": {
-        "field1": {
-            "type": "string",
-            "description": "Field description",
-            "pattern": "^[a-z0-9-]+$",
-            "examples": ["example-value"]
-        }
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lightspeedwp.com/schemas/plugin-config.json",
+  "title": "Human-readable title",
+  "description": "Detailed description of purpose",
+  "type": "object",
+  "required": ["field1", "field2"],
+  "properties": {
+    "field1": {
+      "type": "string",
+      "description": "Field description",
+      "pattern": "^[a-z0-9-]+$",
+      "examples": ["example-value"]
     }
+  }
 }
 ```
 
@@ -89,12 +91,14 @@ These instructions define standards for creating, storing, and validating JSON S
 **Naming**: `{purpose}-config.example.json`
 
 **Examples**:
+
 - `.github/schemas/plugin-config.example.json` - Example plugin configuration
 - `.github/schemas/block-config.example.json` - Example block configuration
 
 **Characteristics**:
+
 - Must validate against corresponding schema
-- Include helpful comments (use "_comment" field)
+- Include helpful comments (use "\_comment" field)
 - Show realistic, production-ready values
 - Demonstrate all common use cases
 
@@ -116,6 +120,7 @@ These instructions define standards for creating, storing, and validating JSON S
 ### Location Rules
 
 ✅ **ALWAYS**:
+
 - Store all schema files in `.github/schemas/` directory
 - Name schema files with `.schema.json` extension
 - Name example files with `.example.json` extension
@@ -123,6 +128,7 @@ These instructions define standards for creating, storing, and validating JSON S
 - Validate schemas using JSON Schema Draft 2020-12 or later
 
 ❌ **NEVER**:
+
 - Create schema files in repository root
 - Store schemas in `docs/` or other directories
 - Mix schema files with source code
@@ -136,31 +142,37 @@ These instructions define standards for creating, storing, and validating JSON S
 Every schema file MUST include:
 
 1. **`$schema`**: JSON Schema version URL
+
    ```json
    "$schema": "https://json-schema.org/draft/2020-12/schema"
    ```
 
 2. **`$id`**: Unique schema identifier URL
+
    ```json
    "$id": "https://lightspeedwp.com/schemas/plugin-config.json"
    ```
 
 3. **`title`**: Human-readable schema title
+
    ```json
    "title": "WordPress Multi-Block Plugin Configuration"
    ```
 
 4. **`description`**: Detailed description of schema purpose
+
    ```json
    "description": "Pre-filled configuration for plugin generation wizard"
    ```
 
 5. **`type`**: Root type (usually "object")
+
    ```json
    "type": "object"
    ```
 
 6. **`required`**: Array of required property names
+
    ```json
    "required": ["slug", "name", "author"]
    ```
@@ -179,26 +191,25 @@ Every property definition should include:
 
 ```json
 {
-    "property_name": {
-        "type": "string",
-        "description": "Clear, detailed description",
-        "pattern": "^[a-z0-9-]+$",
-        "minLength": 2,
-        "maxLength": 50,
-        "default": "default-value",
-        "examples": [
-            "example-1",
-            "example-2"
-        ]
-    }
+  "property_name": {
+    "type": "string",
+    "description": "Clear, detailed description",
+    "pattern": "^[a-z0-9-]+$",
+    "minLength": 2,
+    "maxLength": 50,
+    "default": "default-value",
+    "examples": ["example-1", "example-2"]
+  }
 }
 ```
 
 **Required fields for each property**:
+
 - `type` - Data type (string, number, boolean, array, object)
 - `description` - Clear explanation of purpose and format
 
 **Recommended fields**:
+
 - `pattern` - Regex pattern for string validation
 - `minLength`/`maxLength` - String length constraints
 - `minimum`/`maximum` - Number range constraints
@@ -209,43 +220,48 @@ Every property definition should include:
 ### Pattern Examples
 
 **Slug Pattern** (lowercase, hyphens only):
+
 ```json
 {
-    "pattern": "^[a-z][a-z0-9-]{1,48}[a-z0-9]$",
-    "examples": ["plugin-name", "my-plugin-2024"]
+  "pattern": "^[a-z][a-z0-9-]{1,48}[a-z0-9]$",
+  "examples": ["plugin-name", "my-plugin-2024"]
 }
 ```
 
 **Namespace Pattern** (lowercase, underscores):
+
 ```json
 {
-    "pattern": "^[a-z][a-z0-9_]{1,48}[a-z0-9]$",
-    "examples": ["plugin_name", "my_plugin"]
+  "pattern": "^[a-z][a-z0-9_]{1,48}[a-z0-9]$",
+  "examples": ["plugin_name", "my_plugin"]
 }
 ```
 
 **Version Pattern** (semantic versioning):
+
 ```json
 {
-    "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.-]+)?$",
-    "examples": ["1.0.0", "2.1.0", "1.0.0-beta.1"]
+  "pattern": "^\\d+\\.\\d+\\.\\d+(-[a-zA-Z0-9.-]+)?$",
+  "examples": ["1.0.0", "2.1.0", "1.0.0-beta.1"]
 }
 ```
 
 **URL Pattern**:
+
 ```json
 {
-    "format": "uri",
-    "pattern": "^https?://",
-    "examples": ["https://example.com", "http://localhost:8080"]
+  "format": "uri",
+  "pattern": "^https?://",
+  "examples": ["https://example.com", "http://localhost:8080"]
 }
 ```
 
 **Email Pattern**:
+
 ```json
 {
-    "format": "email",
-    "examples": ["user@example.com"]
+  "format": "email",
+  "examples": ["user@example.com"]
 }
 ```
 
@@ -296,6 +312,7 @@ npm run validate:schemas
 ### When Creating Schema Files
 
 **ALWAYS**:
+
 - ✅ Create in `.github/schemas/` directory
 - ✅ Use proper naming: `{purpose}-config.schema.json`
 - ✅ Include all required JSON Schema fields
@@ -306,6 +323,7 @@ npm run validate:schemas
 - ✅ Create corresponding example file
 
 **NEVER**:
+
 - ❌ Create schemas in repository root
 - ❌ Skip property descriptions
 - ❌ Use outdated JSON Schema versions
@@ -315,14 +333,16 @@ npm run validate:schemas
 ### When Creating Example Files
 
 **ALWAYS**:
+
 - ✅ Store in `.github/schemas/` directory
 - ✅ Use `.example.json` extension
-- ✅ Include helpful "_comment" field
+- ✅ Include helpful "\_comment" field
 - ✅ Provide realistic, working values
 - ✅ Validate against corresponding schema
 - ✅ Show common use cases
 
 **NEVER**:
+
 - ❌ Use placeholder values like "xxx" or "TODO"
 - ❌ Skip validation
 - ❌ Create examples that don't pass schema validation
@@ -355,11 +375,11 @@ DO NOT forget to validate.
 
 ```json
 {
-    "slug": {
-        "type": "string",
-        "description": "URL-safe plugin identifier used in file names, function prefixes, and URLs. Must be lowercase with hyphens only. Example: 'tour-operator' becomes 'tour_operator' namespace.",
-        "pattern": "^[a-z][a-z0-9-]{1,48}[a-z0-9]$"
-    }
+  "slug": {
+    "type": "string",
+    "description": "URL-safe plugin identifier used in file names, function prefixes, and URLs. Must be lowercase with hyphens only. Example: 'tour-operator' becomes 'tour_operator' namespace.",
+    "pattern": "^[a-z][a-z0-9-]{1,48}[a-z0-9]$"
+  }
 }
 ```
 
@@ -367,17 +387,12 @@ DO NOT forget to validate.
 
 ```json
 {
-    "license": {
-        "type": "string",
-        "description": "Plugin license identifier (SPDX format)",
-        "enum": [
-            "GPL-2.0-or-later",
-            "GPL-3.0-or-later",
-            "MIT",
-            "Apache-2.0"
-        ],
-        "default": "GPL-2.0-or-later"
-    }
+  "license": {
+    "type": "string",
+    "description": "Plugin license identifier (SPDX format)",
+    "enum": ["GPL-2.0-or-later", "GPL-3.0-or-later", "MIT", "Apache-2.0"],
+    "default": "GPL-2.0-or-later"
+  }
 }
 ```
 
@@ -385,16 +400,11 @@ DO NOT forget to validate.
 
 ```json
 {
-    "cpt_menu_icon": {
-        "type": "string",
-        "pattern": "^dashicons-[a-z0-9-]+$",
-        "examples": [
-            "dashicons-palmtree",
-            "dashicons-calendar-alt",
-            "dashicons-portfolio",
-            "dashicons-admin-post"
-        ]
-    }
+  "cpt_menu_icon": {
+    "type": "string",
+    "pattern": "^dashicons-[a-z0-9-]+$",
+    "examples": ["dashicons-palmtree", "dashicons-calendar-alt", "dashicons-portfolio", "dashicons-admin-post"]
+  }
 }
 ```
 
@@ -402,11 +412,11 @@ DO NOT forget to validate.
 
 ```json
 {
-    "email": {
-        "type": "string",
-        "format": "email",
-        "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
-    }
+  "email": {
+    "type": "string",
+    "format": "email",
+    "pattern": "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$"
+  }
 }
 ```
 
