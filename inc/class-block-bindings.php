@@ -1,5 +1,5 @@
 <?php
-namespace {{namespace|lowerCase}}\classes;
+namespace MaPlugin\classes;
 
 /**
  * Block Bindings Registration.
@@ -7,8 +7,6 @@ namespace {{namespace|lowerCase}}\classes;
  * @package example_plugin
  * @since 6.5.0 Block Bindings API
  */
-
-namespace example_plugin\classes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -24,7 +22,7 @@ class Block_Bindings {
 	 *
 	 * @var string
 	 */
-	const SOURCE = '{{namespace}}/fields';
+	const SOURCE = 'ma_plugin/fields';
 
 	/**
 	 * Constructor.
@@ -46,7 +44,7 @@ class Block_Bindings {
 		register_block_bindings_source(
 			'example-plugin/post-meta',
 			array(
-				'label'              => __( 'Example Plugin Post Meta', '{{textdomain}}' ),
+				'label'              => __( 'Example Plugin Post Meta', 'ma-plugin' ),
 				'get_value_callback' => array( $this, 'get_post_meta_value' ),
 				'uses_context'       => array( 'postId' ),
 			)

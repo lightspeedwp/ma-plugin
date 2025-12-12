@@ -1,5 +1,5 @@
 <?php
-namespace {{namespace|lowerCase}}\classes;
+namespace MaPlugin\classes;
 
 /**
  * Repeater and Flexible Content Fields using Secure Custom Fields.
@@ -7,8 +7,6 @@ namespace {{namespace|lowerCase}}\classes;
  * @package example_plugin
  * @see https://wordpress.org/plugins/secure-custom-fields/
  */
-
-namespace example_plugin\classes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -40,22 +38,22 @@ class Repeater_Fields {
 		acf_add_local_field_group(
 			array(
 				'key'      => 'group_example-plugin_slider',
-				'title'    => __( 'Item Slider', '{{textdomain}}' ),
+				'title'    => __( 'Item Slider', 'ma-plugin' ),
 				'fields'   => array(
 					array(
 						'key'          => 'field_example-plugin_slides',
-						'label'        => __( 'Slides', '{{textdomain}}' ),
+						'label'        => __( 'Slides', 'ma-plugin' ),
 						'name'         => 'example-plugin_slides',
 						'type'         => 'repeater',
-						'instructions' => __( 'Add slides to the slider.', '{{textdomain}}' ),
+						'instructions' => __( 'Add slides to the slider.', 'ma-plugin' ),
 						'min'          => 0,
 						'max'          => 20,
 						'layout'       => 'block',
-						'button_label' => __( 'Add Slide', '{{textdomain}}' ),
+						'button_label' => __( 'Add Slide', 'ma-plugin' ),
 						'sub_fields'   => array(
 							array(
 								'key'           => 'field_example-plugin_slide_image',
-								'label'         => __( 'Image', '{{textdomain}}' ),
+								'label'         => __( 'Image', 'ma-plugin' ),
 								'name'          => 'image',
 								'type'          => 'image',
 								'return_format' => 'array',
@@ -64,20 +62,20 @@ class Repeater_Fields {
 							),
 							array(
 								'key'   => 'field_example-plugin_slide_title',
-								'label' => __( 'Title', '{{textdomain}}' ),
+								'label' => __( 'Title', 'ma-plugin' ),
 								'name'  => 'title',
 								'type'  => 'text',
 							),
 							array(
 								'key'   => 'field_example-plugin_slide_caption',
-								'label' => __( 'Caption', '{{textdomain}}' ),
+								'label' => __( 'Caption', 'ma-plugin' ),
 								'name'  => 'caption',
 								'type'  => 'textarea',
 								'rows'  => 2,
 							),
 							array(
 								'key'   => 'field_example-plugin_slide_link',
-								'label' => __( 'Link', '{{textdomain}}' ),
+								'label' => __( 'Link', 'ma-plugin' ),
 								'name'  => 'link',
 								'type'  => 'link',
 							),
@@ -100,30 +98,30 @@ class Repeater_Fields {
 		acf_add_local_field_group(
 			array(
 				'key'      => 'group_example-plugin_sections',
-				'title'    => __( 'Item Sections', '{{textdomain}}' ),
+				'title'    => __( 'Item Sections', 'ma-plugin' ),
 				'fields'   => array(
 					array(
 						'key'          => 'field_example-plugin_sections',
-						'label'        => __( 'Content Sections', '{{textdomain}}' ),
+						'label'        => __( 'Content Sections', 'ma-plugin' ),
 						'name'         => 'example-plugin_sections',
 						'type'         => 'flexible_content',
-						'instructions' => __( 'Add content sections.', '{{textdomain}}' ),
-						'button_label' => __( 'Add Section', '{{textdomain}}' ),
+						'instructions' => __( 'Add content sections.', 'ma-plugin' ),
+						'button_label' => __( 'Add Section', 'ma-plugin' ),
 						'layouts'      => array(
 							'layout_text'    => array(
 								'key'        => 'layout_example-plugin_text',
 								'name'       => 'text_section',
-								'label'      => __( 'Text Section', '{{textdomain}}' ),
+								'label'      => __( 'Text Section', 'ma-plugin' ),
 								'sub_fields' => array(
 									array(
 										'key'   => 'field_example-plugin_section_heading',
-										'label' => __( 'Heading', '{{textdomain}}' ),
+										'label' => __( 'Heading', 'ma-plugin' ),
 										'name'  => 'heading',
 										'type'  => 'text',
 									),
 									array(
 										'key'   => 'field_example-plugin_section_content',
-										'label' => __( 'Content', '{{textdomain}}' ),
+										'label' => __( 'Content', 'ma-plugin' ),
 										'name'  => 'content',
 										'type'  => 'wysiwyg',
 									),
@@ -132,11 +130,11 @@ class Repeater_Fields {
 							'layout_gallery' => array(
 								'key'        => 'layout_example-plugin_gallery',
 								'name'       => 'gallery_section',
-								'label'      => __( 'Gallery Section', '{{textdomain}}' ),
+								'label'      => __( 'Gallery Section', 'ma-plugin' ),
 								'sub_fields' => array(
 									array(
 										'key'           => 'field_example-plugin_section_gallery',
-										'label'         => __( 'Gallery', '{{textdomain}}' ),
+										'label'         => __( 'Gallery', 'ma-plugin' ),
 										'name'          => 'gallery',
 										'type'          => 'gallery',
 										'return_format' => 'array',
@@ -146,17 +144,17 @@ class Repeater_Fields {
 							'layout_cta'     => array(
 								'key'        => 'layout_example-plugin_cta',
 								'name'       => 'cta_section',
-								'label'      => __( 'Call to Action', '{{textdomain}}' ),
+								'label'      => __( 'Call to Action', 'ma-plugin' ),
 								'sub_fields' => array(
 									array(
 										'key'   => 'field_example-plugin_cta_text',
-										'label' => __( 'CTA Text', '{{textdomain}}' ),
+										'label' => __( 'CTA Text', 'ma-plugin' ),
 										'name'  => 'cta_text',
 										'type'  => 'text',
 									),
 									array(
 										'key'   => 'field_example-plugin_cta_link',
-										'label' => __( 'CTA Link', '{{textdomain}}' ),
+										'label' => __( 'CTA Link', 'ma-plugin' ),
 										'name'  => 'cta_link',
 										'type'  => 'link',
 									),

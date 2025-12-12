@@ -1,13 +1,11 @@
 <?php
-namespace {{namespace|lowerCase}}\classes;
+namespace MaPlugin\classes;
 
 /**
  * Block Patterns Registration.
  *
- * @package example_plugin
+ * @package ma-plugin
  */
-
-namespace example_plugin\classes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -33,9 +31,9 @@ class Patterns {
 	 */
 	public function register_pattern_category() {
 		register_block_pattern_category(
-			'{{textdomain}}',
+			'ma-plugin',
 			array(
-				'label' => __( 'Example Plugin', '{{textdomain}}' ),
+				'label' => __( 'Example Plugin', 'ma-plugin' ),
 			)
 		);
 	}

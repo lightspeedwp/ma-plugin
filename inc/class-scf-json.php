@@ -1,5 +1,5 @@
 <?php
-namespace {{namespace|lowerCase}}\classes;
+namespace MaPlugin\classes;
 
 /**
  * SCF Local JSON Configuration.
@@ -11,8 +11,6 @@ namespace {{namespace|lowerCase}}\classes;
  * @package example_plugin
  * @see https://github.com/WordPress/secure-custom-fields/blob/trunk/docs/tutorials/local-json.md
  */
-
-namespace example_plugin\classes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -36,7 +34,7 @@ class SCF_JSON {
 	 * Constructor.
 	 */
 	public function __construct() {
-		$this->json_path = EXAMPLE_PLUGIN_PLUGIN_DIR . 'scf-json';
+		$this->json_path = MA_PLUGIN_PLUGIN_DIR . 'scf-json';
 
 		// Set JSON save location.
 		add_filter( 'acf/settings/save_json', array( $this, 'set_save_path' ) );

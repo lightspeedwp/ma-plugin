@@ -73,9 +73,9 @@ function initializeLogging(slug) {
 
 /**
  * Log function - stores entries in JSON format
- * @param {string} level - Log level (INFO, WARN, ERROR, DEBUG)
+ * @param {string} level   - Log level (INFO, WARN, ERROR, DEBUG)
  * @param {string} message - Log message
- * @param {Object} data - Optional additional data
+ * @param {Object} data    - Optional additional data
  */
 function log(level, message, data = null) {
 	const entry = {

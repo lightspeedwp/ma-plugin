@@ -1,5 +1,5 @@
 <?php
-namespace {{namespace|lowerCase}}\classes;
+namespace MaPlugin\classes;
 
 /**
  * Core Class intiating the rest of the classes.
@@ -47,17 +47,17 @@ class Core {
 	 */
 	public function load_classes() {
 		// Include core classes.
-		require_once {{namespace|upper}}_PLUGIN_DIR . 'inc/class-post-types.php';
-		require_once {{namespace|upper}}_PLUGIN_DIR . 'inc/class-taxonomies.php';
-		require_once {{namespace|upper}}_PLUGIN_DIR . 'inc/class-fields.php';
-		require_once {{namespace|upper}}_PLUGIN_DIR . 'inc/class-repeater-fields.php';
-		require_once {{namespace|upper}}_PLUGIN_DIR . 'inc/class-options.php';
-		require_once {{namespace|upper}}_PLUGIN_DIR . 'inc/class-scf-json-validator.php';
-		require_once {{namespace|upper}}_PLUGIN_DIR . 'inc/class-scf-json.php';
-		require_once {{namespace|upper}}_PLUGIN_DIR . 'inc/class-block-templates.php';
-		require_once {{namespace|upper}}_PLUGIN_DIR . 'inc/class-block-bindings.php';
-		require_once {{namespace|upper}}_PLUGIN_DIR . 'inc/class-block-styles.php';
-		require_once {{namespace|upper}}_PLUGIN_DIR . 'inc/class-patterns.php';
+		require_once MA_PLUGIN_PLUGIN_DIR . 'inc/class-post-types.php';
+		require_once MA_PLUGIN_PLUGIN_DIR . 'inc/class-taxonomies.php';
+		require_once MA_PLUGIN_PLUGIN_DIR . 'inc/class-fields.php';
+		require_once MA_PLUGIN_PLUGIN_DIR . 'inc/class-repeater-fields.php';
+		require_once MA_PLUGIN_PLUGIN_DIR . 'inc/class-options.php';
+		require_once MA_PLUGIN_PLUGIN_DIR . 'inc/class-scf-json-validator.php';
+		require_once MA_PLUGIN_PLUGIN_DIR . 'inc/class-scf-json.php';
+		require_once MA_PLUGIN_PLUGIN_DIR . 'inc/class-block-templates.php';
+		require_once MA_PLUGIN_PLUGIN_DIR . 'inc/class-block-bindings.php';
+		require_once MA_PLUGIN_PLUGIN_DIR . 'inc/class-block-styles.php';
+		require_once MA_PLUGIN_PLUGIN_DIR . 'inc/class-patterns.php';
 	}
 
 	/**
@@ -77,7 +77,7 @@ class Core {
 	 */
 	public function register_blocks() {
 		// Auto-register all blocks in src/blocks/.
-		$blocks_dir = {{namespace|upper}}_PLUGIN_DIR . 'build/blocks/';
+		$blocks_dir = MA_PLUGIN_PLUGIN_DIR . 'build/blocks/';
 
 		if ( is_dir( $blocks_dir ) ) {
 			$blocks = glob( $blocks_dir . '*/block.json' );
@@ -99,7 +99,7 @@ class Core {
 			array(
 				array(
 					'slug'  => '{{slug}}',
-					'title' => __( '{{name}}', '{{textdomain}}' ),
+					'title' => __( 'Example Plugin', 'ma-plugin' ),
 					'icon'  => 'admin-generic',
 				),
 			),
@@ -114,9 +114,9 @@ class Core {
 	 */
 	public function load_textdomain() {
 		load_plugin_textdomain(
-			'{{textdomain}}',
+			'ma-plugin',
 			false,
-			dirname( {{namespace|upper}}_PLUGIN_BASENAME ) . '/languages'
+			dirname( MA_PLUGIN_PLUGIN_BASENAME ) . '/languages'
 		);
 	}
 }

@@ -1,5 +1,5 @@
 <?php
-namespace {{namespace|lowerCase}}\classes;
+namespace MaPlugin\classes;
 
 /**
  * SCF JSON Schema Validator.
@@ -10,8 +10,6 @@ namespace {{namespace|lowerCase}}\classes;
  * @package example_plugin
  * @see https://github.com/WordPress/secure-custom-fields/blob/trunk/docs/tutorials/local-json.md
  */
-
-namespace example_plugin\classes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;

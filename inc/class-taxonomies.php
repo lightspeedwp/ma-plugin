@@ -1,13 +1,11 @@
 <?php
-namespace {{namespace|lowerCase}}\classes;
+namespace MaPlugin\classes;
 
 /**
  * Custom Taxonomy Registration.
  *
  * @package {{namespace|lowerCase}}
  */
-
-namespace {{namespace|lowerCase}}\classes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -39,20 +37,20 @@ class Taxonomies {
 	 */
 	public function register_taxonomies() {
 		$labels = array(
-			'name'                       => _x( '{{taxonomy_plural}}', 'Taxonomy general name', '{{textdomain}}' ),
-			'singular_name'              => _x( '{{taxonomy_singular}}', 'Taxonomy singular name', '{{textdomain}}' ),
-			'search_items'               => __( 'Search {{taxonomy_plural}}', '{{textdomain}}' ),
-			'popular_items'              => __( 'Popular {{taxonomy_plural}}', '{{textdomain}}' ),
-			'all_items'                  => __( 'All {{taxonomy_plural}}', '{{textdomain}}' ),
-			'edit_item'                  => __( 'Edit {{taxonomy_singular}}', '{{textdomain}}' ),
-			'update_item'                => __( 'Update {{taxonomy_singular}}', '{{textdomain}}' ),
-			'add_new_item'               => __( 'Add New {{taxonomy_singular}}', '{{textdomain}}' ),
-			'new_item_name'              => __( 'New {{taxonomy_singular}} Name', '{{textdomain}}' ),
-			'separate_items_with_commas' => __( 'Separate {{taxonomy_plural_lower}} with commas', '{{textdomain}}' ),
-			'add_or_remove_items'        => __( 'Add or remove {{taxonomy_plural_lower}}', '{{textdomain}}' ),
-			'choose_from_most_used'      => __( 'Choose from the most used {{taxonomy_plural_lower}}', '{{textdomain}}' ),
-			'not_found'                  => __( 'No {{taxonomy_plural_lower}} found.', '{{textdomain}}' ),
-			'menu_name'                  => __( '{{taxonomy_plural}}', '{{textdomain}}' ),
+			'name'                       => _x( 'Categories', 'Taxonomy general name', 'ma-plugin' ),
+			'singular_name'              => _x( 'Category', 'Taxonomy singular name', 'ma-plugin' ),
+			'search_items'               => __( 'Search Categories', 'ma-plugin' ),
+			'popular_items'              => __( 'Popular Categories', 'ma-plugin' ),
+			'all_items'                  => __( 'All Categories', 'ma-plugin' ),
+			'edit_item'                  => __( 'Edit Category', 'ma-plugin' ),
+			'update_item'                => __( 'Update Category', 'ma-plugin' ),
+			'add_new_item'               => __( 'Add New Category', 'ma-plugin' ),
+			'new_item_name'              => __( 'New Category Name', 'ma-plugin' ),
+			'separate_items_with_commas' => __( 'Separate categories with commas', 'ma-plugin' ),
+			'add_or_remove_items'        => __( 'Add or remove categories', 'ma-plugin' ),
+			'choose_from_most_used'      => __( 'Choose from the most used categories', 'ma-plugin' ),
+			'not_found'                  => __( 'No categories found.', 'ma-plugin' ),
+			'menu_name'                  => __( 'Categories', 'ma-plugin' ),
 		);
 
 		$args = array(

@@ -1,34 +1,34 @@
 {
-	"name": "example_plugin/example-plugin",
-	"description": "A multi-block WordPress plugin scaffold example",
-	"type": "wordpress-plugin",
-	"license": "GPL-2.0-or-later",
-	"minimum-stability": "stable",
-	"prefer-stable": true,
-	"require": {
-		"php": ">=8.0"
-	},
-	"require-dev": {
-		"phpunit/phpunit": "^9.0",
-		"wp-coding-standards/wpcs": "^3.0",
-		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-		"phpstan/phpstan": "^1.0",
-		"szepeviktor/phpstan-wordpress": "^1.0"
-	},
-	"autoload": {
-		"psr-4": {
-			"ExamplePlugin\\": "inc/"
-		}
-	},
-	"scripts": {
-		"test": "phpunit",
-		"phpcs": "phpcs",
-		"phpcbf": "phpcbf",
-		"phpstan": "phpstan analyse"
-	},
-	"config": {
-		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
-		}
-	}
+  "name": "ma-plugin/ma-plugin",
+  "description": "Medical Academic multi-block WordPress plugin",
+  "type": "wordpress-plugin",
+  "license": "GPL-3.0-or-later",
+  "minimum-stability": "stable",
+  "prefer-stable": true,
+  "require": {
+    "php": ">=8.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0",
+    "wp-coding-standards/wpcs": "^3.0",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "phpstan/phpstan": "^1.0",
+    "szepeviktor/phpstan-wordpress": "^1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "MaPlugin\\": "inc/"
+    }
+  },
+  "scripts": {
+    "test": "phpunit",
+    "lint": "find . -type f -name '*.php' -not -path './vendor/*' -exec php -l {} +",
+    "phpcbf": "phpcbf",
+    "phpstan": "phpstan analyse"
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    }
+  }
 }

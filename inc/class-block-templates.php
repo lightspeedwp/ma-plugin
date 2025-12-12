@@ -1,13 +1,11 @@
 <?php
-namespace {{namespace|lowerCase}}\classes;
+namespace MaPlugin\classes;
 
 /**
  * Block Templates Registration.
  *
  * @package example_plugin
  */
-
-namespace example_plugin\classes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -43,8 +41,8 @@ class Block_Templates {
 			register_block_template(
 				'example-plugin//example-archive',
 				array(
-					'title'       => __( 'Example Plugin Example Archive', '{{textdomain}}' ),
-					'description' => __( 'Example archive template registered by the plugin.', '{{textdomain}}' ),
+					'title'       => __( 'Example Plugin Example Archive', 'ma-plugin' ),
+					'description' => __( 'Example archive template registered by the plugin.', 'ma-plugin' ),
 					'post_types'  => array( 'post' ),
 					'content'     => file_get_contents( $template_file ),
 				)

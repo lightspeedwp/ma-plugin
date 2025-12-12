@@ -1,13 +1,9 @@
 <?php
-namespace {{namespace|lowerCase}}\classes;
-
 /**
  * Custom Post Type Registration.
  *
  * @package example_plugin
  */
-
-namespace example_plugin\classes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -23,7 +19,7 @@ class Post_Types {
 	 *
 	 * @var string
 	 */
-	const POST_TYPE = '{{cpt_slug}}';
+	const POST_TYPE = 'ma_plugin';
 
 	/**
 	 * Constructor.
@@ -39,26 +35,26 @@ class Post_Types {
 	 */
 	public function register_post_types() {
 		$labels = array(
-			'name'                  => _x( 'Items', 'Post type general name', '{{textdomain}}' ),
-			'singular_name'         => _x( 'Item', 'Post type singular name', '{{textdomain}}' ),
-			'menu_name'             => _x( 'Items', 'Admin Menu text', '{{textdomain}}' ),
-			'add_new'               => __( 'Add New', '{{textdomain}}' ),
-			'add_new_item'          => __( 'Add New Item', '{{textdomain}}' ),
-			'edit_item'             => __( 'Edit Item', '{{textdomain}}' ),
-			'new_item'              => __( 'New Item', '{{textdomain}}' ),
-			'view_item'             => __( 'View Item', '{{textdomain}}' ),
-			'view_items'            => __( 'View Items', '{{textdomain}}' ),
-			'search_items'          => __( 'Search Items', '{{textdomain}}' ),
-			'not_found'             => __( 'No items found.', '{{textdomain}}' ),
-			'not_found_in_trash'    => __( 'No items found in Trash.', '{{textdomain}}' ),
-			'all_items'             => __( 'All Items', '{{textdomain}}' ),
-			'archives'              => __( 'Item Archives', '{{textdomain}}' ),
-			'attributes'            => __( 'Item Attributes', '{{textdomain}}' ),
-			'insert_into_item'      => __( 'Insert into item', '{{textdomain}}' ),
-			'uploaded_to_this_item' => __( 'Uploaded to this item', '{{textdomain}}' ),
-			'filter_items_list'     => __( 'Filter items list', '{{textdomain}}' ),
-			'items_list_navigation' => __( 'Items list navigation', '{{textdomain}}' ),
-			'items_list'            => __( 'Items list', '{{textdomain}}' ),
+			'name'                  => _x( 'Items', 'Post type general name', 'ma-plugin' ),
+			'singular_name'         => _x( 'Item', 'Post type singular name', 'ma-plugin' ),
+			'menu_name'             => _x( 'Items', 'Admin Menu text', 'ma-plugin' ),
+			'add_new'               => __( 'Add New', 'ma-plugin' ),
+			'add_new_item'          => __( 'Add New Item', 'ma-plugin' ),
+			'edit_item'             => __( 'Edit Item', 'ma-plugin' ),
+			'new_item'              => __( 'New Item', 'ma-plugin' ),
+			'view_item'             => __( 'View Item', 'ma-plugin' ),
+			'view_items'            => __( 'View Items', 'ma-plugin' ),
+			'search_items'          => __( 'Search Items', 'ma-plugin' ),
+			'not_found'             => __( 'No items found.', 'ma-plugin' ),
+			'not_found_in_trash'    => __( 'No items found in Trash.', 'ma-plugin' ),
+			'all_items'             => __( 'All Items', 'ma-plugin' ),
+			'archives'              => __( 'Item Archives', 'ma-plugin' ),
+			'attributes'            => __( 'Item Attributes', 'ma-plugin' ),
+			'insert_into_item'      => __( 'Insert into item', 'ma-plugin' ),
+			'uploaded_to_this_item' => __( 'Uploaded to this item', 'ma-plugin' ),
+			'filter_items_list'     => __( 'Filter items list', 'ma-plugin' ),
+			'items_list_navigation' => __( 'Items list navigation', 'ma-plugin' ),
+			'items_list'            => __( 'Items list', 'ma-plugin' ),
 		);
 
 		$args = array(
@@ -69,7 +65,7 @@ class Post_Types {
 			'show_in_menu'       => true,
 			'show_in_rest'       => true, // Required for block editor.
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => '{{textdomain}}' ),
+			'rewrite'            => array( 'slug' => 'ma_plugin' ),
 			'capability_type'    => 'post',
 			'has_archive'        => true,
 			'hierarchical'       => false,

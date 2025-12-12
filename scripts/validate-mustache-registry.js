@@ -94,18 +94,12 @@ function main() {
 	// Success
 	console.log('✅ Registry is valid!\n');
 	console.log('Summary:');
-	console.log(
-		`  - Total files scanned: ${registry.summary.totalFiles}`
-	);
+	console.log(`  - Total files scanned: ${registry.summary.totalFiles}`);
 	console.log(
 		`  - Files with variables: ${registry.summary.filesWithVariables}`
 	);
-	console.log(
-		`  - Unique variables: ${registry.summary.uniqueVariables}`
-	);
-	console.log(
-		`  - Total occurrences: ${registry.summary.totalOccurrences}`
-	);
+	console.log(`  - Unique variables: ${registry.summary.uniqueVariables}`);
+	console.log(`  - Total occurrences: ${registry.summary.totalOccurrences}`);
 	console.log('');
 
 	// TODO: Additional validation checks

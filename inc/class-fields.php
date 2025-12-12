@@ -1,5 +1,5 @@
 <?php
-namespace {{namespace|lowerCase}}\classes;
+namespace MaPlugin\classes;
 
 /**
  * Custom Fields Registration using Secure Custom Fields.
@@ -7,8 +7,6 @@ namespace {{namespace|lowerCase}}\classes;
  * @package example_plugin
  * @see https://wordpress.org/plugins/secure-custom-fields/
  */
-
-namespace example_plugin\classes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -56,7 +54,7 @@ class Fields {
 					<?php
 					printf(
 						/* translators: %s: Plugin name */
-						esc_html__( '%s requires Secure Custom Fields plugin to be installed and activated for custom fields functionality.', '{{textdomain}}' ),
+						esc_html__( '%s requires Secure Custom Fields plugin to be installed and activated for custom fields functionality.', 'ma-plugin' ),
 						'<strong>Example Plugin</strong>'
 					);
 					?>
@@ -79,42 +77,42 @@ class Fields {
 		acf_add_local_field_group(
 			array(
 				'key'             => self::FIELD_GROUP,
-				'title'           => __( 'Item Details', '{{textdomain}}' ),
+				'title'           => __( 'Item Details', 'ma-plugin' ),
 				'fields'          => array(
 					array(
 						'key'          => 'field_example-plugin_subtitle',
-						'label'        => __( 'Subtitle', '{{textdomain}}' ),
+						'label'        => __( 'Subtitle', 'ma-plugin' ),
 						'name'         => 'example-plugin_subtitle',
 						'type'         => 'text',
-						'instructions' => __( 'Enter a subtitle for this item.', '{{textdomain}}' ),
+						'instructions' => __( 'Enter a subtitle for this item.', 'ma-plugin' ),
 					),
 					array(
 						'key'          => 'field_example-plugin_featured',
-						'label'        => __( 'Featured', '{{textdomain}}' ),
+						'label'        => __( 'Featured', 'ma-plugin' ),
 						'name'         => 'example-plugin_featured',
 						'type'         => 'true_false',
 						'ui'           => 1,
-						'instructions' => __( 'Mark this item as featured.', '{{textdomain}}' ),
+						'instructions' => __( 'Mark this item as featured.', 'ma-plugin' ),
 					),
 					array(
 						'key'           => 'field_example-plugin_gallery',
-						'label'         => __( 'Gallery', '{{textdomain}}' ),
+						'label'         => __( 'Gallery', 'ma-plugin' ),
 						'name'          => 'example-plugin_gallery',
 						'type'          => 'gallery',
-						'instructions'  => __( 'Add images to the gallery.', '{{textdomain}}' ),
+						'instructions'  => __( 'Add images to the gallery.', 'ma-plugin' ),
 						'return_format' => 'array',
 						'preview_size'  => 'medium',
 						'library'       => 'all',
 					),
 					array(
 						'key'           => 'field_example-plugin_related',
-						'label'         => __( 'Related Items', '{{textdomain}}' ),
+						'label'         => __( 'Related Items', 'ma-plugin' ),
 						'name'          => 'example-plugin_related',
 						'type'          => 'relationship',
 						'post_type'     => array( Post_Types::POST_TYPE ),
 						'filters'       => array( 'search', 'taxonomy' ),
 						'return_format' => 'object',
-						'instructions'  => __( 'Select related items.', '{{textdomain}}' ),
+						'instructions'  => __( 'Select related items.', 'ma-plugin' ),
 					),
 				),
 				'location'        => array(
