@@ -1,0 +1,58 @@
+# Dependencies
+node_modules/
+vendor/
+
+# Build output
+build/
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Temporary directory
+tmp/
+
+# Logs directory
+logs/
+
+# Reports (ignore all files inside report subdirectories; keep root README/index files)
+.github/reports/*/
+
+# Generated plugins output (when using generator mode)
+# These folders are created by the scaffold generator and should not be committed
+generated-plugins/
+output-plugin/
+output/
+
+# Dry-run backup files
+.dry-run-backup/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# WordPress environment
+.wp-env/
+
+# Composer lock (optional for scaffold)
+composer.lock
+
+# NPM package lock (optional for scaffold)
+package-lock.json
+
+# Local development
+.env
+.env.local
+
+# Test coverage
+coverage/
+.phpunit.result.cache

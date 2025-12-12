@@ -1,0 +1,21 @@
+# Ignore files and directories that should not be formatted by Eslint
+
+# Node modules
+node_modules
+
+# Build directories
+build
+dist
+
+# Log files
+
+# Vendor directories
+vendor
+
+# Test directories
+coverage
+playwright-report
+test-results
+
+# Bin scripts (use different linting rules)
+bin/
