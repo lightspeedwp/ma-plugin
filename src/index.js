@@ -7,10 +7,11 @@
  */
 
 // Import blocks.
-import './blocks/example-plugin-card';
-import './blocks/example-plugin-collection';
-import './blocks/example-plugin-slider';
-import './blocks/example-plugin-featured';
+import './blocks/magazine-card';
+import './blocks/magazine-collection';
+import './blocks/ma-slider';
+import './blocks/magazine-single';
+import './blocks/magazine-featured';
 
 // Import global styles.
 import './scss/style.scss';

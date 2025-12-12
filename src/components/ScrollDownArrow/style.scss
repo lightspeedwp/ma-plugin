@@ -1,10 +1,10 @@
 /**
  * ScrollDownArrow Component Styles
  *
- * @package {{namespace}}
+ * @package ma_plugin
  */
 
-.{{namespace}}-scroll-down-arrow {
+.ma_plugin-scroll-down-arrow {
 	position: absolute;
 	bottom: 8rem;
 	left: 50%;
@@ -77,7 +77,7 @@
 	}
 
 	// Pulsing ring animation
-	.{{namespace}}-scroll-down-arrow__pulse {
+	.ma_plugin-scroll-down-arrow__pulse {
 		position: absolute;
 		inset: 0;
 		border-radius: 50%;
@@ -109,7 +109,7 @@
 	@media (prefers-reduced-motion: reduce) {
 		animation: none;
 
-		.{{namespace}}-scroll-down-arrow__pulse {
+		.ma_plugin-scroll-down-arrow__pulse {
 			animation: none;
 		}
 	}

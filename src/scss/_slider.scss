@@ -1,11 +1,11 @@
 /**
  * Slider Styles Partial
  *
- * @package {{namespace}}
+ * @package ma_plugin
  */
 
 // Common slider styles shared across blocks.
-.{{namespace}}-slider-common {
+.ma_plugin-slider-common {
 	position: relative;
 	overflow: hidden;
 
@@ -15,7 +15,7 @@
 
 	&__track {
 		display: flex;
-		transition: transform var(--{{namespace}}-transition);
+		transition: transform var(--ma_plugin-transition);
 	}
 
 	&__slide {
@@ -34,17 +34,17 @@
 		height: 10px;
 		border: none;
 		border-radius: 50%;
-		background-color: var(--{{namespace}}-border-color);
+		background-color: var(--ma_plugin-border-color);
 		cursor: pointer;
 		padding: 0;
-		transition: background-color var(--{{namespace}}-transition);
+		transition: background-color var(--ma_plugin-transition);
 
 		&:hover {
-			background-color: var(--{{namespace}}-secondary-color);
+			background-color: var(--ma_plugin-secondary-color);
 		}
 
 		&.is-active {
-			background-color: var(--{{namespace}}-primary-color);
+			background-color: var(--ma_plugin-primary-color);
 		}
 	}
 
@@ -62,7 +62,7 @@
 		align-items: center;
 		justify-content: center;
 		z-index: 10;
-		transition: background-color var(--{{namespace}}-transition);
+		transition: background-color var(--ma_plugin-transition);
 
 		&:hover {
 			background-color: #fff;

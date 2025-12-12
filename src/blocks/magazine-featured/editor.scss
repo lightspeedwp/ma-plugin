@@ -1,11 +1,12 @@
 /**
- * {{name}} Card Block - Editor Styles
+ * Featured {{name_plural}} Block - Editor Styles
  *
- * @package {{namespace}}
+ * @package ma_plugin
  */
 
-.wp-block-{{namespace}}-{{slug}}-card {
-	&__placeholder {
+.wp-block-ma_plugin-ma-plugin-featured {
+	&__loading,
+	&__empty {
 		padding: 2rem;
 		text-align: center;
 		background-color: #f0f0f0;

@@ -1,10 +1,10 @@
 /**
  * {{name}} Slider Block - Styles
  *
- * @package {{namespace}}
+ * @package ma_plugin
  */
 
-.wp-block-{{namespace}}-{{slug}}-slider {
+.wp-block-ma_plugin-ma-plugin-slider {
 	position: relative;
 	overflow: hidden;
 
@@ -124,7 +124,7 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-	.wp-block-{{namespace}}-{{slug}}-slider {
+	.wp-block-ma_plugin-ma-plugin-slider {
 		&__arrow {
 			width: 40px;
 			height: 40px;

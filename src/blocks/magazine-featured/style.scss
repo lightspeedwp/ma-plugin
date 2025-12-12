@@ -1,12 +1,12 @@
 /**
  * Featured {{name_plural}} Block - Styles
  *
- * @package {{namespace}}
+ * @package ma_plugin
  */
 
 /* stylelint-disable no-descending-specificity */
 
-.wp-block-{{namespace}}-{{slug}}-featured {
+.wp-block-ma_plugin-ma-plugin-featured {
 	&__items {
 		display: grid;
 		gap: 1.5rem;
@@ -26,11 +26,11 @@
 			grid-column: 1 / 2;
 			grid-row: 1 / 3;
 
-			.wp-block-{{namespace}}-{{slug}}-featured__image {
+			.wp-block-ma_plugin-ma-plugin-featured__image {
 				aspect-ratio: 3 / 4;
 			}
 
-			.wp-block-{{namespace}}-{{slug}}-featured__title {
+			.wp-block-ma_plugin-ma-plugin-featured__title {
 				font-size: 1.5rem;
 			}
 		}
@@ -45,7 +45,7 @@
 		position: relative;
 		min-height: 400px;
 
-		.wp-block-{{namespace}}-{{slug}}-featured__image {
+		.wp-block-ma_plugin-ma-plugin-featured__image {
 			position: absolute;
 			inset: 0;
 
@@ -62,7 +62,7 @@
 			}
 		}
 
-		.wp-block-{{namespace}}-{{slug}}-featured__content {
+		.wp-block-ma_plugin-ma-plugin-featured__content {
 			position: absolute;
 			bottom: 0;
 			left: 0;
@@ -71,11 +71,11 @@
 			color: #fff;
 		}
 
-		.wp-block-{{namespace}}-{{slug}}-featured__title a {
+		.wp-block-ma_plugin-ma-plugin-featured__title a {
 			color: #fff;
 		}
 
-		.wp-block-{{namespace}}-{{slug}}-featured__read-more {
+		.wp-block-ma_plugin-ma-plugin-featured__read-more {
 			background-color: #fff;
 			color: #333;
 
@@ -188,7 +188,7 @@
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
-	.wp-block-{{namespace}}-{{slug}}-featured {
+	.wp-block-ma_plugin-ma-plugin-featured {
 		&.is-layout-grid &__items,
 		&.is-layout-featured-first &__items {
 			grid-template-columns: repeat(2, 1fr);
@@ -201,7 +201,7 @@
 }
 
 @media (max-width: 768px) {
-	.wp-block-{{namespace}}-{{slug}}-featured {
+	.wp-block-ma_plugin-ma-plugin-featured {
 		&.is-layout-grid &__items,
 		&.is-layout-featured-first &__items {
 			grid-template-columns: 1fr;
