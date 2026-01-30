@@ -1,0 +1,26 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../../../../../../medicalacademic/app/public/wp-content/plugins"
+		},
+		{
+			"path": "../../../../../../medicalacademic/app/public/wp-content/themes"
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"*.php": "php",
+			"*.scss": "scss",
+			"*.js": "javascript",
+			"*.jsx": "javascriptreact"
+		},
+		"php.validate.enable": true,
+		"php.validate.run": "onType",
+		"emmet.includeLanguages": {
+			"javascript": "javascriptreact"
+		}
+	}
+}

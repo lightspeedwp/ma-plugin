@@ -1,0 +1,54 @@
+{
+    "key": "group_sfwd_topic_fields",
+    "title": "Topic Fields",
+    "description": "Default fields for Topic taxonomy terms",
+    "fields": [
+        {
+            "key": "field_sfwd_topic_thumbnail_id",
+            "name": "thumbnail_id",
+            "label": "Thumbnail",
+            "type": "image",
+            "instructions": "Featured image for this topic",
+            "required": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_sfwd_topic_subtitle",
+            "name": "subtitle",
+            "label": "Subtitle",
+            "type": "text",
+            "instructions": "Short subtitle or tagline for this topic",
+            "required": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "sfwd_topic"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true
+}

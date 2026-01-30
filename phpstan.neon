@@ -1,0 +1,21 @@
+includes:
+	- vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+	level: 6
+	paths:
+		- "ma-plugin.php"
+		- "inc/"
+	excludePaths:
+		- vendor/
+		- tests/
+	bootstrapFiles:
+		- tests/phpstan-bootstrap.php
+			- ".php"
+			- "uninstall-.php"
+		- '#Function get_field not found#'
+		- '#Function have_rows not found#'
+		- '#Function the_row not found#'
+		- '#Function get_sub_field not found#'
+		- '#Function get_row_layout not found#'
+		- '#Function get_row_index not found#'

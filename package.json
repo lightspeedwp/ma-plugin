@@ -1,0 +1,20 @@
+{
+  "name": "@ma_plugin/ma-plugin",
+  "version": "1.0.0",
+  "description": "WordPress content model for Medical Academic CPD platform with custom post types for articles, webinars, magazines, research papers, and learning journeys with comprehensive taxonomy and field support.",
+  "author": "LightSpeed",
+  "license": "GPL-2.0-or-later",
+  "scripts": {
+    "build": "wp-scripts build",
+    "start": "wp-scripts start",
+    "lint:js": "wp-scripts lint-js",
+    "lint:css": "wp-scripts lint-style",
+    "test:unit": "wp-scripts test-unit-js",
+    "env:start": "wp-env start",
+    "env:stop": "wp-env stop"
+  },
+  "devDependencies": {
+    "@wordpress/scripts": "^27.0.0",
+    "glob": "13.0.0"
+  }
+}

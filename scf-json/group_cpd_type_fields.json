@@ -1,0 +1,54 @@
+{
+    "key": "group_cpd_type_fields",
+    "title": "CPD Type Fields",
+    "description": "Default fields for CPD Type taxonomy terms",
+    "fields": [
+        {
+            "key": "field_cpd_type_thumbnail_id",
+            "name": "thumbnail_id",
+            "label": "Thumbnail",
+            "type": "image",
+            "instructions": "Featured image for this cpd type",
+            "required": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_cpd_type_subtitle",
+            "name": "subtitle",
+            "label": "Subtitle",
+            "type": "text",
+            "instructions": "Short subtitle or tagline for this cpd type",
+            "required": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "cpd_type"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true
+}

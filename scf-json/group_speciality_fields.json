@@ -1,0 +1,54 @@
+{
+    "key": "group_speciality_fields",
+    "title": "Medical Speciality Fields",
+    "description": "Default fields for Medical Speciality taxonomy terms",
+    "fields": [
+        {
+            "key": "field_speciality_thumbnail_id",
+            "name": "thumbnail_id",
+            "label": "Thumbnail",
+            "type": "image",
+            "instructions": "Featured image for this medical speciality",
+            "required": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "return_format": "id",
+            "preview_size": "medium",
+            "library": "all"
+        },
+        {
+            "key": "field_speciality_subtitle",
+            "name": "subtitle",
+            "label": "Subtitle",
+            "type": "text",
+            "instructions": "Short subtitle or tagline for this medical speciality",
+            "required": 0,
+            "wrapper": {
+                "width": "50",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "taxonomy",
+                "operator": "==",
+                "value": "speciality"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true
+}

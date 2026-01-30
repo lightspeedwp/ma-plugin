@@ -1,0 +1,93 @@
+{
+  "slug": "digital_magazine",
+  "label": "Digital Magazine",
+  "pluralLabel": "Digital Magazines",
+  "icon": "dashicons-media-document",
+  "supports": [
+    "title",
+    "thumbnail",
+    "custom-fields"
+  ],
+  "has_archive": true,
+  "hierarchical": false,
+  "rewrite": "digital_magazine",
+  "template": [
+    [
+      "ma_plugin/digital_magazine-single"
+    ]
+  ],
+  "fields": [
+    {
+      "slug": "ma_plugin_issue_number",
+      "type": "text",
+      "label": "Issue Number",
+      "description": "e.g., March 2025, Vol 12 No 3",
+      "required": true,
+      "placeholder": ""
+    },
+    {
+      "slug": "ma_plugin_publication_date",
+      "type": "date_picker",
+      "label": "Publication Date",
+      "description": "When was this issue published?",
+      "required": true,
+      "placeholder": ""
+    },
+    {
+      "slug": "ma_plugin_pdf_url",
+      "type": "file",
+      "label": "PDF URL",
+      "description": "Upload PDF of the magazine",
+      "required": false,
+      "placeholder": ""
+    },
+    {
+      "slug": "ma_plugin_issuu_url",
+      "type": "url",
+      "label": "Issuu URL",
+      "description": "Link to Issuu embed",
+      "required": false,
+      "placeholder": ""
+    },
+    {
+      "slug": "ma_plugin_shorthand_url",
+      "type": "url",
+      "label": "Shorthand URL",
+      "description": "Link to Shorthand story",
+      "required": false,
+      "placeholder": ""
+    }
+  ],
+  "taxonomies": [
+    {
+      "slug": "brand",
+      "label": "Brand",
+      "pluralLabel": "Brands",
+      "hierarchical": false
+    },
+    {
+      "slug": "magazine_issue",
+      "label": "Magazine Issue",
+      "pluralLabel": "Magazine Issues",
+      "hierarchical": true
+    },
+    {
+      "slug": "topic",
+      "label": "Topic",
+      "pluralLabel": "Topics",
+      "hierarchical": true
+    },
+    {
+      "slug": "sponsor",
+      "label": "Sponsor",
+      "pluralLabel": "Sponsors",
+      "hierarchical": true
+    },
+    {
+      "slug": "tag",
+      "label": "Tag",
+      "pluralLabel": "Tags",
+      "hierarchical": true
+    }
+  ]
+}

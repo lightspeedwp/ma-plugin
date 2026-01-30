@@ -1,0 +1,3 @@
+<?php
+// Uninstall script for ma-plugin plugin.
+// ...existing uninstall logic...

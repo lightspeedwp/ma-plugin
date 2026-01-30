@@ -1,0 +1,15 @@
+/**
+ *  Field Display Block - Frontend Styles
+ *
+ * @package ma_plugin
+ */
+
+.wp-block-ma-plugin-webinar-field-display {
+	.field-display-value {
+		margin: 0;
+		
+		strong {
+			font-weight: 700;
+		}
+	}
+}

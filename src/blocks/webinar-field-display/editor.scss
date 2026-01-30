@@ -1,0 +1,19 @@
+/**
+ *  Field Display Block - Editor Styles
+ *
+ * @package ma_plugin
+ */
+
+.wp-block-ma-plugin-webinar-field-display {
+	.field-display-value {
+		margin: 0;
+		padding: 0.5em;
+		background: #f0f0f0;
+		border-left: 3px solid var(--wp--preset--color--primary, #0073aa);
+		border-radius: 2px;
+		
+		strong {
+			font-weight: 700;
+		}
+	}
+}
