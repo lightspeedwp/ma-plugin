@@ -47,17 +47,6 @@
             "required": 0
         },
         {
-            "key": "field_webinar_cpd_points",
-            "label": "CPD Points",
-            "name": "cpd_points",
-            "type": "number",
-            "instructions": "",
-            "required": 0,
-            "default_value": 0,
-            "min": 0,
-            "max": 10
-        },
-        {
             "key": "field_webinar_presenters",
             "label": "Presenters",
             "name": "presenters",
