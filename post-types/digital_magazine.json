@@ -66,12 +66,6 @@
       "hierarchical": false
     },
     {
-      "slug": "magazine_issue",
-      "label": "Magazine Issue",
-      "pluralLabel": "Magazine Issues",
-      "hierarchical": true
-    },
-    {
       "slug": "topic",
       "label": "Topic",
       "pluralLabel": "Topics",
