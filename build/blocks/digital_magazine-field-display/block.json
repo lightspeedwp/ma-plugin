@@ -3,10 +3,10 @@
   "apiVersion": 3,
   "name": "ma-plugin/digital-magazine-field-display",
   "version": "1.0.0",
-  "title": " Field Display",
+  "title": "Digital Magazine Field Display",
   "category": "ma-plugin",
   "icon": "admin-post",
-  "description": "Display a custom field value from  post type with optional prefix.",
+  "description": "Display a custom field value from Digital Magazine post type with optional prefix.",
   "keywords": [
     "field",
     "meta",

@@ -5,9 +5,11 @@
 	"menu_order": 0,
 	"active": true,
 	"object_type": [
-		"sfwd-courses",
+		"sfwd_course",
 		"webinar",
-		"digital_magazine"
+		"digital_magazine",
+		"supplement",
+		"research_paper"
 	],
 	"public": true,
 	"publicly_queryable": true,
@@ -16,7 +18,7 @@
 	"show_in_menu": true,
 	"show_in_nav_menus": true,
 	"show_in_rest": true,
-	"rest_base": "topics",
+	"rest_base": "sfwd_topics",
 	"rest_controller_class": "",
 	"show_tagcloud": true,
 	"show_in_quick_edit": true,
@@ -27,15 +29,15 @@
 		"menu_name": "Topics",
 		"search_items": "Search Topics",
 		"all_items": "All Topics",
-		"parent_item": "Parent Topic",
-		"parent_item_colon": "Parent Topic:",
 		"edit_item": "Edit Topic",
 		"update_item": "Update Topic",
 		"add_new_item": "Add New Topic",
-		"new_item_name": "New Topic Name"
+		"new_item_name": "New Topic Name",
+		"parent_item": "Parent Topic",
+		"parent_item_colon": "Parent Topic:"
 	},
 	"rewrite": {
-		"slug": "topic",
+		"slug": "sfwd_topic",
 		"with_front": true,
 		"hierarchical": true
 	}

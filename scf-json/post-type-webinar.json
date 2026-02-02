@@ -30,7 +30,10 @@
 		"brand",
 		"speciality",
 		"cpd_type",
-		"sfwd_topic"
+		"topic",
+		"journey_group",
+		"sponsor",
+		"tag"
 	],
 	"has_archive": true,
 	"rewrite": {

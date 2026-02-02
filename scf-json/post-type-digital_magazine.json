@@ -12,9 +12,9 @@
 	"show_in_menu": true,
 	"show_in_nav_menus": true,
 	"show_in_rest": true,
-	"rest_base": "digital-magazines",
+	"rest_base": "digital_magazines",
 	"rest_controller_class": "",
-	"menu_position": 21,
+	"menu_position": 20,
 	"menu_icon": "dashicons-media-document",
 	"capability_type": "post",
 	"supports": [
@@ -24,11 +24,14 @@
 	],
 	"taxonomies": [
 		"brand",
-		"sfwd_topic"
+		"magazine_issue",
+		"topic",
+		"sponsor",
+		"tag"
 	],
 	"has_archive": true,
 	"rewrite": {
-		"slug": "digital-magazine",
+		"slug": "digital_magazine",
 		"with_front": true
 	},
 	"can_export": true,

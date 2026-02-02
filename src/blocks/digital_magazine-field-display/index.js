@@ -1,5 +1,5 @@
 /**
- *  Field Display Block
+ * Digital Magazine Field Display Block
  *
  * Displays a custom field value with optional prefix.
  *

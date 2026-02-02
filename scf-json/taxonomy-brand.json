@@ -5,9 +5,11 @@
 	"menu_order": 0,
 	"active": true,
 	"object_type": [
-		"sfwd-courses",
+		"sfwd_course",
 		"webinar",
-		"digital_magazine"
+		"digital_magazine",
+		"supplement",
+		"research_paper"
 	],
 	"public": true,
 	"publicly_queryable": true,
@@ -26,12 +28,12 @@
 		"singular_name": "Brand",
 		"menu_name": "Brands",
 		"search_items": "Search Brands",
-		"popular_items": "Popular Brands",
 		"all_items": "All Brands",
 		"edit_item": "Edit Brand",
 		"update_item": "Update Brand",
 		"add_new_item": "Add New Brand",
 		"new_item_name": "New Brand Name",
+		"popular_items": "Popular Brands",
 		"separate_items_with_commas": "Separate brands with commas",
 		"add_or_remove_items": "Add or remove brands",
 		"choose_from_most_used": "Choose from the most used brands"
