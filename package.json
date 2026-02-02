@@ -14,7 +14,6 @@
     "env:stop": "wp-env stop"
   },
   "devDependencies": {
-    "@wordpress/scripts": "^27.0.0",
-    "glob": "13.0.0"
+    "@wordpress/scripts": "^27.0.0"
   }
 }

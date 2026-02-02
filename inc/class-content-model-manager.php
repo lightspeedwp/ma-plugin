@@ -49,7 +49,14 @@ class Content_Model_Manager {
 	 * @since 1.0.0
 	 */
 	public static function init() {
-		add_action( 'init', array( __CLASS__, 'load_and_register' ), 10 );
+		// Load JSON configurations.
+		self::load_configurations();
+		self::build_taxonomy_map();
+
+		// Register post types and taxonomies.
+		// Note: SCF only handles custom fields, NOT post types/taxonomies.
+		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 8 );
+		add_action( 'init', array( __CLASS__, 'register_post_types' ), 9 );
 	}
 
 	/**
@@ -57,12 +64,11 @@ class Content_Model_Manager {
 	 *
 	 * @since 1.0.0
 	 * @return void
+	 * @deprecated Use init() instead.
 	 */
 	public static function load_and_register() {
 		self::load_configurations();
 		self::build_taxonomy_map();
-		self::register_all_post_types();
-		self::register_all_taxonomies();
 	}
 
 	/**
@@ -176,15 +182,9 @@ class Content_Model_Manager {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	private static function register_all_post_types() {
-		if ( empty( self::$configurations ) ) {
-			return;
-		}
-
-		foreach ( self::$configurations as $slug => $config ) {
-			self::register_post_type( $slug, $config );
-		}
-	}
+	       // Registration of post types is now handled by SCF.
+	       // This method is deprecated and does nothing.
+	       private static function register_all_post_types() {}
 
 	/**
 	 * Register a single post type from configuration.
@@ -194,32 +194,9 @@ class Content_Model_Manager {
 	 * @param array  $config Post type configuration.
 	 * @return void
 	 */
-	private static function register_post_type( $slug, $config ) {
-		$labels = self::get_post_type_labels( $config );
-
-		$args = array(
-			'labels'             => $labels,
-			'public'             => true,
-			'publicly_queryable' => true,
-			'show_ui'            => true,
-			'show_in_menu'       => true,
-			'show_in_rest'       => true,
-			'query_var'          => true,
-			'rewrite'            => array( 'slug' => $slug ),
-			'capability_type'    => 'post',
-			'has_archive'        => true,
-			'hierarchical'       => false,
-			'menu_position'      => 20,
-			'menu_icon'          => isset( $config['icon'] ) ? 'dashicons-' . $config['icon'] : 'dashicons-admin-post',
-			'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt', 'custom-fields' ),
-			'template'           => isset( $config['template'] ) ? $config['template'] : array(),
-			'template_lock'      => false,
-		);
-
-		$args = apply_filters( 'ma_plugin_' . $slug . '_post_type_args', $args, $config );
-
-		register_post_type( $slug, $args );
-	}
+	       // Registration of a single post type is now handled by SCF.
+	       // This method is deprecated and does nothing.
+	       private static function register_post_type( $slug, $config ) {}
 
 	/**
 	 * Register all taxonomies from the taxonomy map.
@@ -229,15 +206,9 @@ class Content_Model_Manager {
 	 * @since 1.0.0
 	 * @return void
 	 */
-	private static function register_all_taxonomies() {
-		if ( empty( self::$taxonomy_map ) ) {
-			return;
-		}
-
-		foreach ( self::$taxonomy_map as $taxonomy_slug => $taxonomy_data ) {
-			self::register_taxonomy( $taxonomy_data['config'], $taxonomy_data['post_types'] );
-		}
-	}
+	       // Registration of taxonomies is now handled by SCF.
+	       // This method is deprecated and does nothing.
+	       private static function register_all_taxonomies() {}
 
 	/**
 	 * Register a single taxonomy from configuration.
@@ -247,28 +218,9 @@ class Content_Model_Manager {
 	 * @param array $post_types Array of post type slugs to attach taxonomy to.
 	 * @return void
 	 */
-	private static function register_taxonomy( $config, $post_types ) {
-		if ( ! isset( $config['slug'] ) || empty( $post_types ) ) {
-			return;
-		}
-
-		$labels = self::get_taxonomy_labels( $config );
-
-		$args = array(
-			'labels'            => $labels,
-			'hierarchical'      => isset( $config['hierarchical'] ) ? (bool) $config['hierarchical'] : true,
-			'public'            => true,
-			'show_ui'           => true,
-			'show_in_rest'      => true,
-			'show_admin_column' => isset( $config['show_admin_column'] ) ? (bool) $config['show_admin_column'] : true,
-			'query_var'         => true,
-			'rewrite'           => array( 'slug' => $config['slug'] ),
-		);
-
-		$args = apply_filters( 'ma_plugin_' . $config['slug'] . '_taxonomy_args', $args, $config );
-
-		register_taxonomy( $config['slug'], $post_types, $args );
-	}
+	       // Registration of a single taxonomy is now handled by SCF.
+	       // This method is deprecated and does nothing.
+	       private static function register_taxonomy( $config, $post_types ) {}
 
 	/**
 	 * Get all loaded configurations.

@@ -1,0 +1,13 @@
+{
+  "slug": "sfwd_topic",
+  "label": "Topic",
+  "pluralLabel": "Topics",
+  "hierarchical": true,
+  "post_types": [
+    "sfwd_course",
+    "webinar",
+    "digital_magazine",
+    "supplement",
+    "research_paper"
+  ]
+}
