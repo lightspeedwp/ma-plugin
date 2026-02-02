@@ -17,7 +17,7 @@
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./index.css",
-  "render": "file:./render.php",
+  "render": "ma_plugin_render_webinar_field_display",
   "supports": {
     "html": false,
     "align": true,
