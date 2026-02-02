@@ -17,7 +17,7 @@
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./index.css",
-	"render": "ma_plugin_render_digital-magazine_field_display",
+	"render": "ma_plugin_render_digital_magazine_field_display",
 	"supports": {
 		"html": false,
 		"align": true,
