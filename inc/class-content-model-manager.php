@@ -46,25 +46,24 @@ class Content_Model_Manager {
 	/**
 	 * Initialize the content model manager.
 	 *
+	 * Note: Post types and taxonomies are now registered via Secure Custom Fields (SCF)
+	 * Local JSON. See scf-json/ directory for post-type-*.json and taxonomy-*.json files.
+	 *
 	 * @since 1.0.0
 	 */
 	public static function init() {
-		// Load JSON configurations.
+		// Load JSON configurations for internal reference only.
+		// SCF handles actual registration of post types and taxonomies.
 		self::load_configurations();
 		self::build_taxonomy_map();
-
-		// Register post types and taxonomies.
-		// Note: SCF only handles custom fields, NOT post types/taxonomies.
-		add_action( 'init', array( __CLASS__, 'register_taxonomies' ), 8 );
-		add_action( 'init', array( __CLASS__, 'register_post_types' ), 9 );
 	}
 
 	/**
-	 * Load all JSON configurations and register post types and taxonomies.
+	 * Load all JSON configurations.
 	 *
 	 * @since 1.0.0
 	 * @return void
-	 * @deprecated Use init() instead.
+	 * @deprecated Use SCF Local JSON for registration.
 	 */
 	public static function load_and_register() {
 		self::load_configurations();

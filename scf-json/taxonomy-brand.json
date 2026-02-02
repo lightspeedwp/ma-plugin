@@ -1,0 +1,44 @@
+{
+	"key": "taxonomy_brand",
+	"title": "Brand",
+	"taxonomy": "brand",
+	"menu_order": 0,
+	"active": true,
+	"object_type": [
+		"sfwd-courses",
+		"webinar",
+		"digital_magazine"
+	],
+	"public": true,
+	"publicly_queryable": true,
+	"hierarchical": false,
+	"show_ui": true,
+	"show_in_menu": true,
+	"show_in_nav_menus": true,
+	"show_in_rest": true,
+	"rest_base": "brands",
+	"rest_controller_class": "",
+	"show_tagcloud": true,
+	"show_in_quick_edit": true,
+	"show_admin_column": true,
+	"labels": {
+		"name": "Brands",
+		"singular_name": "Brand",
+		"menu_name": "Brands",
+		"search_items": "Search Brands",
+		"popular_items": "Popular Brands",
+		"all_items": "All Brands",
+		"edit_item": "Edit Brand",
+		"update_item": "Update Brand",
+		"add_new_item": "Add New Brand",
+		"new_item_name": "New Brand Name",
+		"separate_items_with_commas": "Separate brands with commas",
+		"add_or_remove_items": "Add or remove brands",
+		"choose_from_most_used": "Choose from the most used brands"
+	},
+	"rewrite": {
+		"slug": "brand",
+		"with_front": true,
+		"hierarchical": false
+	}
+}

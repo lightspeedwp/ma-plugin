@@ -1,0 +1,42 @@
+{
+	"key": "taxonomy_sfwd_topic",
+	"title": "Topic",
+	"taxonomy": "sfwd_topic",
+	"menu_order": 0,
+	"active": true,
+	"object_type": [
+		"sfwd-courses",
+		"webinar",
+		"digital_magazine"
+	],
+	"public": true,
+	"publicly_queryable": true,
+	"hierarchical": true,
+	"show_ui": true,
+	"show_in_menu": true,
+	"show_in_nav_menus": true,
+	"show_in_rest": true,
+	"rest_base": "topics",
+	"rest_controller_class": "",
+	"show_tagcloud": true,
+	"show_in_quick_edit": true,
+	"show_admin_column": true,
+	"labels": {
+		"name": "Topics",
+		"singular_name": "Topic",
+		"menu_name": "Topics",
+		"search_items": "Search Topics",
+		"all_items": "All Topics",
+		"parent_item": "Parent Topic",
+		"parent_item_colon": "Parent Topic:",
+		"edit_item": "Edit Topic",
+		"update_item": "Update Topic",
+		"add_new_item": "Add New Topic",
+		"new_item_name": "New Topic Name"
+	},
+	"rewrite": {
+		"slug": "topic",
+		"with_front": true,
+		"hierarchical": true
+	}
+}
