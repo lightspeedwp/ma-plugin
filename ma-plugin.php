@@ -27,6 +27,9 @@ define( 'MA_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'MA_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'MA_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 
+// Include helper functions.
+require_once MA_PLUGIN_DIR . 'inc/helper-functions.php';
+
 // Include the Core class.
 require_once MA_PLUGIN_DIR . 'inc/class-core.php';
 

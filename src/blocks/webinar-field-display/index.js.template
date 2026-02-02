@@ -1,9 +1,9 @@
 /**
- * Digital Magazine Field Display Block
+ * {{cpt_name}} Field Display Block
  *
  * Displays a custom field value with optional prefix.
  *
- * @package ma_plugin
+ * @package {{namespace}}
  */
 
 import { registerBlockType } from '@wordpress/blocks';
@@ -30,21 +30,21 @@ const Edit = (props) => {
 	// Icon types and names - this should match your icon library structure
 	const iconTypes = ['outline', 'solid'];
 	const iconNames = [
-		{ label: __('None', 'ma-plugin'), value: '' },
-		{ label: __('Check In', 'ma-plugin'), value: 'checkInAccommodationIcon' },
-		{ label: __('Check Out', 'ma-plugin'), value: 'checkOutAccommodationIcon' },
-		{ label: __('Clock', 'ma-plugin'), value: 'clockIcon' },
-		{ label: __('Calendar', 'ma-plugin'), value: 'calendarIcon' },
-		{ label: __('Person', 'ma-plugin'), value: 'personIcon' },
+		{ label: __('None', '{{textdomain}}'), value: '' },
+		{ label: __('Check In', '{{textdomain}}'), value: 'checkInAccommodationIcon' },
+		{ label: __('Check Out', '{{textdomain}}'), value: 'checkOutAccommodationIcon' },
+		{ label: __('Clock', '{{textdomain}}'), value: 'clockIcon' },
+		{ label: __('Calendar', '{{textdomain}}'), value: 'calendarIcon' },
+		{ label: __('Person', '{{textdomain}}'), value: 'personIcon' },
 	];
 
 	const blockProps = useBlockProps({
-		className: 'wp-block-ma-plugin-digital_magazine-field-display',
+		className: 'wp-block-{{slug}}-{{block_slug}}-field-display',
 	});
 
 	// Get the field value from post meta.
 	const [meta] = useEntityProp('postType', postType, 'meta', postId);
-	const fieldValue = meta?.[fieldKey] || fallbackText || __('(No value set)', 'ma-plugin');
+	const fieldValue = meta?.[fieldKey] || fallbackText || __('(No value set)', '{{textdomain}}');
 
 	// Format display value with prefix.
 	const displayValue = () => {
@@ -70,31 +70,31 @@ const Edit = (props) => {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__('Field Settings', 'ma-plugin')} initialOpen={true}>
+				<PanelBody title={__('Field Settings', '{{textdomain}}')} initialOpen={true}>
 					<TextControl
-						label={__('Field Key', 'ma-plugin')}
+						label={__('Field Key', '{{textdomain}}')}
 						value={fieldKey}
 						onChange={(value) => setAttributes({ fieldKey: value })}
-						help={__('Enter the meta key of the custom field to display.', 'ma-plugin')}
+						help={__('Enter the meta key of the custom field to display.', '{{textdomain}}')}
 					/>
 					<TextControl
-						label={__('Fallback Text', 'ma-plugin')}
+						label={__('Fallback Text', '{{textdomain}}')}
 						value={fallbackText}
 						onChange={(value) => setAttributes({ fallbackText: value })}
-						help={__('Text to display when field is empty.', 'ma-plugin')}
+						help={__('Text to display when field is empty.', '{{textdomain}}')}
 					/>
 				</PanelBody>
-				<PanelBody title={__('Icon Settings', 'ma-plugin')} initialOpen={false}>
+				<PanelBody title={__('Icon Settings', '{{textdomain}}')} initialOpen={false}>
 					<SelectControl
-						label={__('Icon', 'ma-plugin')}
+						label={__('Icon', '{{textdomain}}')}
 						value={iconName}
 						onChange={(value) => setAttributes({ iconName: value })}
 						options={iconNames}
-						help={__('Select an icon to display before the field value.', 'ma-plugin')}
+						help={__('Select an icon to display before the field value.', '{{textdomain}}')}
 					/>
 					{iconName && (
 						<RadioControl
-							label={__('Icon Type', 'ma-plugin')}
+							label={__('Icon Type', '{{textdomain}}')}
 							selected={iconType}
 							onChange={(value) => setAttributes({ iconType: value })}
 							options={iconTypes.map((type) => ({
@@ -104,18 +104,18 @@ const Edit = (props) => {
 						/>
 					)}
 				</PanelBody>
-				<PanelBody title={__('Prefix Settings', 'ma-plugin')} initialOpen={false}>
+				<PanelBody title={__('Prefix Settings', '{{textdomain}}')} initialOpen={false}>
 					<TextControl
-						label={__('Prefix Text', 'ma-plugin')}
+						label={__('Prefix Text', '{{textdomain}}')}
 						value={prefix}
 						onChange={(value) => setAttributes({ prefix: value })}
-						help={__('Text to display before the field value (e.g., "Price:", "From:").', 'ma-plugin')}
+						help={__('Text to display before the field value (e.g., "Price:", "From:").', '{{textdomain}}')}
 					/>
 					<ToggleControl
-						label={__('Bold Prefix', 'ma-plugin')}
+						label={__('Bold Prefix', '{{textdomain}}')}
 						checked={prefixBold}
 						onChange={(value) => setAttributes({ prefixBold: value })}
-						help={__('Make the prefix text bold.', 'ma-plugin')}
+						help={__('Make the prefix text bold.', '{{textdomain}}')}
 					/>
 				</PanelBody>
 			</InspectorControls>

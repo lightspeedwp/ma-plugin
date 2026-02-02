@@ -1,0 +1,13 @@
+{
+  "slug": "brand",
+  "label": "Brand",
+  "pluralLabel": "Brands",
+  "hierarchical": false,
+  "post_types": [
+    "sfwd_course",
+    "webinar",
+    "digital_magazine",
+    "supplement",
+    "research_paper"
+  ]
+}

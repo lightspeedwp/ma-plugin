@@ -1,23 +1,23 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
 	"apiVersion": 3,
-	"name": "ma-plugin/webinar-field-display",
+	"name": "{{slug}}/{{block_slug}}-field-display",
 	"version": "1.0.0",
-	"title": " Field Display",
-	"category": "ma-plugin",
+	"title": "{{cpt_name}} Field Display",
+	"category": "{{slug}}",
 	"icon": "admin-post",
-	"description": "Display a custom field value from  post type with optional prefix.",
+	"description": "Display a custom field value from {{cpt_name}} post type with optional prefix.",
 	"keywords": [
 		"field",
 		"meta",
 		"custom",
-		"webinar"
+		"{{cpt_slug}}"
 	],
-	"textdomain": "ma-plugin",
+	"textdomain": "{{textdomain}}",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./index.css",
-	"render": "file:./render.php",
+	"render": "{{namespace}}_render_{{block_slug|snakeCase}}_field_display",
 	"supports": {
 		"html": false,
 		"align": true,

@@ -1,0 +1,11 @@
+{
+  "slug": "speciality",
+  "label": "Medical Speciality",
+  "pluralLabel": "Medical Specialities",
+  "hierarchical": true,
+  "post_types": [
+    "sfwd_course",
+    "webinar",
+    "research_paper"
+  ]
+}

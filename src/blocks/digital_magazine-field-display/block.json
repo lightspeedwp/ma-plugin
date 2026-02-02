@@ -3,10 +3,10 @@
 	"apiVersion": 3,
 	"name": "ma-plugin/digital-magazine-field-display",
 	"version": "1.0.0",
-	"title": "Digital Magazine Field Display",
+	"title": " Field Display",
 	"category": "ma-plugin",
 	"icon": "admin-post",
-	"description": "Display a custom field value from Digital Magazine post type with optional prefix.",
+	"description": "Display a custom field value from  post type with optional prefix.",
 	"keywords": [
 		"field",
 		"meta",
@@ -17,7 +17,7 @@
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./index.css",
-	"render": "ma_plugin_render_digital_magazine_field_display",
+	"render": "file:./render.php",
 	"supports": {
 		"html": false,
 		"align": true,
@@ -49,6 +49,14 @@
 			"default": false
 		},
 		"fallbackText": {
+			"type": "string",
+			"default": ""
+		},
+		"iconType": {
+			"type": "string",
+			"default": "outline"
+		},
+		"iconName": {
 			"type": "string",
 			"default": ""
 		}

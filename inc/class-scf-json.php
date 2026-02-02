@@ -41,19 +41,11 @@ class SCF_JSON {
 	public function __construct() {
 		$this->json_path = MA_PLUGIN_DIR . 'scf-json';
 
-		// Set JSON save location for field groups.
+		// Set JSON save location.
 		add_filter( 'acf/settings/save_json', array( $this, 'set_save_path' ) );
 
-		// Set JSON load locations for field groups.
+		// Set JSON load locations.
 		add_filter( 'acf/settings/load_json', array( $this, 'add_load_path' ) );
-
-		// Set save/load path for post types.
-		add_filter( 'acf/settings/save_json/type=acf-post-type', array( $this, 'set_save_path' ) );
-		add_filter( 'acf/json/load_paths', array( $this, 'add_post_type_load_paths' ) );
-
-		// Set save/load path for taxonomies.
-		add_filter( 'acf/settings/save_json/type=acf-taxonomy', array( $this, 'set_save_path' ) );
-		add_filter( 'acf/json/load_paths', array( $this, 'add_taxonomy_load_paths' ) );
 
 		// Ensure JSON directory exists.
 		$this->maybe_create_directory();
@@ -104,34 +96,6 @@ class SCF_JSON {
 		}
 
 		return true;
-	}
-
-	/**
-	 * Add custom load paths for post types.
-	 *
-	 * Ensures post type JSON files from this plugin are loaded by SCF.
-	 *
-	 * @param array $paths Existing load paths.
-	 * @return array Modified load paths.
-	 * @since 1.0.0
-	 */
-	public function add_post_type_load_paths( $paths ) {
-		$paths[] = $this->json_path;
-		return $paths;
-	}
-
-	/**
-	 * Add custom load paths for taxonomies.
-	 *
-	 * Ensures taxonomy JSON files from this plugin are loaded by SCF.
-	 *
-	 * @param array $paths Existing load paths.
-	 * @return array Modified load paths.
-	 * @since 1.0.0
-	 */
-	public function add_taxonomy_load_paths( $paths ) {
-		$paths[] = $this->json_path;
-		return $paths;
 	}
 
 	/**

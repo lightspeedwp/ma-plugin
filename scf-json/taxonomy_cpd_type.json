@@ -1,0 +1,10 @@
+{
+  "slug": "cpd_type",
+  "label": "CPD Type",
+  "pluralLabel": "CPD Types",
+  "hierarchical": false,
+  "post_types": [
+    "sfwd_course",
+    "webinar"
+  ]
+}

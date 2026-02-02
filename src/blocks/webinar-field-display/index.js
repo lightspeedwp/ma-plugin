@@ -1,5 +1,5 @@
 /**
- * Webinar/Event Field Display Block
+ * Webinar Field Display Block
  *
  * Displays a custom field value with optional prefix.
  *
@@ -9,7 +9,7 @@
 import { registerBlockType } from '@wordpress/blocks';
 import { __ } from '@wordpress/i18n';
 import { useBlockProps, InspectorControls } from '@wordpress/block-editor';
-import { PanelBody, TextControl, ToggleControl } from '@wordpress/components';
+import { PanelBody, TextControl, ToggleControl, RadioControl, SelectControl } from '@wordpress/components';
 import { useEntityProp } from '@wordpress/core-data';
 
 import './editor.scss';
@@ -24,8 +24,19 @@ import metadata from './block.json';
  */
 const Edit = (props) => {
 	const { attributes, setAttributes, context } = props;
-	const { fieldKey, prefix, prefixBold, fallbackText } = attributes;
+	const { fieldKey, prefix, prefixBold, fallbackText, iconType, iconName } = attributes;
 	const { postId, postType } = context;
+
+	// Icon types and names - this should match your icon library structure
+	const iconTypes = ['outline', 'solid'];
+	const iconNames = [
+		{ label: __('None', 'ma-plugin'), value: '' },
+		{ label: __('Check In', 'ma-plugin'), value: 'checkInAccommodationIcon' },
+		{ label: __('Check Out', 'ma-plugin'), value: 'checkOutAccommodationIcon' },
+		{ label: __('Clock', 'ma-plugin'), value: 'clockIcon' },
+		{ label: __('Calendar', 'ma-plugin'), value: 'calendarIcon' },
+		{ label: __('Person', 'ma-plugin'), value: 'personIcon' },
+	];
 
 	const blockProps = useBlockProps({
 		className: 'wp-block-ma-plugin-webinar-field-display',
@@ -72,6 +83,26 @@ const Edit = (props) => {
 						onChange={(value) => setAttributes({ fallbackText: value })}
 						help={__('Text to display when field is empty.', 'ma-plugin')}
 					/>
+				</PanelBody>
+				<PanelBody title={__('Icon Settings', 'ma-plugin')} initialOpen={false}>
+					<SelectControl
+						label={__('Icon', 'ma-plugin')}
+						value={iconName}
+						onChange={(value) => setAttributes({ iconName: value })}
+						options={iconNames}
+						help={__('Select an icon to display before the field value.', 'ma-plugin')}
+					/>
+					{iconName && (
+						<RadioControl
+							label={__('Icon Type', 'ma-plugin')}
+							selected={iconType}
+							onChange={(value) => setAttributes({ iconType: value })}
+							options={iconTypes.map((type) => ({
+								label: type.charAt(0).toUpperCase() + type.slice(1),
+								value: type,
+							}))}
+						/>
+					)}
 				</PanelBody>
 				<PanelBody title={__('Prefix Settings', 'ma-plugin')} initialOpen={false}>
 					<TextControl
