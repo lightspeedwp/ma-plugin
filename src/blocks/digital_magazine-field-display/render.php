@@ -34,9 +34,6 @@ if ( ! function_exists( 'ma_plugin_render_digital_magazine_field_display' ) ) {
 		$icon_type     = isset( $attributes['iconType'] ) ? sanitize_key( $attributes['iconType'] ) : 'outline';
 		$icon_name     = isset( $attributes['iconName'] ) ? preg_replace( '/[^a-zA-Z0-9]/', '', $attributes['iconName'] ) : '';
 
-		// Temporary debugging.
-		error_log( 'Render Debug - Field: ' . $field_key . ', Icon Type: ' . $icon_type . ', Icon Name (raw): ' . ( $attributes['iconName'] ?? 'NOT SET' ) . ', Icon Name (cleaned): ' . $icon_name );
-
 		if ( empty( $field_key ) ) {
 			return '';
 		}

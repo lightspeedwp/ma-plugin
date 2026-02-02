@@ -33,9 +33,6 @@ function ma_plugin_get_icon_svg( $icon_type = 'outline', $icon_name = '' ) {
 	// Build the path to the SVG file.
 	$svg_path = __DIR__ . '/../src/blocks/icons/source-icons/' . $icon_type . '/' . $file_name . '.svg';
 
-	// Temporary debugging.
-	error_log( 'Icon Debug - Name: ' . $icon_name . ', File: ' . $file_name . ', Path: ' . $svg_path . ', Exists: ' . ( file_exists( $svg_path ) ? 'YES' : 'NO' ) );
-
 	// Check if the file exists.
 	if ( ! file_exists( $svg_path ) ) {
 		return '';
