@@ -21,7 +21,7 @@ if ( ! function_exists( 'ma_plugin_render_digital_magazine_field_display' ) ) {
 	function ma_plugin_render_digital_magazine_field_display( $attributes, $content, $block ) {
 		// Get post ID from context or current post.
 		$post_id = isset( $block->context['postId'] ) ? (int) $block->context['postId'] : get_the_ID();
-
+		
 		if ( ! $post_id ) {
 			return '';
 		}
@@ -45,7 +45,7 @@ if ( ! function_exists( 'ma_plugin_render_digital_magazine_field_display' ) ) {
 		}
 
 		// If still empty, return nothing.
-		if ( empty( $post_id ) ) {
+		if ( empty( $field_value ) ) {
 			return '';
 		}
 
