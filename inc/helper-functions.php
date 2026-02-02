@@ -31,7 +31,7 @@ function ma_plugin_get_icon_svg( $icon_type = 'outline', $icon_name = '' ) {
 	$file_name = strtolower( preg_replace( '/([a-z])([A-Z])/', '$1-$2', $icon_name ) );
 
 	// Build the path to the SVG file.
-	$svg_path = MA_PLUGIN_DIR . 'src/blocks/icons/source-icons/' . $icon_type . '/' . $file_name . '.svg';
+	$svg_path = _DIR . 'src/blocks/icons/source-icons/' . $icon_type . '/' . $file_name . '.svg';
 
 	// Check if the file exists.
 	if ( ! file_exists( $svg_path ) ) {

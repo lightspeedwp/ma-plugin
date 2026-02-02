@@ -3,10 +3,10 @@
 	"apiVersion": 3,
 	"name": "ma-plugin/webinar-field-display",
 	"version": "1.0.0",
-	"title": " Field Display",
+	"title": "Webinar/Event Field Display",
 	"category": "ma-plugin",
 	"icon": "admin-post",
-	"description": "Display a custom field value from  post type with optional prefix.",
+	"description": "Display a custom field value from Webinar/Event post type with optional prefix.",
 	"keywords": [
 		"field",
 		"meta",
@@ -17,7 +17,7 @@
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": "file:./index.css",
-	"render": "file:./render.php",
+	"render": "ma_plugin_render_webinar_field_display",
 	"supports": {
 		"html": false,
 		"align": true,

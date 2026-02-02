@@ -39,7 +39,7 @@ const Edit = (props) => {
 	];
 
 	const blockProps = useBlockProps({
-		className: 'wp-block-ma-plugin-digital_magazine-field-display',
+		className: 'wp-block-ma-plugin-digital-magazine-field-display',
 	});
 
 	// Get the field value from post meta.

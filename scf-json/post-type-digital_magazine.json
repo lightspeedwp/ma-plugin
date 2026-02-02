@@ -1,0 +1,62 @@
+{
+	"key": "post_type_digital_magazine",
+	"title": "Digital Magazine",
+	"post_type": "digital_magazine",
+	"menu_order": 0,
+	"active": true,
+	"public": true,
+	"hierarchical": false,
+	"exclude_from_search": false,
+	"publicly_queryable": true,
+	"show_ui": true,
+	"show_in_menu": true,
+	"show_in_nav_menus": true,
+	"show_in_rest": true,
+	"rest_base": "digital_magazines",
+	"rest_controller_class": "",
+	"menu_position": 20,
+	"menu_icon": "dashicons-book-alt",
+	"capability_type": "post",
+	"supports": [
+		"title",
+		"editor",
+		"thumbnail",
+		"excerpt",
+		"author",
+		"custom-fields",
+		"revisions"
+	],
+	"taxonomies": [
+		"brand",
+		"speciality"
+	],
+	"has_archive": true,
+	"rewrite": {
+		"slug": "digital_magazine",
+		"with_front": true
+	},
+	"can_export": true,
+	"delete_with_user": false,
+	"labels": {
+		"name": "Digital Magazines",
+		"singular_name": "Digital Magazine",
+		"menu_name": "Digital Magazines",
+		"all_items": "All Digital Magazines",
+		"add_new": "Add New",
+		"add_new_item": "Add New Digital Magazine",
+		"edit_item": "Edit Digital Magazine",
+		"new_item": "New Digital Magazine",
+		"view_item": "View Digital Magazine",
+		"view_items": "View Digital Magazines",
+		"search_items": "Search Digital Magazines",
+		"not_found": "No digital magazines found",
+		"not_found_in_trash": "No digital magazines found in Trash",
+		"archives": "Digital Magazine Archives",
+		"attributes": "Digital Magazine Attributes",
+		"insert_into_item": "Insert into digital magazine",
+		"uploaded_to_this_item": "Uploaded to this digital magazine",
+		"filter_items_list": "Filter digital magazines list",
+		"items_list_navigation": "Digital Magazines list navigation",
+		"items_list": "Digital Magazines list"
+	}
+}

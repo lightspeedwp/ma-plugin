@@ -1,5 +1,5 @@
 /**
- * Webinar Field Display Block
+ * Webinar/Event Field Display Block
  *
  * Displays a custom field value with optional prefix.
  *

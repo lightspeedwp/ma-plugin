@@ -50,5 +50,5 @@
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./index.css",
-  "render": "file:./render.php"
+  "render": "ma_plugin_render_digital-magazine_slider"
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * Render callback for the digital_magazine-field-display block.
+ * Render callback for the digital-magazine-field-display block.
  *
  * @package ma_plugin
  */
@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists( 'ma_plugin_render_digital_magazine_field_display' ) ) {
+if ( ! function_exists( 'ma_plugin_render_digital-magazine_field_display' ) ) {
 	/**
 	 * Render the field display block.
 	 *
@@ -18,7 +18,7 @@ if ( ! function_exists( 'ma_plugin_render_digital_magazine_field_display' ) ) {
 	 * @param WP_Block $block      Block instance.
 	 * @return string Rendered block HTML.
 	 */
-	function ma_plugin_render_digital_magazine_field_display( $attributes, $content, $block ) {
+	function ma_plugin_render_digital-magazine_field_display( $attributes, $content, $block ) {
 		// Get post ID from context or current post.
 		$post_id = isset( $block->context['postId'] ) ? (int) $block->context['postId'] : get_the_ID();
 		
@@ -74,7 +74,7 @@ if ( ! function_exists( 'ma_plugin_render_digital_magazine_field_display' ) ) {
 		}
 
 		// Build wrapper classes.
-		$wrapper_classes = array( 'wp-block-ma-plugin-digital_magazine-field-display', 'wp-block-group', 'is-layout-flex', 'is-nowrap' );
+		$wrapper_classes = array( 'wp-block-ma-plugin-digital-magazine-field-display', 'wp-block-group', 'is-layout-flex', 'is-nowrap' );
 		if ( ! empty( $attributes['className'] ) ) {
 			$wrapper_classes[] = esc_attr( $attributes['className'] );
 		}
