@@ -1,69 +1,188 @@
 {
     "key": "group_webinar_fields",
-    "title": "Webinar/Event Fields",
+    "title": "Webinar Fields",
     "fields": [
-        {
-            "key": "field_webinar_webinar_type",
-            "label": "Webinar Type",
-            "name": "webinar_type",
-            "type": "select",
-            "instructions": "Select whether this is live or replay",
-            "required": 1,
-            "choices": {
-                "live": "Live Webinar",
-                "replay": "Replay/Recording"
-            }
-        },
         {
             "key": "field_webinar_event_date",
             "label": "Event Date & Time",
             "name": "event_date",
+            "aria-label": "",
             "type": "date_time_picker",
             "instructions": "When is this webinar scheduled?",
-            "required": 1
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "display_format": "d\/m\/Y g:i a",
+            "return_format": "d\/m\/Y g:i a",
+            "first_day": 1,
+            "default_to_current_date": 0,
+            "allow_in_bindings": 1
         },
         {
             "key": "field_webinar_webinar_url",
             "label": "Webinar URL",
             "name": "webinar_url",
+            "aria-label": "",
             "type": "url",
             "instructions": "Link to webinar platform (Zoom, Teams, etc.)",
-            "required": 0
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
         },
         {
             "key": "field_webinar_replay_url",
             "label": "Replay URL",
             "name": "replay_url",
+            "aria-label": "",
             "type": "url",
             "instructions": "Link to recorded webinar",
-            "required": 0
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "placeholder": ""
         },
         {
-            "key": "field_webinar_duration_minutes",
-            "label": "Duration (Minutes)",
-            "name": "duration_minutes",
-            "type": "number",
-            "instructions": "Webinar duration in minutes",
-            "required": 0
-        },
-        {
-            "key": "field_webinar_cpd_points",
-            "label": "CPD Points",
-            "name": "cpd_points",
-            "type": "number",
+            "key": "field_69849fe1968c5",
+            "label": "Registration URL",
+            "name": "registration_url",
+            "aria-label": "",
+            "type": "url",
             "instructions": "",
             "required": 0,
-            "default_value": 0,
-            "min": 0,
-            "max": 10
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "allow_in_bindings": 0,
+            "placeholder": ""
         },
         {
             "key": "field_webinar_presenters",
             "label": "Presenters",
             "name": "presenters",
+            "aria-label": "",
             "type": "repeater",
             "instructions": "Add presenter details",
-            "required": 0
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "row",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_69848a57dc6bd",
+                    "label": "Name",
+                    "name": "name",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_webinar_presenters"
+                },
+                {
+                    "key": "field_69848a6edc6be",
+                    "label": "Email",
+                    "name": "email",
+                    "aria-label": "",
+                    "type": "email",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_webinar_presenters"
+                },
+                {
+                    "key": "field_69848a7edc6bf",
+                    "label": "Picture",
+                    "name": "picture",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_webinar_presenters"
+                }
+            ]
+        },
+        {
+            "key": "field_69849f666d10c",
+            "label": "Webinar ID",
+            "name": "webinar_id",
+            "aria-label": "",
+            "type": "text",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "default_value": "",
+            "maxlength": "",
+            "allow_in_bindings": 0,
+            "placeholder": "",
+            "prepend": "",
+            "append": ""
         }
     ],
     "location": [
@@ -71,7 +190,7 @@
             {
                 "param": "post_type",
                 "operator": "==",
-                "value": "webinar"
+                "value": "sfwd-courses"
             }
         ]
     ],
@@ -80,6 +199,10 @@
     "style": "default",
     "label_placement": "top",
     "instruction_placement": "label",
-    "hide_on_screen": [],
-    "active": true
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 1,
+    "display_title": "Webninar Information",
+    "modified": 1770299708
 }
