@@ -1,7 +1,7 @@
 {
 	"key": "taxonomy_brand",
 	"title": "Brand",
-	"taxonomy": "brand",
+	"taxonomy": "ma_brand",
 	"menu_order": 0,
 	"active": true,
 	"object_type": [
