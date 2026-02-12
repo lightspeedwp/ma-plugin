@@ -42,17 +42,17 @@ class SCF_JSON {
 		$this->json_path = MA_PLUGIN_DIR . 'scf-json';
 
 		// Set JSON save location for field groups.
-		add_filter( 'acf/settings/save_json', array( $this, 'set_save_path' ) );
+		//add_filter( 'acf/settings/save_json', array( $this, 'set_save_path' ) );
 
 		// Set JSON load locations for field groups.
 		add_filter( 'acf/settings/load_json', array( $this, 'add_load_path' ) );
 
 		// Set save/load path for post types.
-		add_filter( 'acf/settings/save_json/type=acf-post-type', array( $this, 'set_save_path' ) );
+		//add_filter( 'acf/settings/save_json/type=acf-post-type', array( $this, 'set_save_path' ) );
 		add_filter( 'acf/json/load_paths', array( $this, 'add_post_type_load_paths' ) );
 
 		// Set save/load path for taxonomies.
-		add_filter( 'acf/settings/save_json/type=acf-taxonomy', array( $this, 'set_save_path' ) );
+		//add_filter( 'acf/settings/save_json/type=acf-taxonomy', array( $this, 'set_save_path' ) );
 		add_filter( 'acf/json/load_paths', array( $this, 'add_taxonomy_load_paths' ) );
 
 		// Ensure JSON directory exists.
