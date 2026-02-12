@@ -1,46 +1,81 @@
-{
-	"key": "taxonomy_brand",
-	"title": "Brand",
-	"taxonomy": "ma_brand",
-	"menu_order": 0,
-	"active": true,
-	"object_type": [
-		"sfwd_course",
-		"webinar",
-		"digital_magazine",
-		"supplement",
-		"research_paper"
-	],
-	"public": true,
-	"publicly_queryable": true,
-	"hierarchical": false,
-	"show_ui": true,
-	"show_in_menu": true,
-	"show_in_nav_menus": true,
-	"show_in_rest": true,
-	"rest_base": "brands",
-	"rest_controller_class": "",
-	"show_tagcloud": true,
-	"show_in_quick_edit": true,
-	"show_admin_column": true,
-	"labels": {
-		"name": "Brands",
-		"singular_name": "Brand",
-		"menu_name": "Brands",
-		"search_items": "Search Brands",
-		"all_items": "All Brands",
-		"edit_item": "Edit Brand",
-		"update_item": "Update Brand",
-		"add_new_item": "Add New Brand",
-		"new_item_name": "New Brand Name",
-		"popular_items": "Popular Brands",
-		"separate_items_with_commas": "Separate brands with commas",
-		"add_or_remove_items": "Add or remove brands",
-		"choose_from_most_used": "Choose from the most used brands"
-	},
-	"rewrite": {
-		"slug": "brand",
-		"with_front": true,
-		"hierarchical": false
-	}
-}
+[
+    {
+        "key": "taxonomy_brand",
+        "title": "Brands",
+        "menu_order": 0,
+        "active": true,
+        "taxonomy": "ma_brand",
+        "object_type": [
+            "digital_magazine",
+            "post",
+            "research-paper",
+            "sfwd-courses",
+            "groups",
+            "tribe_events"
+        ],
+        "advanced_configuration": 0,
+        "import_source": "",
+        "import_date": "",
+        "labels": {
+            "name": "Brands",
+            "singular_name": "Brand",
+            "menu_name": "Brands",
+            "all_items": "All Brands",
+            "edit_item": "Edit Brand",
+            "view_item": "",
+            "update_item": "Update Brand",
+            "add_new_item": "Add New Brand",
+            "new_item_name": "New Brand Name",
+            "search_items": "Search Brands",
+            "popular_items": "Popular Brands",
+            "separate_items_with_commas": "Separate brands with commas",
+            "add_or_remove_items": "Add or remove brands",
+            "choose_from_most_used": "Choose from the most used brands",
+            "most_used": "",
+            "not_found": "",
+            "no_terms": "",
+            "name_field_description": "",
+            "slug_field_description": "",
+            "desc_field_description": "",
+            "items_list_navigation": "",
+            "items_list": "",
+            "back_to_items": "",
+            "item_link": "",
+            "item_link_description": ""
+        },
+        "description": "",
+        "capabilities": {
+            "manage_terms": "manage_categories",
+            "edit_terms": "manage_categories",
+            "delete_terms": "manage_categories",
+            "assign_terms": "edit_posts"
+        },
+        "public": 1,
+        "publicly_queryable": 1,
+        "hierarchical": 0,
+        "show_ui": 1,
+        "show_in_menu": 1,
+        "show_in_nav_menus": 1,
+        "show_in_rest": 1,
+        "rest_base": "brands",
+        "rest_namespace": "wp\/v2",
+        "rest_controller_class": "",
+        "show_tagcloud": 1,
+        "show_in_quick_edit": 1,
+        "show_admin_column": 1,
+        "rewrite": {
+            "permalink_rewrite": "taxonomy_key",
+            "with_front": "1",
+            "rewrite_hierarchical": "0"
+        },
+        "query_var": "post_type_key",
+        "query_var_name": "",
+        "default_term": {
+            "default_term_enabled": "0"
+        },
+        "sort": 0,
+        "meta_box": "default",
+        "meta_box_cb": "",
+        "meta_box_sanitize_cb": ""
+    }
+]
