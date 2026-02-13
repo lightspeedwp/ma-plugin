@@ -71,6 +71,7 @@ class WebinarJam_Integration {
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-scheduler.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-options.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-taxonomy.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-transformer.php';
 	}
 
 	/**
