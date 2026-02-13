@@ -81,6 +81,14 @@ class WebinarJam_Integration {
 	private $attendance_handler;
 
 	/**
+	 * Frontend handler instance.
+	 *
+	 * @since 1.0.0
+	 * @var WebinarJam_Frontend
+	 */
+	private $frontend;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 1.0.0
@@ -99,6 +107,7 @@ class WebinarJam_Integration {
 	 */
 	private function load_dependencies() {
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/helper-functions.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/template-functions.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-api-client.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-scheduler.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-options.php';
@@ -108,6 +117,7 @@ class WebinarJam_Integration {
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-importer.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-status.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-attendance.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-frontend.php';
 	}
 
 	/**
@@ -162,6 +172,9 @@ class WebinarJam_Integration {
 
 		// Initialize taxonomy manager.
 		new WebinarJam_Taxonomy();
+
+		// Initialize frontend handler.
+		$this->frontend = new WebinarJam_Frontend( $this->api_client );
 	}
 
 	/**

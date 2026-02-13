@@ -242,38 +242,48 @@ Integration of WebinarJam API with LearnDash courses and The Events Calendar to 
 
 ---
 
-## Section 6: Frontend - User Registration Flow
+## Section 6: Frontend - User Registration Flow ✅
 
 ### 6.1 Event Registration - Without Access
-- [ ] Create `inc/webinarjam/class-webinarjam-frontend.php`
-- [ ] Detect user without subscription/access
-- [ ] Hook event "Register" button click
-- [ ] Redirect to subscription/purchase page
-- [ ] Store referring event ID in session/cookie
-- [ ] After purchase: Redirect back to original event
-- [ ] Show "Register" button with access
+- [x] Create `inc/webinarjam/class-webinarjam-frontend.php`
+- [x] Detect user without subscription/access
+- [x] Hook event "Register" button click
+- [x] Redirect to subscription/purchase page
+- [x] Store referring event ID in session/cookie
+- [x] After purchase: Redirect back to original event
+- [x] Show "Register" button with access
+- [x] Handle WooCommerce purchase flow integration
+- [x] Cookie and transient fallback for non-authenticated users
 
 ### 6.2 Event Registration - With Access
-- [ ] Detect user with active subscription
-- [ ] On "Register" button click:
-  - Redirect to webinar course page
+- [x] Detect user with active subscription
+- [x] On "Register" button click:
   - Auto-enroll user in LearnDash course
   - Call WebinarJam API: register user
   - Pass: email, name, course ID
-- [ ] Handle API registration errors
-- [ ] Show success message
-- [ ] Update user meta: registered_webinars array
+- [x] Handle API registration errors
+- [x] Show success message
+- [x] Update user meta: registered_webinars array
+- [x] AJAX-based registration flow
+- [x] Error handling with user feedback
+- [x] Action hooks for extension integration
 
 ### 6.3 Dynamic Button Rendering
-- [ ] Create shortcode or block binding for event buttons
-- [ ] Check webinar status (upcoming/live/replay)
-- [ ] Check user access level
-- [ ] Render appropriate button:
+- [x] Create shortcode for event buttons (`[webinar_button]`)
+- [x] Check webinar status (upcoming/live/completed)
+- [x] Check user access level
+- [x] Render appropriate button:
   - "Register" (upcoming, no access) → purchase page
   - "Register" (upcoming, with access) → register & enroll
   - "Watch" (live, registered) → join URL
-  - "Watch Replay" (replay) → replay URL
-- [ ] Add frontend styles for buttons
+  - "Watch Replay" (completed) → replay URL
+- [x] Add frontend styles for buttons
+- [x] Add JavaScript for AJAX interactions
+- [x] Add countdown timer shortcode (`[webinar_countdown]`)
+- [x] Add status badge shortcode (`[webinar_status]`)
+- [x] Create template functions for theme integration
+- [x] Add accessibility features (ARIA, keyboard navigation)
+- [x] Responsive design implementation
 
 ---
 
