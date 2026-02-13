@@ -38,6 +38,9 @@ class Core {
 		new Block_Bindings();
 		new Block_Styles();
 		new Patterns();
+
+		// Initialize WebinarJam integration.
+		new \ma_plugin\classes\WebinarJam\WebinarJam_Integration();
 	}
 
 	/**
@@ -55,6 +58,9 @@ class Core {
 		require_once MA_PLUGIN_DIR . 'inc/class-block-bindings.php';
 		require_once MA_PLUGIN_DIR . 'inc/class-block-styles.php';
 		require_once MA_PLUGIN_DIR . 'inc/class-patterns.php';
+
+		// Include WebinarJam integration.
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-integration.php';
 	}
 
 	/**
