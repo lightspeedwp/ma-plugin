@@ -263,6 +263,20 @@
             }
         },
         {
+            "key": "field_wj_last_attendance_check",
+            "label": "Last Attendance Check",
+            "name": "webinarjam_last_attendance_check",
+            "type": "date_time_picker",
+            "instructions": "Last time attendance was checked from WebinarJam",
+            "required": 0,
+            "readonly": 1,
+            "display_format": "Y-m-d H:i:s",
+            "return_format": "Y-m-d H:i:s",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
             "key": "field_wj_sync_log",
             "label": "Sync Log",
             "name": "webinarjam_sync_log",

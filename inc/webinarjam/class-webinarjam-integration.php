@@ -49,6 +49,38 @@ class WebinarJam_Integration {
 	private $options;
 
 	/**
+	 * Sync handler instance.
+	 *
+	 * @since 1.0.0
+	 * @var WebinarJam_Sync
+	 */
+	private $sync_handler;
+
+	/**
+	 * Importer instance.
+	 *
+	 * @since 1.0.0
+	 * @var WebinarJam_Importer
+	 */
+	private $importer;
+
+	/**
+	 * Status handler instance.
+	 *
+	 * @since 1.0.0
+	 * @var WebinarJam_Status
+	 */
+	private $status_handler;
+
+	/**
+	 * Attendance handler instance.
+	 *
+	 * @since 1.0.0
+	 * @var WebinarJam_Attendance
+	 */
+	private $attendance_handler;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 1.0.0
@@ -72,6 +104,10 @@ class WebinarJam_Integration {
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-options.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-taxonomy.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-transformer.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-sync.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-importer.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-status.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-attendance.php';
 	}
 
 	/**
@@ -81,9 +117,48 @@ class WebinarJam_Integration {
 	 * @return void
 	 */
 	private function init_components() {
+		// Initialize API client.
 		$this->api_client = new WebinarJam_API_Client();
-		$this->scheduler  = new WebinarJam_Scheduler( $this->api_client );
-		$this->options    = new WebinarJam_Options();
+
+		// Initialize sync handler.
+		$this->sync_handler = new WebinarJam_Sync( $this->api_client, null );
+
+		// Initialize importer.
+		$this->importer = new WebinarJam_Importer( $this->api_client, null );
+
+		// Initialize status handler.
+		$this->status_handler = new WebinarJam_Status( $this->api_client, null );
+
+		// Initialize attendance handler.
+		$this->attendance_handler = new WebinarJam_Attendance( $this->api_client );
+
+		// Initialize scheduler with all handlers.
+		$this->scheduler = new WebinarJam_Scheduler(
+			$this->api_client,
+			$this->sync_handler,
+			$this->importer,
+			$this->status_handler,
+			$this->attendance_handler
+		);
+
+		// Update sync and importer with scheduler reference.
+		$reflection = new \ReflectionClass( $this->sync_handler );
+		$property   = $reflection->getProperty( 'scheduler' );
+		$property->setAccessible( true );
+		$property->setValue( $this->sync_handler, $this->scheduler );
+
+		$reflection = new \ReflectionClass( $this->importer );
+		$property   = $reflection->getProperty( 'scheduler' );
+		$property->setAccessible( true );
+		$property->setValue( $this->importer, $this->scheduler );
+
+		$reflection = new \ReflectionClass( $this->status_handler );
+		$property   = $reflection->getProperty( 'scheduler' );
+		$property->setAccessible( true );
+		$property->setValue( $this->status_handler, $this->scheduler );
+
+		// Initialize options page.
+		$this->options = new WebinarJam_Options();
 
 		// Initialize taxonomy manager.
 		new WebinarJam_Taxonomy();

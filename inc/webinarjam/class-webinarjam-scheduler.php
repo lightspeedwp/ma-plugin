@@ -32,13 +32,53 @@ class WebinarJam_Scheduler {
 	private $api_client;
 
 	/**
+	 * Sync handler instance.
+	 *
+	 * @since 1.0.0
+	 * @var WebinarJam_Sync
+	 */
+	private $sync_handler;
+
+	/**
+	 * Importer instance.
+	 *
+	 * @since 1.0.0
+	 * @var WebinarJam_Importer
+	 */
+	private $importer;
+
+	/**
+	 * Status handler instance.
+	 *
+	 * @since 1.0.0
+	 * @var WebinarJam_Status
+	 */
+	private $status_handler;
+
+	/**
+	 * Attendance handler instance.
+	 *
+	 * @since 1.0.0
+	 * @var WebinarJam_Attendance
+	 */
+	private $attendance_handler;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 1.0.0
 	 * @param WebinarJam_API_Client $api_client API client instance.
+	 * @param WebinarJam_Sync       $sync_handler Sync handler instance.
+	 * @param WebinarJam_Importer   $importer Importer instance.
+	 * @param WebinarJam_Status     $status_handler Status handler instance.
+	 * @param WebinarJam_Attendance $attendance_handler Attendance handler instance.
 	 */
-	public function __construct( $api_client ) {
-		$this->api_client = $api_client;
+	public function __construct( $api_client, $sync_handler, $importer, $status_handler, $attendance_handler ) {
+		$this->api_client          = $api_client;
+		$this->sync_handler        = $sync_handler;
+		$this->importer            = $importer;
+		$this->status_handler      = $status_handler;
+		$this->attendance_handler  = $attendance_handler;
 		$this->setup_hooks();
 	}
 
@@ -201,45 +241,70 @@ class WebinarJam_Scheduler {
 	}
 
 	/**
-	 * Run daily sync (placeholder - implemented in Section 5).
+	 * Run daily sync.
 	 *
 	 * @since 1.0.0
 	 * @return void
 	 */
 	public function run_daily_sync() {
-		ma_log_webinarjam_debug( 'Daily sync triggered (not yet implemented).' );
+		ma_log_webinarjam_debug( 'Daily sync event triggered.' );
+
+		// Run the sync.
+		$results = $this->sync_handler->run();
+
+		// Also batch update status.
+		$this->status_handler->batch_update_status();
+
+		ma_log_webinarjam_debug( 'Daily sync event completed.' );
 	}
 
 	/**
-	 * Run webinar import (placeholder - implemented in Section 5).
+	 * Run webinar import.
 	 *
 	 * @since 1.0.0
 	 * @param string $webinar_id WebinarJam webinar ID.
 	 * @return void
 	 */
 	public function run_webinar_import( $webinar_id ) {
-		ma_log_webinarjam_debug( "Webinar import triggered for {$webinar_id} (not yet implemented)." );
+		ma_log_webinarjam_debug( "Import event triggered for webinar {$webinar_id}." );
+
+		// Run the import.
+		$result = $this->importer->import( $webinar_id );
+
+		if ( is_wp_error( $result ) ) {
+			ma_log_webinarjam_debug( "Import failed for webinar {$webinar_id}: " . $result->get_error_message(), 'error' );
+		}
 	}
 
 	/**
-	 * Run status update (placeholder - implemented in Section 5).
+	 * Run status update.
 	 *
 	 * @since 1.0.0
 	 * @param int $course_id LearnDash course ID.
 	 * @return void
 	 */
 	public function run_status_update( $course_id ) {
-		ma_log_webinarjam_debug( "Status update triggered for course {$course_id} (not yet implemented)." );
+		ma_log_webinarjam_debug( "Status update event triggered for course {$course_id}." );
+
+		// Update the status.
+		$this->status_handler->update_status( $course_id );
 	}
 
 	/**
-	 * Run attendance check (placeholder - implemented in Section 5).
+	 * Run attendance check.
 	 *
 	 * @since 1.0.0
 	 * @param int $course_id LearnDash course ID.
 	 * @return void
 	 */
 	public function run_attendance_check( $course_id ) {
-		ma_log_webinarjam_debug( "Attendance check triggered for course {$course_id} (not yet implemented)." );
+		ma_log_webinarjam_debug( "Attendance check event triggered for course {$course_id}." );
+
+		// Check attendance.
+		$result = $this->attendance_handler->check_attendance( $course_id );
+
+		if ( is_wp_error( $result ) ) {
+			ma_log_webinarjam_debug( "Attendance check failed for course {$course_id}: " . $result->get_error_message(), 'error' );
+		}
 	}
 }
