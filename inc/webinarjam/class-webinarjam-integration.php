@@ -118,6 +118,8 @@ class WebinarJam_Integration {
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-status.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-attendance.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-frontend.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-course-integration.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-user-dashboard.php';
 	}
 
 	/**
@@ -175,6 +177,12 @@ class WebinarJam_Integration {
 
 		// Initialize frontend handler.
 		$this->frontend = new WebinarJam_Frontend( $this->api_client );
+
+		// Initialize course integration.
+		new WebinarJam_Course_Integration( $this->scheduler );
+
+		// Initialize user dashboard.
+		new WebinarJam_User_Dashboard();
 	}
 
 	/**
