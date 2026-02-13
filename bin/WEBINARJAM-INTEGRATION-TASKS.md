@@ -69,46 +69,70 @@ Integration of WebinarJam API with LearnDash courses and The Events Calendar to 
 
 ---
 
-## Section 3: Backend - Custom Post Types & Taxonomies
+## Section 3: Backend - Custom Post Types & Taxonomies ✅
 
 ### 3.1 Course Type Taxonomy
-- [ ] Create `scf-json/webinarjam/taxonomy-course_type.json`
-- [ ] Register "Course Type" taxonomy for LearnDash courses
-- [ ] Add "Webinar" term automatically
-- [ ] Add "Replay" term for completed webinars
+- [x] Verified existing `taxonomy-course_type` (taxonomy_697c89b061b5c.json)
+- [x] Created taxonomy manager class for term creation
+- [x] Add "Webinar" term automatically (on init)
+- [x] Add "Replay" term automatically (on init)
 
-### 3.2 Webinar Status Taxonomy (or Meta)
-- [ ] Decide: Taxonomy vs Meta field for status (upcoming/live/replay)
-- [ ] If taxonomy: Create `scf-json/webinarjam/taxonomy-webinar_status.json`
-- [ ] If meta: Add to webinar fields group
-- [ ] Add terms: "upcoming", "live", "replay"
+### 3.2 Webinar Status Management
+- [x] Decided on Meta field approach (more appropriate for dynamic status)
+- [x] Implemented status field in webinar fields group
+- [x] Created helper functions for status management
 
 ### 3.3 Webinar Custom Fields
-- [ ] Create `scf-json/webinarjam/group_webinarjam_course_fields.json`
-- [ ] Add fields to LearnDash courses (when Course Type = Webinar):
+- [x] Created `scf-json/webinarjam/group_webinarjam_course_fields.json`
+- [x] Organized fields into tabs: General, URLs, Presenters, Schedule, Sync Settings
+- [x] Added fields to LearnDash courses (conditional: Course Type = Webinar):
   - `webinarjam_webinar_id` (text) - WebinarJam unique ID
   - `webinarjam_status` (select) - upcoming/live/replay
+  - `webinarjam_import_status` (select) - pending/imported/synced/error
   - `webinarjam_presenters` (repeater) - Presenter details
     - presenter_name (text)
-    - presenter_bio (textarea)
     - presenter_email (email)
     - presenter_photo (image)
+    - presenter_bio (textarea)
   - `webinarjam_schedule` (repeater) - Multiple schedule dates
     - schedule_date (date_time_picker)
     - schedule_timezone (text)
+    - schedule_duration (number)
   - `webinarjam_registration_url` (URL)
   - `webinarjam_replay_url` (URL)
   - `webinarjam_last_sync` (date_time_picker) - Read-only
-  - `webinarjam_import_status` (select) - pending/imported/synced
   - `cpd_points` (number) - Manual entry
+  - `webinarjam_sync_enabled` (true_false) - Enable/disable auto-sync
+  - `webinarjam_auto_complete` (true_false) - Enable/disable auto-complete
+  - `webinarjam_notify_users` (true_false) - Send notifications
+  - `webinarjam_sync_log` (textarea) - Sync activity log
 
 ### 3.4 Event Custom Fields
-- [ ] Update existing `group_69848bc0218c3.json` or create new
-- [ ] Ensure Event-to-Course relationship field exists
-- [ ] Add fields to Events:
-  - `event_button_text` (text) - "Register", "Watch", "Watch Replay"
-  - `event_button_url` (URL) - Dynamic based on status
+- [x] Created `scf-json/webinarjam/group_webinarjam_event_fields.json`
+- [x] Added fields to Events (when connected to webinar course):
+  - `event_button_text` (text) - Dynamic button text
+  - `event_button_url` (URL) - Dynamic button URL
   - `event_webinar_status` (select) - Synced from course
+  - `event_sync_enabled` (true_false) - Enable/disable auto-sync
+  - `event_last_sync` (date_time_picker) - Last sync timestamp
+
+### 3.5 Taxonomy Manager Class
+- [x] Created `class-webinarjam-taxonomy.php`
+- [x] Automatic term creation on plugin activation/init
+- [x] Static helper methods for term operations
+- [x] Term assignment methods
+- [x] Term checking methods
+- [x] Cleanup methods for deactivation
+
+### 3.6 Additional Helper Functions
+- [x] `ma_get_webinar_courses()` - Get all webinar courses
+- [x] `ma_get_webinar_courses_by_status()` - Get courses by status
+- [x] `ma_sync_event_from_course()` - Sync event data
+- [x] `ma_get_webinar_presenters()` - Get presenters
+- [x] `ma_get_webinar_schedule()` - Get schedule
+- [x] `ma_get_next_webinar_date()` - Get next date
+- [x] `ma_is_user_registered_for_webinar()` - Check registration
+- [x] `ma_add_webinar_sync_log()` - Add log entries
 
 ---
 
@@ -488,9 +512,15 @@ Integration of WebinarJam API with LearnDash courses and The Events Calendar to 
 6. **Manual Edits**: Protect manual course edits from being overwritten by sync
 7. **Testing**: Use sandbox/test API credentials during development
 8. **Dependencies**: Ensure all required plugins are active before operations
-35+ (Sections 1 & 2)
+
+---
+
+## Task Completion Tracking
+
+- Total Tasks: ~180+
+- Completed: 55+ (Sections 1, 2, 3)
 - In Progress: 0
-- Remaining: ~145+
+- Remaining: ~125+
 
 **Last Updated:** 2026-02-13
 
@@ -513,9 +543,11 @@ Integration of WebinarJam API with LearnDash courses and The Events Calendar to 
 - Added statistics dashboard
 - Created helper functions library
 - Implemented AJAX handlers for testing and management
-- Total Tasks: ~180+
-- Completed: 2
-- In Progress: 0
-- Remaining: ~178+
 
-**Last Updated:** 2026-02-13
+### Section 3 ✅ (2026-02-13)
+- Created webinar course fields JSON (5 tabs, 20+ fields)
+- Created webinar event fields JSON (5 fields)
+- Created taxonomy manager class
+- Implemented automatic term creation (webinar, replay)
+- Added 8 additional helper functions
+- Integrated taxonomy manager with main integration class

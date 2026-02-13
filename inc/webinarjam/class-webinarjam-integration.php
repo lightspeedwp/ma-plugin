@@ -70,6 +70,7 @@ class WebinarJam_Integration {
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-api-client.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-scheduler.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-options.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-taxonomy.php';
 	}
 
 	/**
@@ -82,6 +83,9 @@ class WebinarJam_Integration {
 		$this->api_client = new WebinarJam_API_Client();
 		$this->scheduler  = new WebinarJam_Scheduler( $this->api_client );
 		$this->options    = new WebinarJam_Options();
+
+		// Initialize taxonomy manager.
+		new WebinarJam_Taxonomy();
 	}
 
 	/**

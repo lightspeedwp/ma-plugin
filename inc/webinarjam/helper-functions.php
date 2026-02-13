@@ -276,3 +276,207 @@ function ma_get_webinar_button_data( $course_id ) {
 
 	return apply_filters( 'ma_webinar_button_data', $button_data, $course_id, $status );
 }
+
+/**
+ * Get all webinar courses.
+ *
+ * @since 1.0.0
+ * @param array $args Additional query arguments.
+ * @return array Array of course IDs.
+ */
+function ma_get_webinar_courses( $args = array() ) {
+	$default_args = array(
+		'post_type'      => 'sfwd-courses',
+		'posts_per_page' => -1,
+		'tax_query'      => array(
+			array(
+				'taxonomy' => 'course_type',
+				'field'    => 'slug',
+				'terms'    => 'webinar',
+			),
+		),
+		'fields'         => 'ids',
+	);
+
+	$args = wp_parse_args( $args, $default_args );
+
+	return get_posts( $args );
+}
+
+/**
+ * Get webinar courses by status.
+ *
+ * @since 1.0.0
+ * @param string $status Webinar status (upcoming, live, replay).
+ * @return array Array of course IDs.
+ */
+function ma_get_webinar_courses_by_status( $status ) {
+	if ( ! in_array( $status, array( 'upcoming', 'live', 'replay' ), true ) ) {
+		return array();
+	}
+
+	$args = array(
+		'meta_query' => array(
+			array(
+				'key'   => 'webinarjam_status',
+				'value' => $status,
+			),
+		),
+	);
+
+	return ma_get_webinar_courses( $args );
+}
+
+/**
+ * Sync event data from course.
+ *
+ * @since 1.0.0
+ * @param int $event_id Event ID.
+ * @param int $course_id Course ID.
+ * @return bool True on success, false on failure.
+ */
+function ma_sync_event_from_course( $event_id, $course_id ) {
+	if ( empty( $event_id ) || empty( $course_id ) ) {
+		return false;
+	}
+
+	if ( ! function_exists( 'update_field' ) ) {
+		return false;
+	}
+
+	// Get webinar status.
+	$status = ma_get_webinar_status( $course_id );
+
+	// Get button data.
+	$button_data = ma_get_webinar_button_data( $course_id );
+
+	// Update event fields.
+	update_field( 'event_webinar_status', $status, $event_id );
+	update_field( 'event_button_text', $button_data['text'], $event_id );
+	update_field( 'event_button_url', $button_data['url'], $event_id );
+	update_field( 'event_last_sync', current_time( 'mysql' ), $event_id );
+
+	ma_log_webinarjam_debug( "Synced event {$event_id} from course {$course_id}." );
+
+	return true;
+}
+
+/**
+ * Get webinar presenters.
+ *
+ * @since 1.0.0
+ * @param int $course_id Course ID.
+ * @return array Array of presenter data.
+ */
+function ma_get_webinar_presenters( $course_id ) {
+	if ( empty( $course_id ) || ! function_exists( 'get_field' ) ) {
+		return array();
+	}
+
+	$presenters = get_field( 'webinarjam_presenters', $course_id );
+
+	return is_array( $presenters ) ? $presenters : array();
+}
+
+/**
+ * Get webinar schedule.
+ *
+ * @since 1.0.0
+ * @param int $course_id Course ID.
+ * @return array Array of schedule data.
+ */
+function ma_get_webinar_schedule( $course_id ) {
+	if ( empty( $course_id ) || ! function_exists( 'get_field' ) ) {
+		return array();
+	}
+
+	$schedule = get_field( 'webinarjam_schedule', $course_id );
+
+	return is_array( $schedule ) ? $schedule : array();
+}
+
+/**
+ * Get next webinar schedule date.
+ *
+ * @since 1.0.0
+ * @param int $course_id Course ID.
+ * @return string|false Next schedule date or false if none.
+ */
+function ma_get_next_webinar_date( $course_id ) {
+	$schedules = ma_get_webinar_schedule( $course_id );
+
+	if ( empty( $schedules ) ) {
+		return false;
+	}
+
+	$now = current_time( 'timestamp' );
+	$next_date = false;
+
+	foreach ( $schedules as $schedule ) {
+		if ( empty( $schedule['schedule_date'] ) ) {
+			continue;
+		}
+
+		$schedule_timestamp = strtotime( $schedule['schedule_date'] );
+
+		if ( $schedule_timestamp > $now ) {
+			if ( false === $next_date || $schedule_timestamp < strtotime( $next_date ) ) {
+				$next_date = $schedule['schedule_date'];
+			}
+		}
+	}
+
+	return $next_date;
+}
+
+/**
+ * Check if user is registered for webinar.
+ *
+ * @since 1.0.0
+ * @param int $user_id User ID.
+ * @param int $course_id Course ID.
+ * @return bool True if registered.
+ */
+function ma_is_user_registered_for_webinar( $user_id, $course_id ) {
+	if ( empty( $user_id ) || empty( $course_id ) ) {
+		return false;
+	}
+
+	// Check if user is enrolled in the course (LearnDash check).
+	if ( function_exists( 'sfwd_lms_has_access' ) ) {
+		return sfwd_lms_has_access( $course_id, $user_id );
+	}
+
+	return false;
+}
+
+/**
+ * Add sync log entry to course.
+ *
+ * @since 1.0.0
+ * @param int    $course_id Course ID.
+ * @param string $message Log message.
+ * @return bool True on success, false on failure.
+ */
+function ma_add_webinar_sync_log( $course_id, $message ) {
+	if ( empty( $course_id ) || empty( $message ) || ! function_exists( 'get_field' ) ) {
+		return false;
+	}
+
+	$current_log = get_field( 'webinarjam_sync_log', $course_id ) ?: '';
+	$timestamp   = current_time( 'mysql' );
+	$new_entry   = "[{$timestamp}] {$message}\n";
+
+	// Limit log to last 50 entries.
+	$log_lines = explode( "\n", $current_log );
+	$log_lines = array_filter( $log_lines );
+
+	if ( count( $log_lines ) >= 50 ) {
+		$log_lines = array_slice( $log_lines, -49 );
+	}
+
+	$log_lines[] = rtrim( $new_entry );
+	$new_log     = implode( "\n", $log_lines );
+
+	return update_field( 'webinarjam_sync_log', $new_log, $course_id );
+}
