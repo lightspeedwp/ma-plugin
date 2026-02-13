@@ -1,0 +1,495 @@
+# WebinarJam Integration - Implementation Task List
+
+**Project:** Medical Academic Plugin - WebinarJam Integration  
+**Created:** 2026-02-13  
+**Plugin:** ma-plugin  
+**Status:** Planning
+
+---
+
+## Overview
+
+Integration of WebinarJam API with LearnDash courses and The Events Calendar to automate webinar registration, attendance tracking, and course completion.
+
+**API Details:** 635 webinars available via WebinarJam API
+
+**Dependencies:**
+- LearnDash
+- LearnDash Events Calendar Integration
+- The Events Calendar
+- The Events Calendar Pro
+- Events Tickets
+- Events Tickets Pro
+
+---
+
+## Section 1: Project Setup & Infrastructure
+
+### 1.1 File Structure Setup
+- [x] Create `bin/` directory for task management
+- [x] Create task list document
+- [ ] Create `inc/webinarjam/` directory for integration classes
+- [ ] Create `scf-json/webinarjam/` subdirectory for related JSON files
+
+### 1.2 Core Integration Class
+- [ ] Create `inc/webinarjam/class-webinarjam-integration.php` - Main integration class
+- [ ] Create `inc/webinarjam/class-webinarjam-api-client.php` - API client wrapper
+- [ ] Create `inc/webinarjam/class-webinarjam-scheduler.php` - Scheduled events manager
+- [ ] Register classes in Core loader
+- [ ] Add WebinarJam integration initialization
+
+---
+
+## Section 2: Backend - API Configuration & Settings
+
+### 2.1 Options Page for API Credentials
+- [ ] Create WebinarJam options sub-page in existing Options class
+- [ ] Add secure fields for API credentials:
+  - API Key (password field)
+  - API URL (URL field)
+  - Sync frequency (select: hourly/daily)
+  - Debug mode toggle
+- [ ] Create `inc/webinarjam/class-webinarjam-options.php`
+- [ ] Register fields via SCF JSON or programmatically
+- [ ] Add API connection test functionality
+- [ ] Add "Test Connection" button with AJAX handler
+
+### 2.2 Helper Functions
+- [ ] Create `inc/webinarjam/helper-functions.php`
+- [ ] Add `ma_get_webinarjam_api_key()` - Retrieve API key
+- [ ] Add `ma_get_webinarjam_setting()` - Generic settings getter
+- [ ] Add `ma_is_webinarjam_configured()` - Check if configured
+- [ ] Add `ma_log_webinarjam_debug()` - Debug logging function
+
+---
+
+## Section 3: Backend - Custom Post Types & Taxonomies
+
+### 3.1 Course Type Taxonomy
+- [ ] Create `scf-json/webinarjam/taxonomy-course_type.json`
+- [ ] Register "Course Type" taxonomy for LearnDash courses
+- [ ] Add "Webinar" term automatically
+- [ ] Add "Replay" term for completed webinars
+
+### 3.2 Webinar Status Taxonomy (or Meta)
+- [ ] Decide: Taxonomy vs Meta field for status (upcoming/live/replay)
+- [ ] If taxonomy: Create `scf-json/webinarjam/taxonomy-webinar_status.json`
+- [ ] If meta: Add to webinar fields group
+- [ ] Add terms: "upcoming", "live", "replay"
+
+### 3.3 Webinar Custom Fields
+- [ ] Create `scf-json/webinarjam/group_webinarjam_course_fields.json`
+- [ ] Add fields to LearnDash courses (when Course Type = Webinar):
+  - `webinarjam_webinar_id` (text) - WebinarJam unique ID
+  - `webinarjam_status` (select) - upcoming/live/replay
+  - `webinarjam_presenters` (repeater) - Presenter details
+    - presenter_name (text)
+    - presenter_bio (textarea)
+    - presenter_email (email)
+    - presenter_photo (image)
+  - `webinarjam_schedule` (repeater) - Multiple schedule dates
+    - schedule_date (date_time_picker)
+    - schedule_timezone (text)
+  - `webinarjam_registration_url` (URL)
+  - `webinarjam_replay_url` (URL)
+  - `webinarjam_last_sync` (date_time_picker) - Read-only
+  - `webinarjam_import_status` (select) - pending/imported/synced
+  - `cpd_points` (number) - Manual entry
+
+### 3.4 Event Custom Fields
+- [ ] Update existing `group_69848bc0218c3.json` or create new
+- [ ] Ensure Event-to-Course relationship field exists
+- [ ] Add fields to Events:
+  - `event_button_text` (text) - "Register", "Watch", "Watch Replay"
+  - `event_button_url` (URL) - Dynamic based on status
+  - `event_webinar_status` (select) - Synced from course
+
+---
+
+## Section 4: Backend - API Client & Data Handling
+
+### 4.1 API Client Class
+- [ ] Create `class-webinarjam-api-client.php`
+- [ ] Implement API authentication
+- [ ] Add method: `get_all_webinars()` - Fetch all webinars
+- [ ] Add method: `get_webinar($webinar_id)` - Fetch single webinar
+- [ ] Add method: `get_webinar_registrants($webinar_id)` - Get registrants
+- [ ] Add method: `register_user($webinar_id, $email, $name)` - Register user
+- [ ] Add method: `get_attendees($webinar_id)` - Get attendance data
+- [ ] Add error handling and logging
+- [ ] Add rate limiting/caching logic
+- [ ] Add transient caching for API responses (12-hour cache)
+
+### 4.2 Data Transformation
+- [ ] Create `inc/webinarjam/class-webinarjam-transformer.php`
+- [ ] Add method: `transform_webinar_to_course_data($webinar)` - Map API data
+- [ ] Add method: `transform_schedule_data($schedules)` - Format schedules
+- [ ] Add method: `transform_presenter_data($presenters)` - Format presenters
+- [ ] Add validation for required fields
+
+---
+
+## Section 5: Backend - Scheduled Events System
+
+### 5.1 Scheduler Base Class
+- [ ] Create `class-webinarjam-scheduler.php`
+- [ ] Register all scheduled events on plugin activation
+- [ ] Add method: `schedule_daily_sync()` - Main sync event
+- [ ] Add method: `schedule_webinar_import($webinar_id)` - Import action
+- [ ] Add method: `schedule_webinar_status_update($course_id, $timestamp)` - Status update
+- [ ] Add method: `schedule_attendance_check($course_id, $timestamp)` - Attendance check
+- [ ] Add unschedule methods for cleanup
+
+### 5.2 Daily Webinar Sync Event
+- [ ] Create `inc/webinarjam/class-webinarjam-sync.php`
+- [ ] Hook: `ma_webinarjam_daily_sync`
+- [ ] Fetch all webinars from API
+- [ ] Get all existing webinar courses (by webinarjam_webinar_id)
+- [ ] Compare and identify:
+  - New webinars (schedule import)
+  - Existing webinars (check for schedule updates)
+  - Removed webinars (optional: mark as archived)
+- [ ] Schedule individual import actions for new webinars
+- [ ] Update schedule dates for existing upcoming webinars
+- [ ] Update corresponding Events if dates changed
+- [ ] Add admin notice for sync results
+- [ ] Log sync activity
+
+### 5.3 Webinar Import Action
+- [ ] Create `inc/webinarjam/class-webinarjam-importer.php`
+- [ ] Hook: `ma_webinarjam_import_webinar`
+- [ ] Check if webinar already exists (by webinarjam_webinar_id)
+- [ ] Create new LearnDash course (status: pending)
+- [ ] Set course type to "Webinar"
+- [ ] Import and update:
+  - Course title (from API)
+  - Course description (from API)
+  - Presenters (repeater field)
+  - Schedule dates (repeater field)
+  - Registration URL
+  - WebinarJam ID
+  - Status: "upcoming"
+- [ ] Create corresponding Event (Virtual type)
+- [ ] Link Event to Course (relationship field)
+- [ ] Set Event date to first schedule date
+- [ ] Set Event status to "pending"
+- [ ] Do NOT auto-assign CPD points (manual)
+- [ ] Set import_status to "imported"
+- [ ] Log import success/failure
+
+### 5.4 Webinar Status Update Action
+- [ ] Create `inc/webinarjam/class-webinarjam-status.php`
+- [ ] Hook: `ma_webinarjam_update_status`
+- [ ] Trigger: On webinar publish OR scheduled at webinar start time
+- [ ] Update course meta: status = "live"
+- [ ] Update Event button text: "Watch"
+- [ ] Update Event button URL: webinar registration/join URL
+- [ ] Schedule attendance check at webinar end time (+buffer)
+- [ ] Send notification to registered users (optional)
+- [ ] Log status change
+
+### 5.5 Attendance Check Action
+- [ ] Create `inc/webinarjam/class-webinarjam-attendance.php`
+- [ ] Hook: `ma_webinarjam_check_attendance`
+- [ ] Trigger: Scheduled at webinar end time
+- [ ] Fetch webinar details from API (including registrants/attendance)
+- [ ] Loop through registrants:
+  - Check attendance parameter
+  - Find matching WordPress user by email
+  - If attended: Auto-complete LearnDash course
+- [ ] Update course status to "replay"
+- [ ] Update Event button text: "Watch Replay"
+- [ ] Update Event button URL: replay URL
+- [ ] Log completion for each user
+- [ ] Send completion notification (optional)
+
+---
+
+## Section 6: Frontend - User Registration Flow
+
+### 6.1 Event Registration - Without Access
+- [ ] Create `inc/webinarjam/class-webinarjam-frontend.php`
+- [ ] Detect user without subscription/access
+- [ ] Hook event "Register" button click
+- [ ] Redirect to subscription/purchase page
+- [ ] Store referring event ID in session/cookie
+- [ ] After purchase: Redirect back to original event
+- [ ] Show "Register" button with access
+
+### 6.2 Event Registration - With Access
+- [ ] Detect user with active subscription
+- [ ] On "Register" button click:
+  - Redirect to webinar course page
+  - Auto-enroll user in LearnDash course
+  - Call WebinarJam API: register user
+  - Pass: email, name, course ID
+- [ ] Handle API registration errors
+- [ ] Show success message
+- [ ] Update user meta: registered_webinars array
+
+### 6.3 Dynamic Button Rendering
+- [ ] Create shortcode or block binding for event buttons
+- [ ] Check webinar status (upcoming/live/replay)
+- [ ] Check user access level
+- [ ] Render appropriate button:
+  - "Register" (upcoming, no access) → purchase page
+  - "Register" (upcoming, with access) → register & enroll
+  - "Watch" (live, registered) → join URL
+  - "Watch Replay" (replay) → replay URL
+- [ ] Add frontend styles for buttons
+
+---
+
+## Section 7: Frontend - Course & Publish Integration
+
+### 7.1 Publish Workflow
+- [ ] Hook: `transition_post_status` for webinar courses
+- [ ] When course published:
+  - Find connected Event
+  - Auto-publish Event
+  - Schedule status update at webinar start time
+  - Sync webinar status
+
+### 7.2 Course Complete Button Customization
+- [ ] Hook: `learndash_course_complete_button` filter (or equivalent)
+- [ ] For webinar courses:
+  - Hide/disable complete button for non-admin users on frontend
+  - Show message: "Completion tracked automatically via attendance"
+- [ ] For admin users:
+  - Keep manual complete functionality
+  - Show admin notice about manual override
+
+### 7.3 User Dashboard Enhancements
+- [ ] Add "Upcoming Webinars" section to user dashboard
+- [ ] Show registered webinars with dates
+- [ ] Add "Join" buttons for live webinars
+- [ ] Add countdown timer (optional)
+
+---
+
+## Section 8: Admin Interface Enhancements
+
+### 8.1 Webinar Admin List Columns
+- [ ] Add custom columns to course list (admin):
+  - WebinarJam ID
+  - Status (upcoming/live/replay)
+  - Next Schedule Date
+  - Last Sync Date
+  - Registered Count
+- [ ] Add filters: Status, Sync Status
+- [ ] Add bulk actions: Force Sync, Test Import
+
+### 8.2 Manual Sync Tools
+- [ ] Add "Sync Now" button to options page
+- [ ] Add "Force Re-import" per course (admin only)
+- [ ] Add "Test Single Webinar" import tool
+
+### 8.3 Debug & Logging
+- [ ] Create admin page: "WebinarJam Logs"
+- [ ] Display sync logs (last 100 entries)
+- [ ] Display import logs
+- [ ] Display attendance check logs
+- [ ] Display API errors
+- [ ] Add log export (CSV)
+- [ ] Add log clear function
+
+---
+
+## Section 9: Error Handling & Edge Cases
+
+### 9.1 Error Handling
+- [ ] Add try-catch blocks to all API calls
+- [ ] Create `class-webinarjam-error-handler.php`
+- [ ] Log all errors to custom log file or database
+- [ ] Send admin email notification on critical errors
+- [ ] Add error recovery mechanisms (retry logic)
+
+### 9.2 Edge Cases
+- [ ] Handle webinar no longer in API (archived/deleted)
+- [ ] Handle duplicate webinar IDs
+- [ ] Handle missing presenter information
+- [ ] Handle timezone mismatches
+- [ ] Handle user without email address
+- [ ] Handle API rate limits (implement exponential backoff)
+- [ ] Handle conflicting event dates
+- [ ] Handle manual course edits (prevent overwrite)
+
+### 9.3 Data Validation
+- [ ] Validate API responses before processing
+- [ ] Validate required fields before import
+- [ ] Validate dates and timezones
+- [ ] Validate email addresses
+- [ ] Add schema validation for API responses
+
+---
+
+## Section 10: Testing
+
+### 10.1 Unit Tests
+- [ ] Test API Client methods (mocked responses)
+- [ ] Test Data Transformer methods
+- [ ] Test Helper functions
+- [ ] Test Error Handler methods
+
+### 10.2 Integration Tests
+- [ ] Test full webinar sync flow
+- [ ] Test webinar import flow
+- [ ] Test status update flow
+- [ ] Test attendance check flow
+- [ ] Test user registration flow
+- [ ] Test publish workflow
+
+### 10.3 Manual Testing Checklist
+- [ ] Test API connection with valid credentials
+- [ ] Test API connection with invalid credentials
+- [ ] Test daily sync (force run via WP-CLI)
+- [ ] Test new webinar import
+- [ ] Test existing webinar update
+- [ ] Test course publish → event publish
+- [ ] Test user registration (with access)
+- [ ] Test user registration (without access)
+- [ ] Test attendance check and auto-complete
+- [ ] Test status transitions (upcoming → live → replay)
+- [ ] Test button rendering for each status
+- [ ] Test admin columns and filters
+- [ ] Test manual sync tools
+- [ ] Test error logging
+
+---
+
+## Section 11: Documentation
+
+### 11.1 Code Documentation
+- [ ] Add PHPDoc blocks to all classes
+- [ ] Add PHPDoc blocks to all methods
+- [ ] Add inline comments for complex logic
+- [ ] Document hooks and filters
+
+### 11.2 User Documentation
+- [ ] Create `docs/WEBINARJAM-SETUP.md` - Setup guide
+- [ ] Create `docs/WEBINARJAM-USAGE.md` - Usage guide
+- [ ] Document API credential acquisition
+- [ ] Document webinar workflow
+- [ ] Document troubleshooting steps
+- [ ] Create admin guide for manual operations
+
+### 11.3 Developer Documentation
+- [ ] Document architecture and class structure
+- [ ] Document available hooks and filters
+- [ ] Document data flow diagrams
+- [ ] Document API integration patterns
+- [ ] Add code examples for customization
+
+---
+
+## Section 12: Optimization & Performance
+
+### 12.1 Caching
+- [ ] Implement transient caching for API responses
+- [ ] Cache webinar list (12-hour expiry)
+- [ ] Cache individual webinar data (6-hour expiry)
+- [ ] Add cache invalidation on manual sync
+- [ ] Add cache warming strategy
+
+### 12.2 Database Optimization
+- [ ] Add indexes for webinarjam_webinar_id meta queries
+- [ ] Optimize queries for large datasets
+- [ ] Implement pagination for admin lists
+- [ ] Batch process large sync operations
+
+### 12.3 Background Processing
+- [ ] Use Action Scheduler for long-running tasks
+- [ ] Queue individual imports (avoid timeout)
+- [ ] Process attendance checks in batches
+- [ ] Add progress indicators for admin
+
+---
+
+## Section 13: Security
+
+### 13.1 API Security
+- [ ] Encrypt API credentials in database
+- [ ] Use nonces for all AJAX requests
+- [ ] Validate and sanitize all user inputs
+- [ ] Implement capability checks for admin functions
+- [ ] Rate limit API calls
+
+### 13.2 Data Security
+- [ ] Sanitize all API responses
+- [ ] Escape all output
+- [ ] Validate email addresses before registration
+- [ ] Implement CSRF protection
+- [ ] Add security headers
+
+---
+
+## Section 14: Deployment & Maintenance
+
+### 14.1 Activation/Deactivation
+- [ ] Create activation hook: Schedule daily sync
+- [ ] Create deactivation hook: Unschedule all events
+- [ ] Create uninstall hook: Clean up options (optional)
+- [ ] Add dependency checks on activation
+
+### 14.2 Versioning & Updates
+- [ ] Add version constant for integration
+- [ ] Implement database migration system (if needed)
+- [ ] Add upgrade routines for future versions
+- [ ] Maintain changelog
+
+### 14.3 Monitoring
+- [ ] Add health check endpoint
+- [ ] Monitor sync success rate
+- [ ] Track API response times
+- [ ] Alert on repeated failures
+
+---
+
+## Implementation Priority
+
+### Phase 1: Core Foundation (Sections 1-4)
+- Project setup
+- API configuration
+- Custom fields and taxonomies
+- API client
+
+### Phase 2: Automation (Section 5)
+- Scheduled events system
+- Sync, import, status, attendance
+
+### Phase 3: Frontend (Sections 6-7)
+- Registration flows
+- Button rendering
+- Course integration
+
+### Phase 4: Polish (Sections 8-14)
+- Admin interface
+- Error handling
+- Testing
+- Documentation
+- Security
+- Optimization
+
+---
+
+## Notes & Considerations
+
+1. **CPD Points**: Must be added manually to webinar courses (not automated)
+2. **Existing Webinars**: 635 webinars available in API - initial import may take time
+3. **Rate Limiting**: Consider API rate limits for bulk operations
+4. **Timezone Handling**: Ensure proper timezone conversion for schedules
+5. **User Matching**: Match WebinarJam registrants to WordPress users by email
+6. **Manual Edits**: Protect manual course edits from being overwritten by sync
+7. **Testing**: Use sandbox/test API credentials during development
+8. **Dependencies**: Ensure all required plugins are active before operations
+
+---
+
+## Task Completion Tracking
+
+- Total Tasks: ~180+
+- Completed: 2
+- In Progress: 0
+- Remaining: ~178+
+
+**Last Updated:** 2026-02-13
