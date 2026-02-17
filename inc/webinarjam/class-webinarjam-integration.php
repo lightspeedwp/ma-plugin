@@ -105,6 +105,14 @@ class WebinarJam_Integration {
 	private $admin;
 
 	/**
+	 * Error handler instance.
+	 *
+	 * @since 1.0.0
+	 * @var WebinarJam_Error_Handler
+	 */
+	private $error_handler;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 1.0.0
@@ -137,6 +145,7 @@ class WebinarJam_Integration {
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-course-integration.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-user-dashboard.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-logger.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-error-handler.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-admin.php';
 	}
 
@@ -204,6 +213,12 @@ class WebinarJam_Integration {
 
 		// Initialize logger.
 		$this->logger = new WebinarJam_Logger();
+
+		// Initialize error handler.
+		$this->error_handler = new WebinarJam_Error_Handler( $this->logger );
+
+		// Set error handler in API client.
+		$this->api_client->set_error_handler( $this->error_handler );
 
 		// Initialize admin interface.
 		if ( is_admin() ) {

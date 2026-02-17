@@ -49,6 +49,14 @@ class WebinarJam_API_Client {
 	private $cache_expiration = 43200;
 
 	/**
+	 * Error handler instance.
+	 *
+	 * @since 1.0.0
+	 * @var WebinarJam_Error_Handler
+	 */
+	private $error_handler;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 1.0.0
@@ -56,6 +64,17 @@ class WebinarJam_API_Client {
 	public function __construct() {
 		$this->api_url = ma_get_webinarjam_setting( 'api_url', 'https://api.webinarjam.com/webinarjam' );
 		$this->api_key = ma_get_webinarjam_api_key();
+	}
+
+	/**
+	 * Set error handler.
+	 *
+	 * @since 1.0.0
+	 * @param WebinarJam_Error_Handler $error_handler Error handler instance.
+	 * @return void
+	 */
+	public function set_error_handler( $error_handler ) {
+		$this->error_handler = $error_handler;
 	}
 
 	/**
@@ -257,6 +276,43 @@ class WebinarJam_API_Client {
 			return new \WP_Error( 'api_not_configured', __( 'WebinarJam API is not configured.', 'ma-plugin' ) );
 		}
 
+		// Check if rate limited.
+		if ( $this->error_handler && $this->error_handler->is_rate_limited() ) {
+			return new \WP_Error( 'api_rate_limited', __( 'API is currently rate limited. Please try again later.', 'ma-plugin' ) );
+		}
+
+		// Execute with retry logic if error handler is available.
+		if ( $this->error_handler ) {
+			$result = $this->error_handler->execute_with_retry(
+				array( $this, 'execute_request' ),
+				array( $endpoint, $params, $method )
+			);
+		} else {
+			$result = $this->execute_request( $endpoint, $params, $method );
+		}
+
+		// Validate response if error handler is available.
+		if ( $this->error_handler && ! is_wp_error( $result ) ) {
+			$validation = $this->error_handler->validate_api_response( $result, $endpoint );
+			if ( is_wp_error( $validation ) ) {
+				return $validation;
+			}
+		}
+
+		return $result;
+	}
+
+	/**
+	 * Execute the actual API request.
+	 *
+	 * @since 1.0.0
+	 * @param string $endpoint API endpoint.
+	 * @param array  $params Request parameters.
+	 * @param string $method HTTP method (GET or POST).
+	 * @return array|WP_Error Response data or WP_Error on failure.
+	 */
+	public function execute_request( $endpoint, $params = array(), $method = 'GET' ) {
+
 		// Build URL.
 		$url = trailingslashit( $this->api_url ) . $endpoint;
 
@@ -292,6 +348,16 @@ class WebinarJam_API_Client {
 		// Check response code.
 		if ( 200 !== $response_code ) {
 			$body = wp_remote_retrieve_body( $response );
+
+			// Check for rate limit.
+			if ( 429 === $response_code ) {
+				$retry_after = wp_remote_retrieve_header( $response, 'retry-after' ) ?: 60;
+				if ( $this->error_handler ) {
+					$this->error_handler->handle_rate_limit( (int) $retry_after );
+				}
+				return new \WP_Error( 'api_rate_limit', __( 'API rate limit exceeded.', 'ma-plugin' ), array( 'retry_after' => $retry_after ) );
+			}
+
 			return new \WP_Error(
 				'api_error',
 				sprintf(
