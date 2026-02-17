@@ -113,6 +113,14 @@ class WebinarJam_Integration {
 	private $error_handler;
 
 	/**
+	 * Health monitor instance.
+	 *
+	 * @since 1.0.0
+	 * @var WebinarJam_Health_Monitor
+	 */
+	private $health_monitor;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 1.0.0
@@ -144,9 +152,14 @@ class WebinarJam_Integration {
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-frontend.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-course-integration.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-user-dashboard.php';
-		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-logger.php';
+			require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-logger.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-error-handler.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-admin.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-cache-manager.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-database-optimizer.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-security-manager.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-activation-handler.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-health-monitor.php';
 	}
 
 	/**
@@ -220,6 +233,9 @@ class WebinarJam_Integration {
 		// Set error handler in API client.
 		$this->api_client->set_error_handler( $this->error_handler );
 
+		// Initialize health monitor.
+		$this->health_monitor = new WebinarJam_Health_Monitor( $this->logger );
+
 		// Initialize admin interface.
 		if ( is_admin() ) {
 			$this->admin = new WebinarJam_Admin( $this->api_client, $this->scheduler, $this->sync_handler );
@@ -248,21 +264,7 @@ class WebinarJam_Integration {
 	 * @return void
 	 */
 	public function activate() {
-		// Check dependencies.
-		if ( ! $this->check_dependencies() ) {
-			deactivate_plugins( MA_PLUGIN_BASENAME );
-			wp_die(
-				esc_html__( 'WebinarJam integration requires LearnDash, The Events Calendar, and The Events Calendar Pro to be active.', 'ma-plugin' ),
-				esc_html__( 'Plugin Dependency Error', 'ma-plugin' ),
-				array( 'back_link' => true )
-			);
-		}
-
-		// Schedule initial daily sync.
-		$this->scheduler->schedule_daily_sync();
-
-		// Set activation flag.
-		update_option( 'ma_webinarjam_activated', time() );
+		WebinarJam_Activation_Handler::activate();
 	}
 
 	/**
@@ -272,11 +274,7 @@ class WebinarJam_Integration {
 	 * @return void
 	 */
 	public function deactivate() {
-		// Unschedule all events.
-		$this->scheduler->unschedule_all();
-
-		// Set deactivation flag.
-		update_option( 'ma_webinarjam_deactivated', time() );
+		WebinarJam_Activation_Handler::deactivate();
 	}
 
 	/**
