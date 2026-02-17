@@ -480,3 +480,55 @@ function ma_add_webinar_sync_log( $course_id, $message ) {
 
 	return update_field( 'webinarjam_sync_log', $new_log, $course_id );
 }
+
+/**
+ * Update webinar course from transformed data.
+ *
+ * Updates a course post with transformed webinar data including
+ * all meta fields and custom fields.
+ *
+ * @since 1.0.0
+ * @param int   $course_id Course post ID.
+ * @param array $course_data Transformed course data from transformer.
+ * @return bool True on success, false on failure.
+ */
+function ma_update_webinar_course_from_data( $course_id, $course_data ) {
+	if ( empty( $course_id ) || empty( $course_data ) || ! function_exists( 'update_field' ) ) {
+		return false;
+	}
+
+	// Update post fields if present.
+	$post_updates = array();
+	$post_fields  = array( 'post_title', 'post_content', 'post_excerpt', 'post_status' );
+
+	foreach ( $post_fields as $field ) {
+		if ( isset( $course_data[ $field ] ) ) {
+			$post_updates[ $field ] = $course_data[ $field ];
+		}
+	}
+
+	if ( ! empty( $post_updates ) ) {
+		$post_updates['ID'] = $course_id;
+		wp_update_post( $post_updates );
+	}
+
+	// Update meta fields.
+	if ( ! empty( $course_data['meta_input'] ) && is_array( $course_data['meta_input'] ) ) {
+		foreach ( $course_data['meta_input'] as $meta_key => $meta_value ) {
+			// Use update_field for ACF fields (those starting with webinarjam_).
+			if ( strpos( $meta_key, 'webinarjam_' ) === 0 ) {
+				update_field( $meta_key, $meta_value, $course_id );
+			} else {
+				update_post_meta( $course_id, $meta_key, $meta_value );
+			}
+		}
+	}
+
+	// Update last sync timestamp.
+	update_post_meta( $course_id, '_webinarjam_last_sync', current_time( 'mysql' ) );
+
+	// Log the update.
+	ma_add_webinar_sync_log( $course_id, 'Course updated from WebinarJam API' );
+
+	return true;
+}

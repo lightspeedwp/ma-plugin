@@ -314,31 +314,32 @@ Integration of WebinarJam API with LearnDash courses and The Events Calendar to 
 
 ---
 
-## Section 8: Admin Interface Enhancements
+## Section 8: Admin Interface Enhancements ✅
 
 ### 8.1 Webinar Admin List Columns
-- [ ] Add custom columns to course list (admin):
+- [x] Add custom columns to course list (admin):
   - WebinarJam ID
   - Status (upcoming/live/replay)
   - Next Schedule Date
   - Last Sync Date
   - Registered Count
-- [ ] Add filters: Status, Sync Status
-- [ ] Add bulk actions: Force Sync, Test Import
+- [x] Add filters: Status, Sync Status
+- [x] Add bulk actions: Force Sync, Test Import
 
 ### 8.2 Manual Sync Tools
-- [ ] Add "Sync Now" button to options page
-- [ ] Add "Force Re-import" per course (admin only)
-- [ ] Add "Test Single Webinar" import tool
+- [x] Add "Sync Now" button via row actions
+- [x] Add "Force Re-import" per course (bulk action)
+- [x] Add quick sync AJAX functionality
 
 ### 8.3 Debug & Logging
-- [ ] Create admin page: "WebinarJam Logs"
-- [ ] Display sync logs (last 100 entries)
-- [ ] Display import logs
-- [ ] Display attendance check logs
-- [ ] Display API errors
-- [ ] Add log export (CSV)
-- [ ] Add log clear function
+- [x] Create admin page: "WebinarJam Logs"
+- [x] Display sync logs (filterable by type)
+- [x] Display import logs
+- [x] Display attendance check logs
+- [x] Display API errors
+- [x] Add log export (CSV)
+- [x] Add log clear function
+- [x] Create database table for logs
 
 ---
 

@@ -89,6 +89,22 @@ class WebinarJam_Integration {
 	private $frontend;
 
 	/**
+	 * Logger instance.
+	 *
+	 * @since 1.0.0
+	 * @var WebinarJam_Logger
+	 */
+	private $logger;
+
+	/**
+	 * Admin interface instance.
+	 *
+	 * @since 1.0.0
+	 * @var WebinarJam_Admin
+	 */
+	private $admin;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 1.0.0
@@ -120,6 +136,8 @@ class WebinarJam_Integration {
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-frontend.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-course-integration.php';
 		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-user-dashboard.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-logger.php';
+		require_once MA_PLUGIN_DIR . 'inc/webinarjam/class-webinarjam-admin.php';
 	}
 
 	/**
@@ -183,6 +201,14 @@ class WebinarJam_Integration {
 
 		// Initialize user dashboard.
 		new WebinarJam_User_Dashboard();
+
+		// Initialize logger.
+		$this->logger = new WebinarJam_Logger();
+
+		// Initialize admin interface.
+		if ( is_admin() ) {
+			$this->admin = new WebinarJam_Admin( $this->api_client, $this->scheduler, $this->sync_handler );
+		}
 	}
 
 	/**
