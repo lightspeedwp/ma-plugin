@@ -1,14 +1,13 @@
 <?php
-namespace {{namespace|lowerCase}}\classes;
+namespace ma_plugin\classes;
 
 /**
  * Repeater and Flexible Content Fields using Secure Custom Fields.
  *
  * @package example_plugin
  * @see https://wordpress.org/plugins/secure-custom-fields/
+ * @since 1.0.0
  */
-
-namespace example_plugin\classes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -16,11 +15,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * Repeater Fields class.
+ *
+ * @since 1.0.0
  */
 class Repeater_Fields {
 
 	/**
 	 * Constructor.
+	 *
+	 * @since 1.0.0
 	 */
 	public function __construct() {
 		add_action( 'acf/init', array( $this, 'register_repeater_fields' ) );
@@ -30,6 +33,7 @@ class Repeater_Fields {
 	 * Register repeater field groups.
 	 *
 	 * @return void
+	 * @since 1.0.0
 	 */
 	public function register_repeater_fields() {
 		if ( ! function_exists( 'acf_add_local_field_group' ) ) {
@@ -39,23 +43,23 @@ class Repeater_Fields {
 		// Slider/Gallery Repeater Field Group.
 		acf_add_local_field_group(
 			array(
-				'key'      => 'group_example-plugin_slider',
-				'title'    => __( 'Item Slider', '{{textdomain}}' ),
+				'key'      => 'group_ma_plugin_slider',
+				'title'    => __( 'Item Slider', 'ma-plugin' ),
 				'fields'   => array(
 					array(
-						'key'          => 'field_example-plugin_slides',
-						'label'        => __( 'Slides', '{{textdomain}}' ),
-						'name'         => 'example-plugin_slides',
+						'key'          => 'field_ma_plugin_slides',
+						'label'        => __( 'Slides', 'ma-plugin' ),
+						'name'         => 'ma_plugin_slides',
 						'type'         => 'repeater',
-						'instructions' => __( 'Add slides to the slider.', '{{textdomain}}' ),
+						'instructions' => __( 'Add slides to the slider.', 'ma-plugin' ),
 						'min'          => 0,
 						'max'          => 20,
 						'layout'       => 'block',
-						'button_label' => __( 'Add Slide', '{{textdomain}}' ),
+						'button_label' => __( 'Add Slide', 'ma-plugin' ),
 						'sub_fields'   => array(
 							array(
-								'key'           => 'field_example-plugin_slide_image',
-								'label'         => __( 'Image', '{{textdomain}}' ),
+								'key'           => 'field_ma_plugin_slide_image',
+								'label'         => __( 'Image', 'ma-plugin' ),
 								'name'          => 'image',
 								'type'          => 'image',
 								'return_format' => 'array',
@@ -63,21 +67,21 @@ class Repeater_Fields {
 								'library'       => 'all',
 							),
 							array(
-								'key'   => 'field_example-plugin_slide_title',
-								'label' => __( 'Title', '{{textdomain}}' ),
+								'key'   => 'field_ma_plugin_slide_title',
+								'label' => __( 'Title', 'ma-plugin' ),
 								'name'  => 'title',
 								'type'  => 'text',
 							),
 							array(
-								'key'   => 'field_example-plugin_slide_caption',
-								'label' => __( 'Caption', '{{textdomain}}' ),
+								'key'   => 'field_ma_plugin_slide_caption',
+								'label' => __( 'Caption', 'ma-plugin' ),
 								'name'  => 'caption',
 								'type'  => 'textarea',
 								'rows'  => 2,
 							),
 							array(
-								'key'   => 'field_example-plugin_slide_link',
-								'label' => __( 'Link', '{{textdomain}}' ),
+								'key'   => 'field_ma_plugin_slide_link',
+								'label' => __( 'Link', 'ma-plugin' ),
 								'name'  => 'link',
 								'type'  => 'link',
 							),
@@ -89,7 +93,7 @@ class Repeater_Fields {
 						array(
 							'param'    => 'post_type',
 							'operator' => '==',
-							'value'    => Post_Types::POST_TYPE,
+							'value'    => 'example-plugin',
 						),
 					),
 				),
@@ -99,44 +103,44 @@ class Repeater_Fields {
 		// Flexible Content Field Group for sections.
 		acf_add_local_field_group(
 			array(
-				'key'      => 'group_example-plugin_sections',
-				'title'    => __( 'Item Sections', '{{textdomain}}' ),
+				'key'      => 'group_example_plugin_sections',
+				'title'    => __( 'Item Sections', 'example-plugin' ),
 				'fields'   => array(
 					array(
-						'key'          => 'field_example-plugin_sections',
-						'label'        => __( 'Content Sections', '{{textdomain}}' ),
-						'name'         => 'example-plugin_sections',
+						'key'          => 'field_example_plugin_sections',
+						'label'        => __( 'Content Sections', 'example-plugin' ),
+						'name'         => 'example_plugin_sections',
 						'type'         => 'flexible_content',
-						'instructions' => __( 'Add content sections.', '{{textdomain}}' ),
-						'button_label' => __( 'Add Section', '{{textdomain}}' ),
+						'instructions' => __( 'Add content sections.', 'example-plugin' ),
+						'button_label' => __( 'Add Section', 'example-plugin' ),
 						'layouts'      => array(
 							'layout_text'    => array(
-								'key'        => 'layout_example-plugin_text',
+								'key'        => 'layout_example_plugin_text',
 								'name'       => 'text_section',
-								'label'      => __( 'Text Section', '{{textdomain}}' ),
+								'label'      => __( 'Text Section', 'example-plugin' ),
 								'sub_fields' => array(
 									array(
-										'key'   => 'field_example-plugin_section_heading',
-										'label' => __( 'Heading', '{{textdomain}}' ),
+										'key'   => 'field_example_plugin_section_heading',
+										'label' => __( 'Heading', 'example-plugin' ),
 										'name'  => 'heading',
 										'type'  => 'text',
 									),
 									array(
-										'key'   => 'field_example-plugin_section_content',
-										'label' => __( 'Content', '{{textdomain}}' ),
+										'key'   => 'field_example_plugin_section_content',
+										'label' => __( 'Content', 'example-plugin' ),
 										'name'  => 'content',
 										'type'  => 'wysiwyg',
 									),
 								),
 							),
 							'layout_gallery' => array(
-								'key'        => 'layout_example-plugin_gallery',
+								'key'        => 'layout_example_plugin_gallery',
 								'name'       => 'gallery_section',
-								'label'      => __( 'Gallery Section', '{{textdomain}}' ),
+								'label'      => __( 'Gallery Section', 'example-plugin' ),
 								'sub_fields' => array(
 									array(
-										'key'           => 'field_example-plugin_section_gallery',
-										'label'         => __( 'Gallery', '{{textdomain}}' ),
+										'key'           => 'field_example_plugin_section_gallery',
+										'label'         => __( 'Gallery', 'example-plugin' ),
 										'name'          => 'gallery',
 										'type'          => 'gallery',
 										'return_format' => 'array',
@@ -144,19 +148,19 @@ class Repeater_Fields {
 								),
 							),
 							'layout_cta'     => array(
-								'key'        => 'layout_example-plugin_cta',
+								'key'        => 'layout_example_plugin_cta',
 								'name'       => 'cta_section',
-								'label'      => __( 'Call to Action', '{{textdomain}}' ),
+								'label'      => __( 'Call to Action', 'example-plugin' ),
 								'sub_fields' => array(
 									array(
-										'key'   => 'field_example-plugin_cta_text',
-										'label' => __( 'CTA Text', '{{textdomain}}' ),
+										'key'   => 'field_example_plugin_cta_text',
+										'label' => __( 'CTA Text', 'example-plugin' ),
 										'name'  => 'cta_text',
 										'type'  => 'text',
 									),
 									array(
-										'key'   => 'field_example-plugin_cta_link',
-										'label' => __( 'CTA Link', '{{textdomain}}' ),
+										'key'   => 'field_example_plugin_cta_link',
+										'label' => __( 'CTA Link', 'example-plugin' ),
 										'name'  => 'cta_link',
 										'type'  => 'link',
 									),
@@ -170,7 +174,7 @@ class Repeater_Fields {
 						array(
 							'param'    => 'post_type',
 							'operator' => '==',
-							'value'    => Post_Types::POST_TYPE,
+							'value'    => 'example-plugin',
 						),
 					),
 				),

@@ -20,4 +20,15 @@ module.exports = {
 		'no-console': 'warn',
 		'no-debugger': 'error',
 	},
+	overrides: [
+		{
+			files: ['scripts/**/*.js'],
+			env: {
+				node: true,
+			},
+			rules: {
+				'no-console': 'off',
+			},
+		},
+	],
 };

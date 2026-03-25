@@ -1,0 +1,312 @@
+{
+    "key": "group_webinarjam_course_fields",
+    "title": "Webinar Details",
+    "fields": [
+        {
+            "key": "field_wj_general_tab",
+            "label": "General",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_wj_webinar_id",
+            "label": "WebinarJam ID",
+            "name": "webinarjam_webinar_id",
+            "type": "text",
+            "instructions": "Unique WebinarJam webinar ID (automatically populated)",
+            "required": 0,
+            "readonly": 1,
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_wj_status",
+            "label": "Webinar Status",
+            "name": "webinarjam_status",
+            "type": "select",
+            "instructions": "Current status of the webinar",
+            "required": 0,
+            "choices": {
+                "upcoming": "Upcoming",
+                "live": "Live",
+                "replay": "Replay"
+            },
+            "default_value": "upcoming",
+            "wrapper": {
+                "width": "25"
+            }
+        },
+        {
+            "key": "field_wj_import_status",
+            "label": "Import Status",
+            "name": "webinarjam_import_status",
+            "type": "select",
+            "instructions": "Import/sync status",
+            "required": 0,
+            "choices": {
+                "pending": "Pending",
+                "imported": "Imported",
+                "synced": "Synced",
+                "error": "Error"
+            },
+            "default_value": "pending",
+            "wrapper": {
+                "width": "25"
+            }
+        },
+        {
+            "key": "field_wj_cpd_points",
+            "label": "CPD Points",
+            "name": "cpd_points",
+            "type": "number",
+            "instructions": "CPD points awarded for completing this webinar (manual entry)",
+            "required": 0,
+            "min": 0,
+            "max": 100,
+            "step": 0.5,
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_wj_last_sync",
+            "label": "Last Sync",
+            "name": "webinarjam_last_sync",
+            "type": "date_time_picker",
+            "instructions": "Last synchronization with WebinarJam API",
+            "required": 0,
+            "readonly": 1,
+            "display_format": "Y-m-d H:i:s",
+            "return_format": "Y-m-d H:i:s",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_wj_urls_tab",
+            "label": "URLs",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_wj_registration_url",
+            "label": "Registration URL",
+            "name": "webinarjam_registration_url",
+            "type": "url",
+            "instructions": "WebinarJam registration/join URL (automatically populated)",
+            "required": 0,
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_wj_replay_url",
+            "label": "Replay URL",
+            "name": "webinarjam_replay_url",
+            "type": "url",
+            "instructions": "WebinarJam replay URL (automatically populated)",
+            "required": 0,
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_wj_presenters_tab",
+            "label": "Presenters",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_wj_presenters",
+            "label": "Presenters",
+            "name": "webinarjam_presenters",
+            "type": "repeater",
+            "instructions": "Webinar presenters/speakers (automatically populated from WebinarJam)",
+            "required": 0,
+            "layout": "block",
+            "button_label": "Add Presenter",
+            "sub_fields": [
+                {
+                    "key": "field_wj_presenter_name",
+                    "label": "Name",
+                    "name": "presenter_name",
+                    "type": "text",
+                    "required": 1,
+                    "wrapper": {
+                        "width": "50"
+                    }
+                },
+                {
+                    "key": "field_wj_presenter_email",
+                    "label": "Email",
+                    "name": "presenter_email",
+                    "type": "email",
+                    "required": 0,
+                    "wrapper": {
+                        "width": "50"
+                    }
+                },
+                {
+                    "key": "field_wj_presenter_photo",
+                    "label": "Photo",
+                    "name": "presenter_photo",
+                    "type": "image",
+                    "required": 0,
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "wrapper": {
+                        "width": "50"
+                    }
+                },
+                {
+                    "key": "field_wj_presenter_bio",
+                    "label": "Bio",
+                    "name": "presenter_bio",
+                    "type": "textarea",
+                    "required": 0,
+                    "rows": 3,
+                    "wrapper": {
+                        "width": "50"
+                    }
+                }
+            ]
+        },
+        {
+            "key": "field_wj_schedule_tab",
+            "label": "Schedule",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_wj_schedule",
+            "label": "Webinar Schedule",
+            "name": "webinarjam_schedule",
+            "type": "repeater",
+            "instructions": "Multiple scheduled dates for this webinar (automatically populated from WebinarJam)",
+            "required": 0,
+            "layout": "table",
+            "button_label": "Add Schedule",
+            "sub_fields": [
+                {
+                    "key": "field_wj_schedule_date",
+                    "label": "Date & Time",
+                    "name": "schedule_date",
+                    "type": "date_time_picker",
+                    "required": 1,
+                    "display_format": "Y-m-d H:i:s",
+                    "return_format": "Y-m-d H:i:s",
+                    "first_day": 1
+                },
+                {
+                    "key": "field_wj_schedule_timezone",
+                    "label": "Timezone",
+                    "name": "schedule_timezone",
+                    "type": "text",
+                    "required": 0,
+                    "default_value": "UTC"
+                },
+                {
+                    "key": "field_wj_schedule_duration",
+                    "label": "Duration (minutes)",
+                    "name": "schedule_duration",
+                    "type": "number",
+                    "required": 0,
+                    "min": 15,
+                    "max": 480,
+                    "step": 15,
+                    "default_value": 60
+                }
+            ]
+        },
+        {
+            "key": "field_wj_sync_settings_tab",
+            "label": "Sync Settings",
+            "type": "tab",
+            "placement": "top"
+        },
+        {
+            "key": "field_wj_sync_enabled",
+            "label": "Enable Auto-Sync",
+            "name": "webinarjam_sync_enabled",
+            "type": "true_false",
+            "instructions": "Allow this webinar to be automatically updated from WebinarJam",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "33"
+            }
+        },
+        {
+            "key": "field_wj_auto_complete",
+            "label": "Enable Auto-Complete",
+            "name": "webinarjam_auto_complete",
+            "type": "true_false",
+            "instructions": "Automatically complete course for attendees after webinar ends",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "33"
+            }
+        },
+        {
+            "key": "field_wj_notify_users",
+            "label": "Send Notifications",
+            "name": "webinarjam_notify_users",
+            "type": "true_false",
+            "instructions": "Send email notifications to registered users about status changes",
+            "default_value": 0,
+            "ui": 1,
+            "wrapper": {
+                "width": "34"
+            }
+        },
+        {
+            "key": "field_wj_last_attendance_check",
+            "label": "Last Attendance Check",
+            "name": "webinarjam_last_attendance_check",
+            "type": "date_time_picker",
+            "instructions": "Last time attendance was checked from WebinarJam",
+            "required": 0,
+            "readonly": 1,
+            "display_format": "Y-m-d H:i:s",
+            "return_format": "Y-m-d H:i:s",
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_wj_sync_log",
+            "label": "Sync Log",
+            "name": "webinarjam_sync_log",
+            "type": "textarea",
+            "instructions": "Log of sync activities (automatically updated)",
+            "required": 0,
+            "readonly": 1,
+            "rows": 5
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "sfwd-courses"
+            },
+            {
+                "param": "post_taxonomy",
+                "operator": "==",
+                "value": "course_type:webinar"
+            }
+        ]
+    ],
+    "menu_order": 1,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "WebinarJam integration fields for webinar courses"
+}

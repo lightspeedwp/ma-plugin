@@ -1,0 +1,44 @@
+{
+	"key": "taxonomy_speciality",
+	"title": "Speciality",
+	"taxonomy": "speciality",
+	"menu_order": 0,
+	"active": true,
+	"object_type": [
+		"sfwd_course",
+		"webinar",
+		"m24b2b_mag_issue",
+		"supplement",
+		"research_paper"
+	],
+	"public": true,
+	"publicly_queryable": true,
+	"hierarchical": true,
+	"show_ui": true,
+	"show_in_menu": true,
+	"show_in_nav_menus": true,
+	"show_in_rest": true,
+	"rest_base": "specialitys",
+	"rest_controller_class": "",
+	"show_tagcloud": true,
+	"show_in_quick_edit": true,
+	"show_admin_column": true,
+	"labels": {
+		"name": "Specialities",
+		"singular_name": "Speciality",
+		"menu_name": "Specialities",
+		"search_items": "Search Specialities",
+		"all_items": "All Specialities",
+		"edit_item": "Edit Speciality",
+		"update_item": "Update Speciality",
+		"add_new_item": "Add New Speciality",
+		"new_item_name": "New Speciality Name",
+		"parent_item": "Parent Speciality",
+		"parent_item_colon": "Parent Speciality:"
+	},
+	"rewrite": {
+		"slug": "speciality",
+		"with_front": true,
+		"hierarchical": true
+	}
+}

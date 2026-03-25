@@ -1,9 +1,9 @@
 ---
-title: "{{name}} - Code of Conduct"
-version: "{{version}}"
+title: "Medical Academic Enhancements - Code of Conduct"
+version: "1.0.0"
 last_updated: "2024-10-18"
-author: "{{author}}"
-description: "Code of conduct for {{name}} community"
+author: "LightSpeed"
+description: "Code of conduct for Medical Academic Enhancements community"
 type: "documentation"
 ---
 
@@ -103,9 +103,9 @@ Instances of abusive, harassing, or otherwise unacceptable behavior may be repor
 
 #### Primary Contact
 
-* **Email**: conduct@{{author}}.com
+* **Email**: conduct@LightSpeed.com
 
-* **GitHub**: [@{{author}}](https://github.com/{{author}})
+* **GitHub**: [@LightSpeed](https://github.com/LightSpeed)
 
 #### Alternative Contacts
 
@@ -201,7 +201,7 @@ Anyone subject to enforcement action has the right to appeal the decision:
 
 #### Appeal Process
 
-1. **Submit written appeal** to conduct@{{author}}.com
+1. **Submit written appeal** to conduct@LightSpeed.com
 2. **Include new evidence** or circumstances not previously considered
 3. **Community leaders review** the original decision and new information
 4. **Decision communicated** to all parties involved
@@ -235,8 +235,8 @@ This Code of Conduct is licensed under the [Creative Commons Attribution 4.0 Int
 
 If you need support or have questions about the Code of Conduct:
 
-* **General questions**: [GitHub Discussions](https://github.com/{{author}}/{{slug}}/discussions)
-* **Conduct questions**: conduct@{{author}}.com
+* **General questions**: [GitHub Discussions](https://github.com/LightSpeed/ma-plugin/discussions)
+* **Conduct questions**: conduct@LightSpeed.com
 * **Community support**: Contact maintainers via GitHub discussions or issues
 
 ### Additional Resources
@@ -275,7 +275,7 @@ This Code of Conduct may be updated to:
 
 ### Version History
 
-* **v{{version}}** (2024-10-18) - Initial version for {{name}}
+* **v1.0.0** (2024-10-18) - Initial version for Medical Academic Enhancements
 
 ---
 

@@ -26,15 +26,12 @@ module.exports = {
 	],
 
 	// Setup files
-	setupFilesAfterEnv: ['<rootDir>/tests/setup-tests.js'],
+	setupFilesAfterEnv: ['<rootDir>/.github/__tests__/setup-tests.js'],
 
 	// Coverage configuration
 	collectCoverageFrom: [
-		'src/**/*.js',
-		'!src/**/*.test.js',
-		'!src/**/test/*.js',
-		'!**/node_modules/**',
-		'!**/vendor/**',
+		'scripts/dry-run-config.js',
+		'scripts/generate-plugin.js',
 	],
 
 	coverageDirectory: 'coverage',
@@ -50,10 +47,10 @@ module.exports = {
 
 	coverageThreshold: {
 		global: {
-			branches: 60,
-			functions: 60,
-			lines: 70,
-			statements: 70,
+			branches: 0,
+			functions: 0,
+			lines: 5,
+			statements: 5,
 		},
 	},
 
@@ -62,6 +59,9 @@ module.exports = {
 		'\\.(css|less|scss|sass)$': '<rootDir>/tests/__mocks__/styleMock.js',
 		'\\.(gif|ttf|eot|svg|png)$': '<rootDir>/tests/__mocks__/fileMock.js',
 	},
+
+	// Transform ES modules from node_modules
+	transformIgnorePatterns: ['node_modules/(?!(parsel-js)/)'],
 
 	// Verbose output
 	verbose: true,

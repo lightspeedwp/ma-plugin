@@ -1,9 +1,14 @@
 /**
+ * @file QueryControls.js
+ * @description Component for controlling query parameters in the UI.
+ * @todo Add prop types and improve test coverage.
+ */
+/**
  * Query Controls Component
  *
  * Reusable query configuration controls for collection blocks.
  *
- * @package
+ * @package ma_plugin
  */
 
 import { __ } from '@wordpress/i18n';
@@ -40,67 +45,67 @@ export default function QueryControls({ query, onChange }) {
 
 	return (
 		<InspectorControls>
-			<PanelBody title={__('Query Settings', '{{textdomain}}')}>
+			<PanelBody title={__('Query Settings', 'ma-plugin')}>
 				<RangeControl
-					label={__('Number of Items', '{{textdomain}}')}
+					   label={__('Number of Items', 'ma-plugin')}
 					value={perPage}
 					onChange={(value) => updateQuery({ perPage: value })}
 					min={1}
 					max={24}
 				/>
 				<SelectControl
-					label={__('Order By', '{{textdomain}}')}
+					   label={__('Order By', 'ma-plugin')}
 					value={orderBy}
 					options={[
-						{ label: __('Date', '{{textdomain}}'), value: 'date' },
-						{
-							label: __('Title', '{{textdomain}}'),
-							value: 'title',
-						},
-						{
-							label: __('Modified', '{{textdomain}}'),
-							value: 'modified',
-						},
-						{
-							label: __('Random', '{{textdomain}}'),
-							value: 'rand',
-						},
-						{
-							label: __('Menu Order', '{{textdomain}}'),
-							value: 'menu_order',
-						},
+						   { label: __('Date', 'ma-plugin'), value: 'date' },
+						   {
+							   label: __('Title', 'ma-plugin'),
+							   value: 'title',
+						   },
+						   {
+							   label: __('Modified', 'ma-plugin'),
+							   value: 'modified',
+						   },
+						   {
+							   label: __('Random', 'ma-plugin'),
+							   value: 'rand',
+						   },
+						   {
+							   label: __('Menu Order', 'ma-plugin'),
+							   value: 'menu_order',
+						   },
 					]}
 					onChange={(value) => updateQuery({ orderBy: value })}
 				/>
 				<SelectControl
-					label={__('Order', '{{textdomain}}')}
+					   label={__('Order', 'ma-plugin')}
 					value={order}
 					options={[
-						{
-							label: __('Descending', '{{textdomain}}'),
-							value: 'desc',
-						},
-						{
-							label: __('Ascending', '{{textdomain}}'),
-							value: 'asc',
-						},
+						   {
+							   label: __('Descending', 'ma-plugin'),
+							   value: 'desc',
+						   },
+						   {
+							   label: __('Ascending', 'ma-plugin'),
+							   value: 'asc',
+						   },
 					]}
 					onChange={(value) => updateQuery({ order: value })}
 				/>
 				<ToggleControl
-					label={__('Featured Only', '{{textdomain}}')}
+					   label={__('Featured Only', 'ma-plugin')}
 					checked={featured}
 					onChange={(value) => updateQuery({ featured: value })}
 				/>
 			</PanelBody>
 
-			<PanelBody
-				title={__('Filter by Taxonomy', '{{textdomain}}')}
-				initialOpen={false}
-			>
+			   <PanelBody
+				   title={__('Filter by Taxonomy', 'ma-plugin')}
+				   initialOpen={false}
+			   >
 				<TaxonomyFilter
-					taxonomy="example-plugin_category"
-					value={taxQuery?.['example-plugin_category'] || []}
+					   taxonomy="_category"
+					   value={taxQuery?.['_category'] || []}
 					onChange={(termIds) =>
 						updateQuery({
 							taxQuery: termIds.length
@@ -108,7 +113,7 @@ export default function QueryControls({ query, onChange }) {
 								: null,
 						})
 					}
-					label={__('Categories', '{{textdomain}}')}
+					   label={__('Categories', 'ma-plugin')}
 				/>
 			</PanelBody>
 		</InspectorControls>

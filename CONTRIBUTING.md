@@ -1,15 +1,15 @@
 ---
-title: "{{name}} - Contributing Guidelines"
-version: "{{version}}"
+title: "Medical Academic Enhancements - Contributing Guidelines"
+version: "1.0.0"
 last_updated: "2024-10-18"
-author: "{{author}}"
-description: "Guidelines for contributing to {{name}}"
+author: "LightSpeed"
+description: "Guidelines for contributing to Medical Academic Enhancements"
 type: "documentation"
 ---
 
-# Contributing to {{name}}
+# Contributing to Medical Academic Enhancements
 
-Thank you for your interest in contributing to {{name}}! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to Medical Academic Enhancements! This document provides guidelines and information for contributors.
 
 ## Table of Contents
 
@@ -24,7 +24,7 @@ Thank you for your interest in contributing to {{name}}! This document provides 
 
 ## Code of Conduct
 
-This project adheres to a Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to {{author}}.
+This project adheres to a Code of Conduct. By participating, you are expected to uphold this code. Please report unacceptable behavior to LightSpeed.
 
 ## Getting Started
 
@@ -78,11 +78,11 @@ We welcome various types of contributions:
 
 ```bash
 # Fork the repository on GitHub, then clone your fork
-git clone https://github.com/YOUR-USERNAME/{{slug}}.git
-cd {{slug}}
+git clone https://github.com/YOUR-USERNAME/.git
+cd 
 
 # Add upstream remote
-git remote add upstream https://github.com/{{author}}/{{slug}}.git
+git remote add upstream https://github.com/LightSpeed/.git
 ```
 
 ### 2. Install Dependencies
@@ -144,7 +144,7 @@ Example:
  * @param WP_Block $block      Block instance.
  * @return string Rendered block HTML.
  */
-function {{namespace}}_{{slug|snakeCase}}_render_callback( array $attributes, string $content, WP_Block $block ): string {
+function ma_plugin_ma_plugin_render_callback( array $attributes, string $content, WP_Block $block ): string {
     $content_text = wp_kses_post( $attributes['content'] ?? '' );
 
     if ( empty( $content_text ) ) {
@@ -188,7 +188,7 @@ export default function Edit( { attributes, setAttributes } ) {
             <RichText
                 value={ content }
                 onChange={ ( newContent ) => setAttributes( { content: newContent } ) }
-                placeholder={ __( 'Enter content...', '{{textdomain}}' ) }
+                placeholder={ __( 'Enter content...', 'ma-plugin' ) }
             />
         </div>
     );
@@ -206,7 +206,7 @@ export default function Edit( { attributes, setAttributes } ) {
 Example:
 
 ```scss
-.wp-block-{{namespace}}-{{slug}} {
+.wp-block-ma_plugin-webinar {
     &__content {
         padding: var(--wp--preset--spacing--medium);
         border: 1px solid var(--wp--preset--color--border);
@@ -395,7 +395,7 @@ Outstanding contributors may be invited to become:
 
 ### Questions About Contributing
 
-- **General questions** - Use [GitHub Discussions](https://github.com/{{author}}/{{slug}}/discussions)
+- **General questions** - Use [GitHub Discussions](https://github.com/LightSpeed//discussions)
 - **Specific issues** - Comment on relevant GitHub issues
 - **Development help** - See [SUPPORT.md](SUPPORT.md) for channels
 - **Urgent matters** - Contact maintainers directly
@@ -410,6 +410,6 @@ Outstanding contributors may be invited to become:
 
 ## License
 
-By contributing to {{name}}, you agree that your contributions will be licensed under the same license as the project ({{license}}).
+By contributing to Medical Academic Enhancements, you agree that your contributions will be licensed under the same license as the project (GPL-2.0-or-later).
 
-Thank you for contributing to {{name}}! 🎉
+Thank you for contributing to Medical Academic Enhancements! 🎉

@@ -1,5 +1,5 @@
 <?php
-namespace {{namespace|lowerCase}}\classes;
+namespace ma_plugin\classes;
 
 /**
  * SCF Local JSON Configuration.
@@ -8,11 +8,10 @@ namespace {{namespace|lowerCase}}\classes;
  * storage and loading. This enables version control of field groups
  * and improves performance by reducing database queries.
  *
- * @package example_plugin
+ * @package ma_plugin
  * @see https://github.com/WordPress/secure-custom-fields/blob/trunk/docs/tutorials/local-json.md
+ * @since 1.0.0
  */
-
-namespace example_plugin\classes;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -22,6 +21,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * SCF Local JSON class.
  *
  * Manages Local JSON save and load paths for SCF field groups.
+ *
+ * @since 1.0.0
  */
 class SCF_JSON {
 
@@ -34,15 +35,25 @@ class SCF_JSON {
 
 	/**
 	 * Constructor.
+	 *
+	 * @since 1.0.0
 	 */
 	public function __construct() {
-		$this->json_path = EXAMPLE_PLUGIN_PLUGIN_DIR . 'scf-json';
+		$this->json_path = MA_PLUGIN_DIR . 'scf-json';
 
-		// Set JSON save location.
-		add_filter( 'acf/settings/save_json', array( $this, 'set_save_path' ) );
+		// Set JSON save location for field groups.
+		//add_filter( 'acf/settings/save_json', array( $this, 'set_save_path' ) );
 
-		// Set JSON load locations.
+		// Set JSON load locations for field groups.
 		add_filter( 'acf/settings/load_json', array( $this, 'add_load_path' ) );
+
+		// Set save/load path for post types.
+		//add_filter( 'acf/settings/save_json/type=acf-post-type', array( $this, 'set_save_path' ) );
+		add_filter( 'acf/json/load_paths', array( $this, 'add_post_type_load_paths' ) );
+
+		// Set save/load path for taxonomies.
+		//add_filter( 'acf/settings/save_json/type=acf-taxonomy', array( $this, 'set_save_path' ) );
+		add_filter( 'acf/json/load_paths', array( $this, 'add_taxonomy_load_paths' ) );
 
 		// Ensure JSON directory exists.
 		$this->maybe_create_directory();
@@ -56,6 +67,7 @@ class SCF_JSON {
 	 *
 	 * @param string $path Default save path.
 	 * @return string Modified save path.
+	 * @since 1.0.0
 	 */
 	public function set_save_path( $path ) {
 		return $this->json_path;
@@ -69,6 +81,7 @@ class SCF_JSON {
 	 *
 	 * @param array $paths Existing load paths.
 	 * @return array Modified load paths.
+	 * @since 1.0.0
 	 */
 	public function add_load_path( $paths ) {
 		// Remove the default path if it exists (optional).
@@ -94,9 +107,38 @@ class SCF_JSON {
 	}
 
 	/**
+	 * Add custom load paths for post types.
+	 *
+	 * Ensures post type JSON files from this plugin are loaded by SCF.
+	 *
+	 * @param array $paths Existing load paths.
+	 * @return array Modified load paths.
+	 * @since 1.0.0
+	 */
+	public function add_post_type_load_paths( $paths ) {
+		$paths[] = $this->json_path;
+		return $paths;
+	}
+
+	/**
+	 * Add custom load paths for taxonomies.
+	 *
+	 * Ensures taxonomy JSON files from this plugin are loaded by SCF.
+	 *
+	 * @param array $paths Existing load paths.
+	 * @return array Modified load paths.
+	 * @since 1.0.0
+	 */
+	public function add_taxonomy_load_paths( $paths ) {
+		$paths[] = $this->json_path;
+		return $paths;
+	}
+
+	/**
 	 * Get the JSON directory path.
 	 *
 	 * @return string JSON directory path.
+	 * @since 1.0.0
 	 */
 	public function get_json_path() {
 		return $this->json_path;
@@ -106,6 +148,7 @@ class SCF_JSON {
 	 * Get all JSON files in the directory.
 	 *
 	 * @return array Array of JSON file paths.
+	 * @since 1.0.0
 	 */
 	public function get_json_files() {
 		$files = glob( $this->json_path . '/*.json' );
@@ -121,6 +164,7 @@ class SCF_JSON {
 	 *
 	 * @param string $file_path Path to the JSON file.
 	 * @return array{valid: bool, errors: array} Validation result.
+	 * @since 1.0.0
 	 */
 	public function validate_json_file( $file_path ) {
 		$result = array(
@@ -202,6 +246,7 @@ class SCF_JSON {
 	 * Validate all JSON files in the directory.
 	 *
 	 * @return array Array of validation results keyed by filename.
+	 * @since 1.0.0
 	 */
 	public function validate_all_json_files() {
 		$results = array();

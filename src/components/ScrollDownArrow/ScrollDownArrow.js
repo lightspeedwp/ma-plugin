@@ -1,4 +1,9 @@
 /**
+ * @file ScrollDownArrow.js
+ * @description Component for a scroll-down arrow indicator.
+ * @todo Add animation and ARIA attributes for accessibility.
+ */
+/**
  * ScrollDownArrow Component
  *
  * Animated arrow with circle background that scrolls to next section on click.
@@ -12,7 +17,7 @@
  * - Smooth scrolling to target section
  * - Screen reader announcements
  *
- * @package
+ * @package ma_plugin
  */
 
 import { useCallback } from '@wordpress/element';
@@ -35,7 +40,7 @@ import './style.scss';
  */
 export default function ScrollDownArrow({
 	targetSectionId,
-	ariaLabel = __('Scroll to next section', '{{textdomain}}'),
+	ariaLabel = __('Scroll to next section', 'ma-plugin'),
 	className = '',
 	onClick,
 }) {
@@ -71,7 +76,7 @@ export default function ScrollDownArrow({
 			// Announce to screen readers
 			const announcement = targetSectionId
 				? `Scrolled to ${targetSectionId}`
-				: __('Scrolled to next section', '{{textdomain}}');
+				   : __('Scrolled to next section', 'ma-plugin');
 			const ariaLive = document.createElement('div');
 			ariaLive.setAttribute('aria-live', 'polite');
 			ariaLive.setAttribute('class', 'screen-reader-text');
@@ -82,13 +87,13 @@ export default function ScrollDownArrow({
 	}, [targetSectionId, onClick]);
 
 	return (
-		<Button
-			className={`example_plugin-scroll-down-arrow ${className}`}
-			onClick={handleClick}
-			icon={chevronDown}
-			label={ariaLabel}
-			aria-label={ariaLabel}
-			showTooltip={false}
-		/>
+		   <Button
+			   className={`ma_plugin-scroll-down-arrow ${className}`}
+			   onClick={handleClick}
+			   icon={chevronDown}
+			   label={ariaLabel}
+			   aria-label={ariaLabel}
+			   showTooltip={false}
+		   />
 	);
 }

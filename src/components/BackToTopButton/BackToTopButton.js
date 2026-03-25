@@ -1,0 +1,39 @@
+import { useEffect } from 'react';
+
+/**
+ * Medical Academic Enhancements BackToTopButton
+ * Accessible scroll-to-top button for frontend and editor.
+ * Uses mustache placeholders for class and text.
+ * @param root0
+ * @param root0.label
+ */
+export default function BackToTopButton({
+	label = __('Back to top', 'ma-plugin'),
+}) {
+	useEffect(() => {
+		const handleScroll = () => {
+			const btn = document.getElementById('ma_plugin-back-to-top');
+			if (btn) {
+				btn.style.display = window.scrollY > 200 ? 'block' : 'none';
+			}
+		};
+		window.addEventListener('scroll', handleScroll);
+		return () => window.removeEventListener('scroll', handleScroll);
+	}, []);
+
+	const scrollToTop = () => {
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
+
+	return (
+		<button
+			id="ma_plugin-back-to-top"
+			className="ma_plugin-back-to-top"
+			style={{ display: 'none' }}
+			onClick={scrollToTop}
+			aria-label={label}
+		>
+			<span aria-hidden="true">↑</span> {label}
+		</button>
+	);
+}

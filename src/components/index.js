@@ -1,7 +1,7 @@
 /**
  * Shared Components
  *
- * @package
+ * @package ma_plugin
  */
 
 export { default as Slider } from './Slider';

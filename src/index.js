@@ -1,5 +1,5 @@
 /**
- * Example Plugin Plugin - Main Entry Point
+ * Medical Academic Enhancements Plugin - Main Entry Point
  *
  * Registers all blocks from the blocks directory.
  *
@@ -7,10 +7,12 @@
  */
 
 // Import blocks.
-import './blocks/example-plugin-card';
-import './blocks/example-plugin-collection';
-import './blocks/example-plugin-slider';
-import './blocks/example-plugin-featured';
+import './blocks/digital_magazine-collection';
+import './blocks/digital_magazine-field-display';
+import './blocks/digital_magazine-slider';
+import './blocks/webinar-collection';
+import './blocks/webinar-field-display';
+import './blocks/webinar-slider';
 
 // Import global styles.
 import './scss/style.scss';
