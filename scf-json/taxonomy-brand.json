@@ -6,7 +6,7 @@
         "active": true,
         "taxonomy": "ma_brand",
         "object_type": [
-            "digital_magazine",
+            "m24b2b_mag_issue",
             "post",
             "research-paper",
             "sfwd-courses",
