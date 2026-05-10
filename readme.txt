@@ -246,3 +246,4 @@ We maintain comprehensive test coverage:
 = Accessibility =
 
 This plugin aims to meet WCAG 2.1 Level AA standards. If you encounter any accessibility issues, please [report them]({{github_url}}/issues).
+
