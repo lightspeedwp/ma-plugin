@@ -1,0 +1,26 @@
+
+# Copyright (C) LightSpeed
+# This file is distributed under the same license as the Medical Academic Enhancements package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Medical Academic Enhancements 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/LightSpeed/ma-plugin/issues\n"
+"POT-Creation-Date: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: WP-CLI\n"
+"X-Domain: ma-plugin\n"
+
+#. Plugin Name of the plugin
+msgid "Medical Academic Enhancements"
+msgstr ""
+
+#. Description of the plugin
+msgid "WordPress content model for Medical Academic CPD platform with custom post types for articles, webinars, magazines, research papers, and learning journeys with comprehensive taxonomy and field support."
+msgstr ""
+
+#. Author of the plugin
+msgid "LightSpeed"
+msgstr ""

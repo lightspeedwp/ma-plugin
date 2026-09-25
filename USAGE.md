@@ -1,21 +1,21 @@
 ---
-title: "{{name}} - Usage Guide"
-version: "{{version}}"
+title: "Medical Academic Enhancements - Usage Guide"
+version: "1.0.0"
 last_updated: "2024-10-18"
-author: "{{author}}"
-description: "User guide for {{name}}"
+author: "LightSpeed"
+description: "User guide for Medical Academic Enhancements"
 type: "documentation"
 ---
 
 # Usage Guide
 
-This guide explains how to use the {{name}} in your WordPress site.
+This guide explains how to use the Medical Academic Enhancements in your WordPress site.
 
 ## Installation
 
 ### From WordPress Admin
 
-1. Download the plugin ZIP file from the [releases page](https://github.com/{{author}}/{{slug}}/releases)
+1. Download the plugin ZIP file from the [releases page](https://github.com/LightSpeed//releases)
 2. In your WordPress admin, go to **Plugins > Add New**
 3. Click **Upload Plugin** and select the ZIP file
 4. Click **Install Now** and then **Activate**
@@ -23,24 +23,24 @@ This guide explains how to use the {{name}} in your WordPress site.
 ### Manual Installation
 
 1. Download and extract the plugin files
-2. Upload the `{{slug}}` folder to `/wp-content/plugins/`
+2. Upload the `` folder to `/wp-content/plugins/`
 3. Activate the plugin through the **Plugins** menu in WordPress
 
 ### Via Composer
 
 ```bash
-composer require {{author}}/{{slug}}
+composer require LightSpeed/
 ```
 
 ## Getting Started
 
-Once activated, the {{name}} blocks will be available in the WordPress block editor.
+Once activated, the Medical Academic Enhancements blocks will be available in the WordPress block editor.
 
 ### Adding Blocks
 
 1. **Open the block editor** for any post or page
 2. **Click the (+) button** to add a new block
-3. **Search for "{{name}}"** or find blocks in the Widgets category
+3. **Search for "Medical Academic Enhancements"** or find blocks in the Widgets category
 4. **Click to insert** the block
 
 ### Basic Configuration
@@ -100,17 +100,17 @@ You can add custom styles using WordPress's Additional CSS feature:
 
 ```css
 /* Target the block wrapper */
-.wp-block-{{namespace}}-{{block-slug}} {
+.wp-block-ma_plugin-webinar {
     /* Your custom styles */
 }
 
 /* Target the content area */
-.wp-block-{{namespace}}-{{block-slug}}__content {
+.wp-block-ma_plugin-webinar__content {
     /* Content-specific styles */
 }
 
 /* Alignment variations */
-.wp-block-{{namespace}}-{{block-slug}}.has-text-align-left {
+.wp-block-ma_plugin-webinar.has-text-align-left {
     /* Left-aligned styles */
 }
 ```
@@ -127,7 +127,7 @@ Create reusable patterns with the blocks:
 
 ### Accessibility Features
 
-The {{name}} blocks are built with accessibility in mind:
+The Medical Academic Enhancements blocks are built with accessibility in mind:
 
 #### Keyboard Navigation
 
@@ -198,7 +198,7 @@ The blocks are optimized for performance:
 If you encounter issues:
 
 1. **Check the FAQ** below for common solutions
-2. **Search existing issues** on [GitHub](https://github.com/{{author}}/{{slug}}/issues)
+2. **Search existing issues** on [GitHub](https://github.com/LightSpeed/ma-plugin/issues)
 3. **Create a new issue** with detailed information
 4. **Contact support** - see [SUPPORT.md](../SUPPORT.md) for options
 
@@ -239,7 +239,7 @@ The blocks are designed for the block editor (Gutenberg). For Classic Editor sup
 
 ### Is it compatible with my theme?
 
-The blocks are designed to work with any properly coded WordPress theme. If you experience compatibility issues, please [report them](https://github.com/{{author}}/{{slug}}/issues).
+The blocks are designed to work with any properly coded WordPress theme. If you experience compatibility issues, please [report them](https://github.com/LightSpeed/ma-plugin/issues).
 
 ### How do I update the plugin?
 
@@ -258,25 +258,25 @@ Yes! See [CONTRIBUTING.md](../CONTRIBUTING.md) for information on how to contrib
 ### Basic Usage
 
 ```html
-<!-- wp:{{namespace}}/{{block-slug}} {"content":"Hello World","alignment":"center"} -->
-<div class="wp-block-{{namespace}}-{{block-slug}} has-text-align-center">
-    <div class="wp-block-{{namespace}}-{{block-slug}}__content">
+<!-- wp:ma_plugin/webinar {"content":"Hello World","alignment":"center"} -->
+<div class="wp-block-ma_plugin-webinar has-text-align-center">
+    <div class="wp-block-ma_plugin-webinar__content">
         <p>Hello World</p>
     </div>
 </div>
-<!-- /wp:{{namespace}}/{{block-slug}} -->
+<!-- /wp:ma_plugin/webinar -->
 ```
 
 ### With Custom Colors
 
 ```html
-<!-- wp:{{namespace}}/{{block-slug}} {"content":"Styled content","textColor":"primary","backgroundColor":"secondary"} -->
-<div class="wp-block-{{namespace}}-{{block-slug}} has-primary-color has-secondary-background-color has-text-color has-background">
-    <div class="wp-block-{{namespace}}-{{block-slug}}__content">
+<!-- wp:ma_plugin/webinar {"content":"Styled content","textColor":"primary","backgroundColor":"secondary"} -->
+<div class="wp-block-ma_plugin-webinar has-primary-color has-secondary-background-color has-text-color has-background">
+    <div class="wp-block-ma_plugin-webinar__content">
         <p>Styled content</p>
     </div>
 </div>
-<!-- /wp:{{namespace}}/{{block-slug}} -->
+<!-- /wp:ma_plugin/webinar -->
 ```
 
 ### In a Pattern
@@ -284,13 +284,13 @@ Yes! See [CONTRIBUTING.md](../CONTRIBUTING.md) for information on how to contrib
 ```html
 <!-- wp:group {"layout":{"type":"constrained"}} -->
 <div class="wp-block-group">
-    <!-- wp:{{namespace}}/{{block-slug}} {"content":"Pattern Example","alignment":"center"} -->
-    <div class="wp-block-{{namespace}}-{{block-slug}} has-text-align-center">
-        <div class="wp-block-{{namespace}}-{{block-slug}}__content">
+    <!-- wp:ma_plugin/webinar {"content":"Pattern Example","alignment":"center"} -->
+    <div class="wp-block-ma_plugin-webinar has-text-align-center">
+        <div class="wp-block-ma_plugin-webinar__content">
             <p>Pattern Example</p>
         </div>
     </div>
-    <!-- /wp:{{namespace}}/{{block-slug}} -->
+    <!-- /wp:ma_plugin/webinar -->
 </div>
 <!-- /wp:group -->
 ```

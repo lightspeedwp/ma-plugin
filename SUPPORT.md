@@ -1,15 +1,15 @@
 ---
-title: "{{name}} - Support Guide"
-version: "{{version}}"
+title: "Medical Academic Enhancements - Support Guide"
+version: "1.0.0"
 last_updated: "2024-10-18"
-author: "{{author}}"
-description: "Support resources for {{name}}"
+author: "LightSpeed"
+description: "Support resources for Medical Academic Enhancements"
 type: "documentation"
 ---
 
 # Support
 
-Need help with {{name}}? This guide provides various support options and resources.
+Need help with Medical Academic Enhancements? This guide provides various support options and resources.
 
 ## Quick Help
 
@@ -48,7 +48,7 @@ Need help with {{name}}? This guide provides various support options and resourc
 
 **Best for**: Bug reports, feature requests, technical issues
 
-* **Create an issue**: [{{slug}} Issues](https://github.com/{{author}}/{{slug}}/issues)
+* **Create an issue**: [ Issues](https://github.com/LightSpeed//issues)
 * **Search existing issues**: Check if your issue already exists
 * **Follow templates**: Use the provided issue templates
 * **Be specific**: Provide detailed information and reproduction steps
@@ -89,7 +89,7 @@ Any other context about the problem here.
 
 **Best for**: Questions, ideas, general discussion
 
-* **Ask questions**: [{{slug}} Discussions](https://github.com/{{author}}/{{slug}}/discussions)
+* **Ask questions**: [ Discussions](https://github.com/LightSpeed//discussions)
 * **Share ideas**: Discuss potential features
 * **Community help**: Get help from other users
 * **Show and tell**: Share how you're using the plugin
@@ -98,7 +98,7 @@ Any other context about the problem here.
 
 **Best for**: General WordPress questions, plugin installation help
 
-* **Plugin support forum**: [WordPress.org {{slug}} Forum](https://wordpress.org/support/plugin/{{slug}}/)
+* **Plugin support forum**: [WordPress.org  Forum](https://wordpress.org/support/plugin//)
 * **Community driven**: Volunteers provide help
 * **Public archive**: Searchable for future users
 * **WordPress focused**: WordPress-specific issues
@@ -122,7 +122,7 @@ For faster response times and dedicated support, consider:
 * **Custom development** - Hire the maintainer for custom features
 * **Consulting services** - WordPress optimization and development
 
-Contact {{author}} for commercial support options.
+Contact LightSpeed for commercial support options.
 
 ### Enterprise Support
 
@@ -236,13 +236,13 @@ A: Yes, the plugin is built with accessibility in mind and follows WCAG guidelin
 A: Absolutely! Check the repository for contribution guidelines.
 
 **Q: How do I report a bug?**
-A: Create an issue on [GitHub](https://github.com/{{author}}/{{slug}}/issues) with detailed reproduction steps.
+A: Create an issue on [GitHub](https://github.com/LightSpeed/ma-plugin/issues) with detailed reproduction steps.
 
 **Q: Can I request features?**
-A: Yes, feature requests are welcome on [GitHub Discussions](https://github.com/{{author}}/{{slug}}/discussions).
+A: Yes, feature requests are welcome on [GitHub Discussions](https://github.com/LightSpeed/ma-plugin/discussions).
 
 **Q: Is the code open source?**
-A: Yes, the plugin is open source under the {{license}} license.
+A: Yes, the plugin is open source under the GPL-2.0-or-later license.
 
 ### Troubleshooting
 
@@ -264,7 +264,7 @@ A: Deactivate the plugin immediately, then report the issue with your WordPress 
 
 **Important**: Do not report security vulnerabilities in public issues.
 
-1. **Contact privately**: Email security concerns to {{author}}
+1. **Contact privately**: Email security concerns to LightSpeed
 2. **Provide details**: Include reproduction steps and impact assessment
 3. **Coordinated disclosure**: Work with us to fix and announce responsibly
 4. **Credit given**: Security researchers will be credited (if desired)
@@ -280,15 +280,15 @@ A: Deactivate the plugin immediately, then report the issue with your WordPress 
 
 ### Maintainer
 
-* **GitHub**: [@{{author}}](https://github.com/{{author}})
-* **Website**: [{{author}} Website](https://{{author}}.com)
+* **GitHub**: [@LightSpeed](https://github.com/LightSpeed)
+* **Website**: [LightSpeed Website](https://LightSpeed.com)
 * **Email**: Available for commercial/enterprise inquiries
 
 ### Project Links
 
-* **GitHub Repository**: [{{author}}/{{slug}}](https://github.com/{{author}}/{{slug}})
-* **WordPress.org Plugin**: [{{slug}}](https://wordpress.org/plugins/{{slug}}/)
-* **Documentation**: [GitHub Pages](https://{{author}}.github.io/{{slug}}/)
+* **GitHub Repository**: [LightSpeed/](https://github.com/LightSpeed/)
+* **WordPress.org Plugin**: [](https://wordpress.org/plugins//)
+* **Documentation**: [GitHub Pages](https://LightSpeed.github.io//)
 
 ## Contributing to Support
 
@@ -315,4 +315,4 @@ You can help improve support by:
 * Add features requested by the community
 * Improve accessibility and usability
 
-Thank you for using {{name}}! We're here to help you succeed. 🚀
+Thank you for using Medical Academic Enhancements! We're here to help you succeed. 🚀

@@ -215,12 +215,12 @@ When `fitText` is enabled:
 {
   "$schema": "https://schemas.wp.org/wp/6.9/block.json",
   "apiVersion": 3,
-  "name": "{{namespace}}/{{block-name}}",
+  "name": "ma_plugin/{{block-name}}",
   "title": "{{block-title}}",
-  "category": "{{slug}}",
+  "category": "ma-plugin",
   "description": "{{block-description}}",
   "icon": "{{block-icon}}",
-  "keywords": ["{{slug}}", "block"],
+  "keywords": ["ma-plugin", "block"],
 
   "attributes": {
     "title": {
@@ -266,13 +266,13 @@ When `fitText` is enabled:
   },
 
   "selectors": {
-    "root": ".{{namespace}}-{{block-name}}",
+    "root": ".ma_plugin-{{block-name}}",
     "color": {
-      "text": ".{{namespace}}-{{block-name}}__text",
-      "background": ".{{namespace}}-{{block-name}}"
+      "text": ".ma_plugin-{{block-name}}__text",
+      "background": ".ma_plugin-{{block-name}}"
     },
     "typography": {
-      "fontSize": ".{{namespace}}-{{block-name}}__title"
+      "fontSize": ".ma_plugin-{{block-name}}__title"
     }
   }
 }
@@ -284,8 +284,8 @@ When `fitText` is enabled:
 {
   "$schema": "https://schemas.wp.org/wp/6.9/block.json",
   "apiVersion": 3,
-  "name": "{{namespace}}/{{collection-block}}",
-  "title": "{{name}} Collection",
+  "name": "ma_plugin/{{collection-block}}",
+  "title": "Medical Academic Enhancements Collection",
 
   "attributes": {
     "query": {
@@ -327,8 +327,8 @@ When `fitText` is enabled:
 {
   "$schema": "https://schemas.wp.org/wp/6.9/block.json",
   "apiVersion": 3,
-  "name": "{{namespace}}/{{slider-block}}",
-  "title": "{{name}} Slider",
+  "name": "ma_plugin/{{slider-block}}",
+  "title": "Medical Academic Enhancements Slider",
 
   "attributes": {
     "sliderHeight": {
@@ -390,12 +390,12 @@ if ( isset( $attributes['style']['typography']['fitText'] ) && $attributes['styl
 ### CSS Support
 
 ```css
-.wp-block-{{namespace}}-{{block}} {
+.wp-block-ma_plugin- {
     /* FitText automatically handles sizing */
     /* Respects theme.json typography settings */
 }
 
-.wp-block-{{namespace}}-{{block}}.has-fit-text {
+.wp-block-ma_plugin-.has-fit-text {
     /* User enabled fit-text via UI */
     resize: both;
 }

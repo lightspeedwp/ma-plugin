@@ -1,15 +1,15 @@
 ---
-title: "{{name}} - Security Policy"
-version: "{{version}}"
+title: "Medical Academic Enhancements - Security Policy"
+version: "1.0.0"
 last_updated: "2024-10-18"
-author: "{{author}}"
-description: "Security policy and guidelines for {{name}}"
+author: "LightSpeed"
+description: "Security policy and guidelines for Medical Academic Enhancements"
 type: "documentation"
 ---
 
 # Security Policy
 
-The security of {{name}} is a top priority. This document outlines our security practices, how to report vulnerabilities, and what users can expect from our security process.
+The security of Medical Academic Enhancements is a top priority. This document outlines our security practices, how to report vulnerabilities, and what users can expect from our security process.
 
 ## Supported Versions
 
@@ -17,7 +17,7 @@ We provide security updates for the following versions:
 
 | Version | Supported          |
 | ------- | ------------------ |
-| {{version}} (latest) | ✅ |
+| 1.0.0 (latest) | ✅ |
 | 1.x.x   | ✅ |
 | < 1.0   | ❌ |
 
@@ -132,14 +132,14 @@ We take the following types of vulnerabilities seriously:
 
 #### Preferred Method: Private GitHub Security Advisory
 
-1. Go to the [Security tab](https://github.com/{{author}}/{{slug}}/security) of our repository
+1. Go to the [Security tab](https://github.com/LightSpeed//security) of our repository
 2. Click "Report a vulnerability"
 3. Fill out the security advisory form with details
 4. Submit the report
 
 #### Alternative Method: Email
 
-Send security reports to: **security@{{author}}.com**
+Send security reports to: **security@LightSpeed.com**
 
 ### What to Include
 
@@ -321,9 +321,9 @@ The plugin complies with:
 
 ### Security Team
 
-* **Security Email**: security@{{author}}.com
-* **GitHub Security**: [Security Tab](https://github.com/{{author}}/{{slug}}/security)
-* **Maintainer**: [@{{author}}](https://github.com/{{author}})
+* **Security Email**: security@LightSpeed.com
+* **GitHub Security**: [Security Tab](https://github.com/LightSpeed//security)
+* **Maintainer**: [@LightSpeed](https://github.com/LightSpeed)
 
 ### Security Resources
 
@@ -334,7 +334,7 @@ The plugin complies with:
 
 ## Acknowledgments
 
-We thank the security researchers and community members who help keep {{name}} secure:
+We thank the security researchers and community members who help keep Medical Academic Enhancements secure:
 
 * Security researchers who responsibly disclose vulnerabilities
 * WordPress security team for platform security

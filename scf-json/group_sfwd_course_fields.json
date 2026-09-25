@@ -1,0 +1,38 @@
+{
+    "key": "group_sfwd_course_fields",
+    "title": "Sfwd Course Fields",
+    "fields": [
+        {
+            "key": "field_sfwd_course_subtitle",
+            "label": "Subtitle",
+            "name": "subtitle",
+            "type": "textarea",
+            "instructions": "1-2 sentence summary of the article",
+            "required": 1
+        },
+        {
+            "key": "field_sfwd_course_related_articles",
+            "label": "Related Articles",
+            "name": "related_articles",
+            "type": "relationship",
+            "instructions": "Optional, max 3 related articles",
+            "required": 0
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "sfwd_course"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true
+}

@@ -1,0 +1,9 @@
+/**
+ * Digital Magazine Field Display Block - Frontend Styles
+ *
+ * @package ma_plugin
+ */
+.wp-block-ma-plugin-digital-magazine-field-display {
+  gap: var(--wp--preset--spacing--20);
+}
+/*# sourceMappingURL=style.css.map */

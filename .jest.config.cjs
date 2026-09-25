@@ -1,8 +1,8 @@
-// Jest configuration for {{name}}
+// Jest configuration for Medical Academic Enhancements
 module.exports = {
 	...require( '@wordpress/jest-preset-default' ),
 	testEnvironment: 'jsdom',
-	setupFilesAfterEnv: [ '<rootDir>/tests/setup-tests.js' ],
+	setupFilesAfterEnv: [ '<rootDir>/.github/__tests__/setup-tests.js' ],
 	moduleNameMapper: {
 		'\\.(css|scss)$': 'identity-obj-proxy',
 	},

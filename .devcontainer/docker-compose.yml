@@ -32,7 +32,7 @@ services:
         define('SAVEQUERIES', true);
     volumes:
       - wordpress-data:/var/www/html
-      - ..:/var/www/html/wp-content/plugins/{{slug}}:cached
+      - ..:/var/www/html/wp-content/plugins/ma-plugin:cached
     networks:
       - wordpress-network
     depends_on:

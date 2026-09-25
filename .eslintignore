@@ -7,7 +7,10 @@ node_modules
 build
 dist
 
-# Log files
+# Generated artifact directories
+generated-plugins
+tmp
+logs/
 
 # Vendor directories
 vendor
@@ -19,3 +22,6 @@ test-results
 
 # Bin scripts (use different linting rules)
 bin/
+
+# Scripts directory (contains CLI tools with console output)
+scripts/

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<ruleset name="{{name}} Coding Standards">
-	<description>Coding standards for {{name}} WordPress plugin.</description>
+<ruleset name="Medical Academic Enhancements Coding Standards">
+	<description>Coding standards for Medical Academic Enhancements WordPress plugin.</description>
 
 	<!-- What to scan -->
 	<file>.</file>
@@ -8,6 +8,17 @@
 	<exclude-pattern>/node_modules/</exclude-pattern>
 	<exclude-pattern>/build/</exclude-pattern>
 	<exclude-pattern>/tests/</exclude-pattern>
+	<exclude-pattern>/tmp/</exclude-pattern>
+	<exclude-pattern>/logs/</exclude-pattern>
+	<exclude-pattern>/generated-plugins/</exclude-pattern>
+	<!-- Exclude scaffold files with mustache placeholders -->
+	<exclude-pattern>inc/class-*.php</exclude-pattern>
+	<exclude-pattern>src/blocks/ma-plugin-*/</exclude-pattern>
+	<exclude-pattern>src/components/</exclude-pattern>
+	<exclude-pattern>patterns/ma-plugin-*.php</exclude-pattern>
+	<exclude-pattern>.php</exclude-pattern>
+	<file>./.php</file>
+	<file>./uninstall-.php</file>
 
 	<!-- How to scan -->
 	<arg value="sp"/> <!-- Show sniff and progress -->
@@ -20,13 +31,16 @@
 	<rule ref="WordPress">
 		<exclude name="WordPress.Files.FileName.InvalidClassFileName"/>
 		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase"/>
+		<!-- Allow direct database queries in uninstall.php for cleanup -->
+		<exclude name="WordPress.DB.DirectDatabaseQuery.DirectQuery"/>
+		<exclude name="WordPress.DB.DirectDatabaseQuery.NoCaching"/>
 	</rule>
 
 	<!-- Set text domain -->
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="{{textdomain}}"/>
+				<element value="ma-plugin"/>
 			</property>
 		</properties>
 	</rule>

@@ -1,0 +1,95 @@
+{
+    "key": "group_webinarjam_event_fields",
+    "title": "Webinar Event Settings",
+    "fields": [
+        {
+            "key": "field_wj_event_button_text",
+            "label": "Button Text",
+            "name": "event_button_text",
+            "type": "text",
+            "instructions": "Text displayed on the event button (automatically updated based on webinar status)",
+            "required": 0,
+            "default_value": "Register",
+            "wrapper": {
+                "width": "33"
+            }
+        },
+        {
+            "key": "field_wj_event_button_url",
+            "label": "Button URL",
+            "name": "event_button_url",
+            "type": "url",
+            "instructions": "URL for the event button (automatically updated based on webinar status)",
+            "required": 0,
+            "wrapper": {
+                "width": "33"
+            }
+        },
+        {
+            "key": "field_wj_event_webinar_status",
+            "label": "Webinar Status",
+            "name": "event_webinar_status",
+            "type": "select",
+            "instructions": "Synced from connected webinar course",
+            "required": 0,
+            "choices": {
+                "upcoming": "Upcoming",
+                "live": "Live",
+                "replay": "Replay"
+            },
+            "default_value": "upcoming",
+            "readonly": 1,
+            "wrapper": {
+                "width": "34"
+            }
+        },
+        {
+            "key": "field_wj_event_sync_enabled",
+            "label": "Enable Auto-Sync",
+            "name": "event_sync_enabled",
+            "type": "true_false",
+            "instructions": "Automatically sync event details with connected webinar course",
+            "default_value": 1,
+            "ui": 1,
+            "wrapper": {
+                "width": "50"
+            }
+        },
+        {
+            "key": "field_wj_event_last_sync",
+            "label": "Last Sync",
+            "name": "event_last_sync",
+            "type": "date_time_picker",
+            "instructions": "Last synchronization with webinar course",
+            "required": 0,
+            "readonly": 1,
+            "display_format": "Y-m-d H:i:s",
+            "return_format": "Y-m-d H:i:s",
+            "wrapper": {
+                "width": "50"
+            }
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "tribe_events"
+            },
+            {
+                "param": "post_meta",
+                "operator": "!=",
+                "value": "course:"
+            }
+        ]
+    ],
+    "menu_order": 2,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": [],
+    "active": true,
+    "description": "Additional fields for events connected to webinar courses"
+}

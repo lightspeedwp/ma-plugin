@@ -1,34 +1,21 @@
 {
-	"name": "example_plugin/example-plugin",
-	"description": "A multi-block WordPress plugin scaffold example",
-	"type": "wordpress-plugin",
-	"license": "GPL-2.0-or-later",
-	"minimum-stability": "stable",
-	"prefer-stable": true,
-	"require": {
-		"php": ">=8.0"
-	},
-	"require-dev": {
-		"phpunit/phpunit": "^9.0",
-		"wp-coding-standards/wpcs": "^3.0",
-		"dealerdirect/phpcodesniffer-composer-installer": "^1.0",
-		"phpstan/phpstan": "^1.0",
-		"szepeviktor/phpstan-wordpress": "^1.0"
-	},
-	"autoload": {
-		"psr-4": {
-			"ExamplePlugin\\": "inc/"
-		}
-	},
-	"scripts": {
-		"test": "phpunit",
-		"phpcs": "phpcs",
-		"phpcbf": "phpcbf",
-		"phpstan": "phpstan analyse"
-	},
-	"config": {
-		"allow-plugins": {
-			"dealerdirect/phpcodesniffer-composer-installer": true
-		}
-	}
+  "name": "ma_plugin/ma-plugin",
+  "description": "WordPress content model for Medical Academic CPD platform with custom post types for articles, webinars, magazines, research papers, and learning journeys with comprehensive taxonomy and field support.",
+  "version": "1.0.0",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "LightSpeed",
+      "homepage": "https://developer.lsdev.biz"
+    }
+  ],
+  "require": {
+    "php": ">=8.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.0",
+    "wp-coding-standards/wpcs": "^3.0",
+    "phpstan/phpstan": "^1.10"
+  }
 }

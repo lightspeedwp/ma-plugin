@@ -1,0 +1,54 @@
+{
+  "apiVersion": 3,
+  "name": "ma-plugin/digital-magazine-slider",
+  "title": "Medical Academic Enhancements Slider",
+  "category": "ma-plugin",
+  "icon": "images-alt2",
+  "description": "A slider block for displaying images or content.",
+  "keywords": ["slider", "carousel", "digital-magazine", "gallery", "media"],
+  "textdomain": "ma-plugin",
+  "attributes": {
+    "slidesToShow": {
+      "type": "number",
+      "default": 3
+    },
+    "autoplay": {
+      "type": "boolean",
+      "default": false
+    },
+    "showArrows": {
+      "type": "boolean",
+      "default": true
+    },
+    "showDots": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "supports": {
+    "html": false,
+    "align": ["wide", "full"],
+    "anchor": true,
+    "customClassName": true,
+    "spacing": {
+      "margin": true,
+      "padding": true
+    },
+    "color": {
+      "background": true,
+      "text": true
+    }
+  },
+  "example": {
+    "attributes": {
+      "slidesToShow": 3,
+      "autoplay": true,
+      "showArrows": true,
+      "showDots": true
+    }
+  },
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./index.css",
+  "render": "ma_plugin_render_digital-magazine_slider"
+}

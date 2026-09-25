@@ -1,15 +1,15 @@
 ---
-title: "{{name}} - Development Guide"
-version: "{{version}}"
+title: "Medical Academic Enhancements - Development Guide"
+version: "1.0.0"
 last_updated: "2024-10-18"
-author: "{{author}}"
-description: "Comprehensive development guide for {{name}}"
+author: "LightSpeed"
+description: "Comprehensive development guide for Medical Academic Enhancements"
 type: "documentation"
 ---
 
 # Development Guide
 
-This document provides comprehensive information for developers working on {{name}}.
+This document provides comprehensive information for developers working on Medical Academic Enhancements.
 
 ## Prerequisites
 
@@ -23,8 +23,10 @@ This document provides comprehensive information for developers working on {{nam
 ### 1. Clone and Install
 
 ```bash
-git clone https://github.com/{{author}}/{{slug}}.git
-cd {{slug}}
+npm install
+composer install
+git clone https://github.com/LightSpeed/.git
+cd 
 npm install
 composer install
 ```
@@ -65,14 +67,14 @@ The plugin follows WordPress block development best practices with multiple bloc
 ```
 src/
 ├── index.js            # Main entry point - registers all blocks
-├── {{block-slug-1}}/   # First block
+├── webinar/   # Block directory
 │   ├── block.json      # Block metadata and configuration
 │   ├── edit.js         # Editor component (React)
 │   ├── save.js         # Frontend save component
 │   ├── index.js        # Block registration
 │   ├── render.php      # Server-side render callback
 │   └── style.scss      # Block-specific styles
-├── {{block-slug-2}}/   # Second block
+├── webinar/   # Another block
 │   └── ...
 └── shared/             # Shared between blocks
     ├── components/     # Shared React components
@@ -88,17 +90,17 @@ All files use mustache-style placeholders for customization:
 
 The build system supports these mustache transforms:
 
-- `{{slug}}` - Original kebab-case
-- `{{slug|snakeCase}}` - snake_case transformation
-- `{{slug|pascalCase}}` - PascalCase transformation
-- `{{slug|camelCase}}` - camelCase transformation
-- `{{namespace|upper}}` - UPPERCASE transformation
+- `ma-plugin` - Original kebab-case
+- `ma_plugin` - snake_case transformation
+- `MaPlugin` - PascalCase transformation
+- `maPlugin` - camelCase transformation
+- `MA_PLUGIN` - UPPERCASE transformation
 
 #### File Naming
 
 Template files use placeholder syntax:
 
-- `{{slug}}.php` - Main plugin file
+- `ma-plugin.php` - Main plugin file
 - `src/{{block-slug}}/` - Block directory
 
 ### Internationalization (i18n)
@@ -111,26 +113,26 @@ The plugin is fully prepared for internationalization:
 import { __ } from '@wordpress/i18n';
 
 // Basic translation
-const text = __( 'Hello World', '{{textdomain}}' );
+const text = __( 'Hello World', 'ma-plugin' );
 
 // With context
-const text = _x( 'Post', 'noun', '{{textdomain}}' );
+const text = _x( 'Post', 'noun', 'ma-plugin' );
 
 // Pluralization
-const text = _n( '%d item', '%d items', count, '{{textdomain}}' );
+const text = _n( '%d item', '%d items', count, 'ma-plugin' );
 ```
 
 #### PHP
 
 ```php
 // Basic translation
-$text = __( 'Hello World', '{{textdomain}}' );
+$text = __( 'Hello World', 'ma-plugin' );
 
 // Escaped output
-echo esc_html__( 'Hello World', '{{textdomain}}' );
+echo esc_html__( 'Hello World', 'ma-plugin' );
 
 // With context
-$text = _x( 'Post', 'noun', '{{textdomain}}' );
+$text = _x( 'Post', 'noun', 'ma-plugin' );
 ```
 
 ## Code Standards
@@ -205,7 +207,7 @@ npm run test:unit -- --coverage
 import { render, screen } from '@testing-library/react';
 import { Edit } from '../edit';
 
-describe( '{{slug}} Edit Component', () => {
+describe( 'ma-plugin Edit Component', () => {
  it( 'renders correctly', () => {
   const attributes = { content: 'Test content' };
   const setAttributes = jest.fn();
@@ -226,24 +228,24 @@ We use PHPUnit with WordPress test framework:
 composer run test
 
 # Install test database (first time only)
-./bin/install-wp-tests.sh {{slug|snakeCase}}_test root '' localhost latest
+./bin/install-wp-tests.sh ma_plugin_test root '' localhost latest
 ```
 
 #### Test Structure
 
 ```php
 <?php
-class Test_{{namespace|pascalCase}}_Block extends WP_UnitTestCase {
+class Test_MaPlugin_Block extends WP_UnitTestCase {
 
  public function test_block_registration() {
   $this->assertTrue(
-   WP_Block_Type_Registry::get_instance()->is_registered( '{{namespace}}/{{block-slug}}' )
+   WP_Block_Type_Registry::get_instance()->is_registered( 'ma_plugin/{{block-slug}}' )
   );
  }
 
  public function test_render_callback() {
   $attributes = array( 'content' => 'Test content' );
-  $result = {{namespace}}_{{block-slug|snakeCase}}_render_callback( $attributes, '', null );
+  $result = ma_plugin_{{block-slug|snakeCase}}_render_callback( $attributes, '', null );
 
   $this->assertStringContainsString( 'Test content', $result );
  }
@@ -349,7 +351,7 @@ This updates version numbers in:
 
 - `package.json`
 - `composer.json`
-- `{{slug}}.php`
+- `.php`
 - `src/*/block.json`
 - `README.md`
 
@@ -390,7 +392,6 @@ Use browser developer tools or VSCode:
 
 ```javascript
 // Add debugging statements
-console.log( 'Debug info:', data );
 debugger; // Breakpoint in browser
 ```
 
@@ -452,7 +453,7 @@ define( 'SCRIPT_DEBUG', true );
 
 ### Getting Help
 
-1. Check existing [GitHub Issues](https://github.com/{{author}}/{{slug}}/issues)
+1. Check existing [GitHub Issues](https://github.com/LightSpeed//issues)
 2. Read [WordPress Block Editor Handbook](https://developer.wordpress.org/block-editor/)
 3. Join [WordPress Slack](https://wordpress.slack.com) #core-editor channel
 4. Review [LightSpeed Standards](https://github.com/lightspeedwp/.github)
